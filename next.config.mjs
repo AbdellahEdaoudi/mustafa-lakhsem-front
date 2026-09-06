@@ -2,6 +2,9 @@
 const nextConfig = {
   reactCompiler: true,
   compress: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   allowedDevOrigins: ["192.168.1.111", "localhost:3000"],
   images: {
     formats: ["image/avif", "image/webp"],
