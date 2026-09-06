@@ -1,0 +1,180 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+
+import {
+  Trophy, Landmark, HeartHandshake, Globe2, ArrowRight, Sparkles, ChevronDown, Medal, Flame, ShieldCheck, Award,
+} from "@/components/lucide-react";
+
+export default function Hero({ t = {}, lang }) {
+  const [activeRoleIdx, setActiveRoleIdx] = useState(0);
+  const [activeImageIdx, setActiveImageIdx] = useState(0);
+
+  const roles = [
+    { text: t.hero?.roles?.[0] || "World Champion · Kickboxing & Full-Contact", icon: Trophy, accent: "border-amber-500/40 bg-amber-500/10 text-amber-300" },
+    { text: t.hero?.roles?.[1] || "Mayor · Imouzzer-Kandar", icon: Landmark, accent: "border-emerald-500/40 bg-emerald-500/10 text-emerald-300" },
+    { text: t.hero?.roles?.[2] || "Founder · Lakhsem Foundation", icon: HeartHandshake, accent: "border-blue-500/40 bg-blue-500/10 text-blue-300" },
+    { text: t.hero?.roles?.[3] || "Humanitarian · Leader · Visionary", icon: Medal, accent: "border-purple-500/40 bg-purple-500/10 text-purple-300" },
+  ];
+
+  const heroImages = [
+    "/hero/hero1.jpg",
+    "/hero/hero2.jpg",
+    "/hero/hero3.jpg",
+    "/hero/hero4.jpg",
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveRoleIdx((prev) => (prev + 1) % roles.length);
+    }, 1900);
+    return () => clearInterval(timer);
+  }, [roles.length]);
+
+  useEffect(() => {
+    const imgTimer = setInterval(() => {
+      setActiveImageIdx((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(imgTimer);
+  }, [heroImages.length]);
+
+  const stats = [
+    { value: t.hero?.stats?.[0]?.value || "70+", label: t.hero?.stats?.[0]?.label || "Victories", icon: Trophy },
+    { value: t.hero?.stats?.[1]?.value || "12+", label: t.hero?.stats?.[1]?.label || "World Titles", icon: Flame },
+    { value: t.hero?.stats?.[2]?.value || "30+", label: t.hero?.stats?.[2]?.label || "Years", icon: ShieldCheck },
+    { value: t.hero?.stats?.[3]?.value || "5+", label: t.hero?.stats?.[3]?.label || "Continents", icon: Globe2 },
+  ];
+
+  const CurrentIcon = roles[activeRoleIdx].icon;
+  const badgeText = t.hero?.badge || "Royal Decoration";
+  const titleText = t.hero?.title || "MUSTAFA LAKHSEM";
+  const descText = t.hero?.desc || "From the ring to the town hall, from Morocco to the world. After making history in combat sports, he committed himself to serving his municipality and the Moroccan diaspora.";
+  const btn1Text = t.hero?.btn1 || "Discover";
+  const btn2Text = t.hero?.btn2 || "Foundations";
+  const tickerItems = t.hero?.ticker || ["World Champion", "Mayor of Imouzzer-Kandar", "Lakhsem Foundation", "Tiger of the Rings", "Kingdom of Morocco", "Humanitarian Leader"];
+
+  return (
+    <section className="relative min-h-175 lg:h-screen flex flex-col justify-between pt-24 lg:pt-24 pb-6 lg:pb-0 overflow-hidden bg-[#040711]">
+
+      {/* Subtle Background Pattern */}
+      <div className="absolute inset-0 bg-[url('/moroccan-pattern.svg')] bg-repeat opacity-5 pointer-events-none z-0" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 relative z-10">
+
+        {/* Right Column on desktop, shown FIRST on mobile: Image */}
+        <div className="order-1 lg:order-2 w-full lg:w-1/2 h-70 sm:h-100 lg:h-137.5 relative rounded-4xl overflow-hidden border border-amber-500/20 shadow-[0_0_30px_rgba(212,175,55,0.15)] shrink-0">
+          {heroImages.map((src, idx) => (
+            <div
+              key={src}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === activeImageIdx ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                }`}
+              style={{ transitionProperty: 'opacity, transform', transitionDuration: '1.5s' }}
+            >
+              <Image
+                src={src}
+                alt={`Mustafa Lakhsem image ${idx + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 640px"
+                className="object-cover object-center lg:object-top"
+                priority={true}
+                loading="eager"
+              />
+              {/* Very light inner shadow to frame the image, no full overlay */}
+              <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(4,7,17,0.3)] pointer-events-none" />
+            </div>
+          ))}
+        </div>
+
+        {/* Left Column on desktop, shown SECOND on mobile: Text & Content */}
+        <div className="order-2 lg:order-1 w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-start">
+
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-amber-500/30 bg-[#040711]/80 backdrop-blur-md mb-5 shadow-sm">
+            <span className="text-[10px] sm:text-xs font-bold tracking-[0.15em] text-amber-300/90 uppercase">
+              {badgeText}
+            </span>
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-black tracking-tight text-white uppercase mb-3 leading-none">
+            <span className="bg-clip-text text-transparent bg-linear-to-b from-amber-200 via-amber-400 to-amber-600">
+              {titleText}
+            </span>
+          </h1>
+
+          <div className="min-h-10 flex items-center mb-4">
+            <div
+              key={activeRoleIdx}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border ${roles[activeRoleIdx].accent} backdrop-blur-xl text-xs sm:text-sm font-black tracking-wide transition-all duration-500`}
+            >
+              <CurrentIcon className="w-4 h-4" />
+              <span>{roles[activeRoleIdx].text}</span>
+            </div>
+          </div>
+
+          <p className="max-w-xl text-sm sm:text-base text-slate-300 mb-6 leading-relaxed">
+            {descText}
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
+            <a
+              href="#achievements"
+              className="px-6 py-3 rounded-full bg-linear-to-r from-amber-600 via-amber-400 to-amber-600 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider hover:-translate-y-0.5 transition-transform flex items-center gap-2"
+            >
+              <Trophy className="w-4 h-4" />
+              <span>{btn1Text}</span>
+            </a>
+            <a
+              href="#foundations"
+              className="px-6 py-3 rounded-full bg-[#040711]/80 border border-amber-500/50 text-amber-300 font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:-translate-y-0.5 transition-transform flex items-center gap-2"
+            >
+              <Award className="w-4 h-4" />
+              <span>{btn2Text}</span>
+            </a>
+          </div>
+
+          {/* Compact Stats */}
+          <div className="grid grid-cols-4 gap-3 w-full max-w-lg">
+            {stats.map((stat, idx) => {
+              const Icon = stat.icon;
+              return (
+                <div key={idx} className="bg-white/5 border border-amber-500/20 rounded-2xl p-3 text-center">
+                  <Icon className="w-4 h-4 text-amber-400 mx-auto mb-1" />
+                  <div className="text-lg sm:text-xl font-black text-amber-300 leading-tight">
+                    {stat.value}
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] font-bold text-slate-300 uppercase">
+                    {stat.label}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Infinite Ticker - Seamless continuous loop */}
+      <div className="w-full bg-amber-500/10 border-t border-amber-500/30 py-2.5 backdrop-blur-md overflow-hidden relative z-10 mt-8 lg:mt-auto">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-8 text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] text-amber-200/80">
+          {/* Track A */}
+          <div className="flex items-center gap-8 shrink-0">
+            {tickerItems.map((item, i) => (
+              <span key={`a-${i}`} className="inline-flex items-center gap-8">
+                <span>{item}</span>
+                <span className="text-amber-500 select-none">✦</span>
+              </span>
+            ))}
+          </div>
+          {/* Track B (exact identical duplicate for 100% gapless infinite loop) */}
+          <div className="flex items-center gap-8 shrink-0" aria-hidden="true">
+            {tickerItems.map((item, i) => (
+              <span key={`b-${i}`} className="inline-flex items-center gap-8">
+                <span>{item}</span>
+                <span className="text-amber-500 select-none">✦</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
