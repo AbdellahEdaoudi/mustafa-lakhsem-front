@@ -1,26 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css");
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #040711;
+  --bg-secondary: #080d1e;
+  --bg-card: rgba(10, 16, 34, 0.7);
+  --bg-card-hover: rgba(18, 27, 54, 0.85);
+  --border-card: rgba(212, 175, 55, 0.18);
+  --border-card-hover: rgba(212, 175, 55, 0.5);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --gold-primary: #d4af37;
+  --gold-light: #fef08a;
+  --gold-dark: #855d10;
+  --emerald-accent: #10b981;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-prompt), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Cairo", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-prompt), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Cairo", sans-serif;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 10% 25%, rgba(16, 185, 129, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 90% 60%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* High-End Glassmorphism */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-card);
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-card-hover);
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px -5px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(246, 224, 94, 0.25);
+}
+
+/* Royal Gold Gradient Text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #d4af37 55%, #eab308 80%, #977413 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.text-gold-subtle {
+  background: linear-gradient(135deg, #fef9c3 0%, #facc15 50%, #ca8a04 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-emerald-gradient {
+  background: linear-gradient(135deg, #a7f3d0 0%, #10b981 50%, #047857 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Luxury Metallic Border Frame */
+.royal-border {
+  position: relative;
+}
+.royal-border::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.6) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(212, 175, 55, 0.8) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Subtle Geometric Moroccan Star Watermark */
+.moroccan-pattern-overlay {
+  background-image: 
+    radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 1px),
+    radial-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Continuous Seamless Marquee Ticker */
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes marquee-rtl {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(50%, 0, 0); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+[dir="rtl"] .animate-marquee {
+  animation: marquee-rtl 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Shimmer Light Reflection */
+@keyframes shineGlow {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shine-effect {
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.08) 35%,
+    rgba(212, 175, 55, 0.25) 50%,
+    rgba(255, 255, 255, 0.08) 65%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: shineGlow 6s infinite ease-in-out;
+}
+
+/* Custom Prestige Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #040711;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Interactive Tap Hint Animation */
+@keyframes fingerTap {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateY(3px) scale(0.88);
+    opacity: 1;
+  }
+}
+
+@keyframes tapRipple {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-finger-tap {
+  animation: fingerTap 1.4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-tap-ripple {
+  animation: tapRipple 1.4s infinite cubic-bezier(0, 0, 0.2, 1);
 }

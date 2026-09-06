@@ -9,12 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "axios": "^1.20.0",
+    "canvas-confetti": "^1.9.4",
     "next": "16.3.2",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/node": "26.4.1",
+    "@types/react": "19.2.18",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.2",
