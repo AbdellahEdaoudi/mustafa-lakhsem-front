@@ -1,0 +1,120 @@
+{
+  "login": {
+    "title": "MUSTAFA LAKHSEM",
+    "subtitle": "Inloggen op het Beheerdersportaal",
+    "cardTitle": "Inloggen",
+    "emailLabel": "E-mailadres",
+    "emailPlaceholder": "email@example.com",
+    "passwordLabel": "Wachtwoord",
+    "passwordPlaceholder": "••••••••",
+    "signInBtn": "Inloggen",
+    "signingIn": "Inloggen...",
+    "fillAllFields": "Vul alstublieft alle velden in.",
+    "invalidCredentials": "Ongeldig e-mailadres of wachtwoord"
+  },
+  "dashboard": {
+    "brandName": "MUSTAFA LAKHSEM",
+    "portalTitle": "Beheerdersportaal",
+    "refreshTitle": "Gegevens Vernieuwen",
+    "logout": "Uitloggen",
+    "loadingData": "Gegevens laden...",
+    "tabs": {
+      "messages": "Berichten",
+      "subscribers": "Abonnees"
+    },
+    "search": {
+      "contactsPlaceholder": "Zoek afzender, e-mail, inhoud...",
+      "subscribersPlaceholder": "Zoek e-mailadres van abonnee..."
+    },
+    "filters": {
+      "title": "Filter:",
+      "all": "Alles",
+      "unread": "Ongelezen",
+      "starred": "Met ster"
+    },
+    "table": {
+      "status": "Status",
+      "sender": "Afzender",
+      "category": "Categorie",
+      "messagePreview": "Berichtvoorbeeld",
+      "date": "Datum",
+      "actions": "Acties",
+      "subscriberEmail": "E-mail van Abonnee",
+      "subscriptionDate": "Aanmelddatum"
+    },
+    "categories": {
+      "general": "Algemene Vraag",
+      "press": "Pers- / Media-aanvraag",
+      "lakhsem_foundation": "Partnerschap Lakhsem Stichting",
+      "mdm_foundation": "Partnerschap MDM Stichting",
+      "municipality": "Gemeente Imouzzer-Kandar",
+      "invitation": "Uitnodiging / Evenement",
+      "cooperation": "Internationale Samenwerking"
+    },
+    "empty": {
+      "noContactsTitle": "Geen contactberichten gevonden",
+      "noContactsDesc": "Probeer uw filters of zoektermen aan te passen.",
+      "noSubscribersTitle": "Geen e-mailabonnees gevonden",
+      "noSubscribersDesc": "Geen abonnees gevonden die voldoen aan uw zoekopdracht."
+    },
+    "actions": {
+      "star": "Bericht markeren met ster",
+      "unstar": "Ster verwijderen",
+      "markAsRead": "Markeren als gelezen",
+      "markAsUnread": "Markeren als ongelezen",
+      "read": "Gelezen",
+      "unread": "Ongelezen",
+      "deleteMessage": "Bericht verwijderen",
+      "deleteSubscriber": "Abonnee verwijderen",
+      "tapToRead": "Tik om te lezen",
+      "newBadge": "NIEUW",
+      "viewDetails": "Details bekijken"
+    },
+    "modal": {
+      "inquiryDetails": "Berichtdetails",
+      "id": "ID",
+      "senderName": "Naam Afzender",
+      "emailAddress": "E-mailadres",
+      "phoneNumber": "Telefoonnummer",
+      "organization": "Organisatie / Instantie",
+      "messageContent": "Berichtinhoud",
+      "received": "Ontvangen op",
+      "gdprConsent": "AVG / GDPR Toestemming",
+      "gdprAccepted": "✅ Geaccepteerd",
+      "gdprDeclined": "❌ Geweigerd",
+      "notAvailable": "N.v.t.",
+      "delete": "Verwijderen",
+      "star": "Met ster",
+      "unstar": "Ster weg"
+    },
+    "confirmDelete": {
+      "deleteContactTitle": "Bericht verwijderen?",
+      "deleteContactMessage": "Weet u zeker dat u het bericht van {name} definitief wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+      "deleteSubscriberTitle": "Abonnee verwijderen?",
+      "deleteSubscriberMessage": "Weet u zeker dat u {email} wilt verwijderen uit de nieuwsbriefabonnees?",
+      "cancel": "Annuleren",
+      "confirmDelete": "Ja, verwijderen",
+      "deleting": "Verwijderen..."
+    },
+    "toasts": {
+      "sessionExpired": "Sessie verlopen. Log opnieuw in.",
+      "unauthorized": "Niet geautoriseerd: Log opnieuw in.",
+      "forbidden": "Verboden: U heeft geen toegang.",
+      "networkError": "Netwerkfout: Geen antwoord ontvangen.",
+      "requestSetupError": "Fout bij configureren van verzoek.",
+      "dashboardLoadFailed": "Laden van dashboardgegevens mislukt.",
+      "signedOut": "Succesvol uitgelogd",
+      "markedStarred": "Gemarkeerd met ster",
+      "removedStarred": "Ster verwijderd",
+      "starUpdateFailed": "Bijwerken van sterstatus mislukt.",
+      "markedRead": "Gemarkeerd als gelezen",
+      "markedUnread": "Gemarkeerd als ongelezen",
+      "readUpdateFailed": "Bijwerken van leesstatus mislukt.",
+      "messageDeleted": "Bericht succesvol verwijderd",
+      "messageDeleteFailed": "Verwijderen van bericht mislukt.",
+      "subscriberDeleted": "Abonnee succesvol verwijderd",
+      "subscriberDeleteFailed": "Verwijderen van abonnee mislukt.",
+      "operationFailed": "Bewerking mislukt."
+    }
+  }
+}

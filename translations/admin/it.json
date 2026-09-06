@@ -1,0 +1,121 @@
+{
+  "login": {
+    "title": "MUSTAFA LAKHSEM",
+    "subtitle": "Accesso Portale Amministrativo",
+    "cardTitle": "Accedi",
+    "emailLabel": "Indirizzo Email",
+    "emailPlaceholder": "email@esempio.it",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "signInBtn": "Accedi",
+    "signingIn": "Accesso in corso...",
+    "fillAllFields": "Compila tutti i campi.",
+    "invalidCredentials": "Email o password non valida",
+    "rateLimitExceeded": "Limite di tentativi superato. Riprova più tardi."
+  },
+  "dashboard": {
+    "brandName": "MUSTAFA LAKHSEM",
+    "portalTitle": "Portale Amministratore",
+    "refreshTitle": "Aggiorna Dati",
+    "logout": "Disconnetti",
+    "loadingData": "Caricamento dati...",
+    "tabs": {
+      "messages": "Messaggi",
+      "subscribers": "Iscritti"
+    },
+    "search": {
+      "contactsPlaceholder": "Cerca mittente, email, contenuto...",
+      "subscribersPlaceholder": "Cerca email iscritto..."
+    },
+    "filters": {
+      "title": "Filtro:",
+      "all": "Tutti",
+      "unread": "Non letti",
+      "starred": "Preferiti"
+    },
+    "table": {
+      "status": "Stato",
+      "sender": "Mittente",
+      "category": "Categoria",
+      "messagePreview": "Anteprima Messaggio",
+      "date": "Data",
+      "actions": "Azioni",
+      "subscriberEmail": "Email Iscritto",
+      "subscriptionDate": "Data Iscrizione"
+    },
+    "categories": {
+      "general": "Richiesta Generale",
+      "press": "Richiesta Stampa / Media",
+      "lakhsem_foundation": "Partnership Fondazione Lakhsem",
+      "mdm_foundation": "Partnership Fondazione MDM",
+      "municipality": "Municipio di Imouzzer-Kandar",
+      "invitation": "Invito / Evento",
+      "cooperation": "Cooperazione Internazionale"
+    },
+    "empty": {
+      "noContactsTitle": "Nessun messaggio di contatto trovato",
+      "noContactsDesc": "Prova a modificare i filtri o la ricerca.",
+      "noSubscribersTitle": "Nessun iscritto alla newsletter trovato",
+      "noSubscribersDesc": "Nessun iscritto corrisponde alla ricerca attuale."
+    },
+    "actions": {
+      "star": "Aggiungi ai preferiti",
+      "unstar": "Rimuovi dai preferiti",
+      "markAsRead": "Segna come letto",
+      "markAsUnread": "Segna come non letto",
+      "read": "Letto",
+      "unread": "Non letto",
+      "deleteMessage": "Elimina Messaggio",
+      "deleteSubscriber": "Elimina Iscritto",
+      "tapToRead": "Tocca per aprire e leggere",
+      "newBadge": "NUOVO",
+      "viewDetails": "Visualizza Dettagli"
+    },
+    "modal": {
+      "inquiryDetails": "Dettagli Richiesta",
+      "id": "ID",
+      "senderName": "Nome Mittente",
+      "emailAddress": "Indirizzo Email",
+      "phoneNumber": "Numero di Telefono",
+      "organization": "Organizzazione / Ente",
+      "messageContent": "Contenuto del Messaggio",
+      "received": "Ricevuto il",
+      "gdprConsent": "Consenso GDPR",
+      "gdprAccepted": "✅ Accettato",
+      "gdprDeclined": "❌ Rifiutato",
+      "notAvailable": "N/D",
+      "delete": "Elimina",
+      "star": "Preferito",
+      "unstar": "Rimuovi preferito"
+    },
+    "confirmDelete": {
+      "deleteContactTitle": "Eliminare il messaggio?",
+      "deleteContactMessage": "Sei sicuro di voler eliminare definitivamente il messaggio di {name}? Questa azione è irreversibile.",
+      "deleteSubscriberTitle": "Eliminare l'iscritto?",
+      "deleteSubscriberMessage": "Sei sicuro di voler rimuovere {email} dagli iscritti alla newsletter?",
+      "cancel": "Annulla",
+      "confirmDelete": "Sì, Elimina",
+      "deleting": "Eliminazione in corso..."
+    },
+    "toasts": {
+      "sessionExpired": "Sessione scaduta. Effettua nuovamente l'accesso.",
+      "unauthorized": "Non autorizzato: effettua nuovamente l'accesso.",
+      "forbidden": "Accesso negato: autorizzazioni insufficienti.",
+      "networkError": "Errore di rete: nessuna risposta dal server.",
+      "requestSetupError": "Errore nella configurazione della richiesta.",
+      "dashboardLoadFailed": "Impossibile caricare i dati della dashboard.",
+      "signedOut": "Disconnesso con successo",
+      "markedStarred": "Aggiunto ai preferiti",
+      "removedStarred": "Rimosso dai preferiti",
+      "starUpdateFailed": "Aggiornamento preferito non riuscito.",
+      "markedRead": "Segnato come letto",
+      "markedUnread": "Segnato come non letto",
+      "readUpdateFailed": "Aggiornamento stato lettura non riuscito.",
+      "messageDeleted": "Messaggio eliminato con successo",
+      "messageDeleteFailed": "Eliminazione del messaggio non riuscita.",
+      "subscriberDeleted": "Iscritto rimosso con successo",
+      "subscriberDeleteFailed": "Eliminazione dell'iscritto non riuscita.",
+      "operationFailed": "Operazione non riuscita."
+    }
+  }
+}

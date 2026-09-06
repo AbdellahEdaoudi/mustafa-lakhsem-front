@@ -1,0 +1,121 @@
+{
+  "login": {
+    "title": "MUSTAFA LAKHSEM",
+    "subtitle": "تسجيل الدخول إلى البوابة الإدارية",
+    "cardTitle": "تسجيل الدخول",
+    "emailLabel": "البريد الإلكتروني",
+    "emailPlaceholder": "email@example.com",
+    "passwordLabel": "كلمة المرور",
+    "passwordPlaceholder": "••••••••",
+    "signInBtn": "تسجيل الدخول",
+    "signingIn": "جاري تسجيل الدخول...",
+    "fillAllFields": "يرجى ملء جميع الحقول.",
+    "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+    "rateLimitExceeded": "تم تجاوز الحد المسموح به من الطلبات. يرجى المحاولة لاحقاً."
+  },
+  "dashboard": {
+    "brandName": "مصطفى لخصم",
+    "portalTitle": "بوابة الإدارة",
+    "refreshTitle": "تحديث البيانات",
+    "logout": "تسجيل الخروج",
+    "loadingData": "جاري تحميل البيانات...",
+    "tabs": {
+      "messages": "الرسائل",
+      "subscribers": "المشتركون"
+    },
+    "search": {
+      "contactsPlaceholder": "ابحث عن المرسل، البريد، المحتوى...",
+      "subscribersPlaceholder": "ابحث عن بريد المشترك..."
+    },
+    "filters": {
+      "title": "تصفية:",
+      "all": "الكل",
+      "unread": "غير مقروء",
+      "starred": "مميز بنجمة"
+    },
+    "table": {
+      "status": "الحالة",
+      "sender": "المرسل",
+      "category": "الفئة",
+      "messagePreview": "معاينة الرسالة",
+      "date": "التاريخ",
+      "actions": "الإجراءات",
+      "subscriberEmail": "بريد المشترك",
+      "subscriptionDate": "تاريخ الاشتراك"
+    },
+    "categories": {
+      "general": "طلب عام",
+      "press": "طلب صحفي / إعلامي",
+      "lakhsem_foundation": "شراكة مع مؤسسة لخصم",
+      "mdm_foundation": "شراكة مع مؤسسة مغاربة العالم (MDM)",
+      "municipality": "شؤون جماعة إيموزار كندر",
+      "invitation": "دعوة / حضور تظاهرة",
+      "cooperation": "التعاون الدولي"
+    },
+    "empty": {
+      "noContactsTitle": "لم يتم العثور على أي رسائل",
+      "noContactsDesc": "جرّب تغيير خيارات التصفية أو عبارة البحث.",
+      "noSubscribersTitle": "لم يتم العثور على مشتركين",
+      "noSubscribersDesc": "لا توجد نتائج مطابقة لبحثك الحالي."
+    },
+    "actions": {
+      "star": "تمييز بنجمة",
+      "unstar": "إزالة النجمة",
+      "markAsRead": "تحديد كمقروء",
+      "markAsUnread": "تحديد كغير مقروء",
+      "read": "مقروء",
+      "unread": "غير مقروء",
+      "deleteMessage": "حذف الرسالة",
+      "deleteSubscriber": "حذف المشترك",
+      "tapToRead": "اضغط هنا لقراءة الرسالة",
+      "newBadge": "جديد",
+      "viewDetails": "عرض التفاصيل"
+    },
+    "modal": {
+      "inquiryDetails": "تفاصيل الرسالة",
+      "id": "المعرّف",
+      "senderName": "اسم المرسل",
+      "emailAddress": "البريد الإلكتروني",
+      "phoneNumber": "رقم الهاتف",
+      "organization": "المؤسسة / الجهة",
+      "messageContent": "نص الرسالة",
+      "received": "تاريخ الاستلام",
+      "gdprConsent": "الموافقة على سياسة الخصوصية",
+      "gdprAccepted": "✅ تمت الموافقة",
+      "gdprDeclined": "❌ مرفوض",
+      "notAvailable": "غير متوفر",
+      "delete": "حذف",
+      "star": "تمييز بنجمة",
+      "unstar": "إزالة النجمة"
+    },
+    "confirmDelete": {
+      "deleteContactTitle": "حذف الرسالة؟",
+      "deleteContactMessage": "هل أنت متأكد من رغبتك في حذف الرسالة الواردة من {name} بشكل نهائي؟ لا يمكن التراجع عن هذا الإجراء.",
+      "deleteSubscriberTitle": "حذف المشترك؟",
+      "deleteSubscriberMessage": "هل أنت متأكد من حذف {email} من قائمة المشتركين في النشرة البريدية؟",
+      "cancel": "إلغاء",
+      "confirmDelete": "نعم، احذف",
+      "deleting": "جاري الحذف..."
+    },
+    "toasts": {
+      "sessionExpired": "انتهت الجلسة. يرجى تسجيل الدخول مجدداً.",
+      "unauthorized": "غير مصرح: يرجى تسجيل الدخول مجدداً.",
+      "forbidden": "ممنوع: ليس لديك صلاحية الوصول.",
+      "networkError": "خطأ في الشبكة: لم يتم استلام أي استجابة.",
+      "requestSetupError": "خطأ في إعداد الطلب.",
+      "dashboardLoadFailed": "فشل في تحميل بيانات لوحة التحكم.",
+      "signedOut": "تم تسجيل الخروج بنجاح",
+      "markedStarred": "تم التمييز بنجمة",
+      "removedStarred": "تمت إزالة النجمة",
+      "starUpdateFailed": "فشل في تحديث حالة النجمة.",
+      "markedRead": "تم التحديد كمقروء",
+      "markedUnread": "تم التحديد كغير مقروء",
+      "readUpdateFailed": "فشل في تحديث حالة القراءة.",
+      "messageDeleted": "تم حذف الرسالة بنجاح",
+      "messageDeleteFailed": "فشل في حذف الرسالة.",
+      "subscriberDeleted": "تم حذف المشترك بنجاح",
+      "subscriberDeleteFailed": "فشل في حذف المشترك.",
+      "operationFailed": "فشلت العملية."
+    }
+  }
+}

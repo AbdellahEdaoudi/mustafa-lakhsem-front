@@ -1,0 +1,578 @@
+{
+  "meta": {
+    "title": "Mustafa Lakhsem | Sito Ufficiale - Sindaco di Imouzzer-Kandar & Campione del Mondo",
+    "description": "Sito ufficiale di Mustafa Lakhsem — Sindaco di Imouzzer-Kandar, 12 volte Campione del Mondo di Kickboxing e Full-Contact, Fondatore della Fondazione Lakhsem.",
+    "jobTitle": "Sindaco di Imouzzer-Kandar & Atleta Campione del Mondo",
+    "knowsAbout": [
+      "Kickboxing",
+      "Full-Contact",
+      "Gestione Municipale",
+      "Solidarietà"
+    ]
+  },
+  "nav": {
+    "about": "Chi Siamo",
+    "career": "Carriera",
+    "achievements": "Palmarès",
+    "vision": "Visione",
+    "diplomacy": "Diplomazia",
+    "foundations": "Fondazioni",
+    "imouzzer": "Imouzzer",
+    "media": "Media",
+    "gallery": "Galleria",
+    "contact": "Contatti",
+    "cta": "Contattaci",
+    "role": "Campione del Mondo & Sindaco",
+    "name": "MUSTAFA LAKHSEM",
+    "logoAlt": "Logo Movimento Democratico e Sociale (MDS) - Mustafa Lakhsem"
+  },
+  "hero": {
+    "subtitle1": "Campione del Mondo · Kickboxing & Full-Contact",
+    "subtitle2": "Sindaco · Imouzzer-Kandar",
+    "subtitle3": "Fondatore · Fondazione Lakhsem",
+    "subtitle4": "Umanitario · Leader · Visionario",
+    "badge": "Regno del Marocco · Campione Decorato dal Re & Sindaco",
+    "title": "MUSTAFA LAKHSEM",
+    "desc": "Dal dominio sui ring mondiali di kickboxing in 5 continenti alla guida dello sviluppo civico e della solidarietà umanitaria come Sindaco di Imouzzer-Kandar.",
+    "btnDiscover": "Scopri il Percorso",
+    "btnFoundations": "Fondazioni",
+    "btnContact": "Contatti",
+    "btn1": "Palmarès & Titoli",
+    "btn2": "Distinzione Reale",
+    "btn3": "Visione Imouzzer",
+    "scroll": "ESPLORA L'EREDITÀ",
+    "roles": [
+      "Campione del Mondo · Kickboxing & Full-Contact",
+      "Sindaco · Imouzzer-Kandar",
+      "Fondatore · Fondazione Lakhsem",
+      "Umanitario · Leader · Visionario"
+    ],
+    "ticker": [
+      "Campione del Mondo",
+      "Sindaco di Imouzzer-Kandar",
+      "Fondazione Lakhsem",
+      "Tigre dei Ring",
+      "Regno del Marocco",
+      "Leader Umanitario"
+    ],
+    "stats": [
+      {
+        "value": "12+",
+        "label": "Titoli di Campione del Mondo",
+        "highlight": "WAKO PRO / WKN / ISKA"
+      },
+      {
+        "value": "70+",
+        "label": "Vittorie Professionistiche",
+        "highlight": "Eredità Ineguagliabile"
+      },
+      {
+        "value": "30+",
+        "label": "Anni di Servizio al Vertice",
+        "highlight": "Sport & Governance"
+      },
+      {
+        "value": "5+",
+        "label": "Continenti Ispirati",
+        "highlight": "Riconoscimento Mondiale"
+      }
+    ]
+  },
+  "about": {
+    "badge": "Leggenda",
+    "title": "Lo Statista & Campione",
+    "bio1_prefix": "Nato il ",
+    "bio1_date": "19 settembre 1972",
+    "bio1_mid": ", ad Hanau in Germania, Mustafa Lakhsem è passato da una carriera leggendaria di ",
+    "bio1_champion": "Campione del Mondo",
+    "bio1_suffix": " negli sport da combattimento a un impegno costante nel servizio pubblico, ricoprendo oggi la carica di ",
+    "bio1_mayor": "Sindaco di Imouzzer-Kandar",
+    "bio2_prefix": "Il suo percorso ",
+    "bio2_quote": "«dal ring al municipio, e dal Marocco al mondo intero»",
+    "bio2_mid": " alimenta la sua dedizione per la comunità marocchina nel mondo e la solidarietà globale — missione portata avanti attivamente come Fondatore della ",
+    "bio2_lakhsem": "Fondazione Lakhsem",
+    "bio2_connector": " e Presidente della ",
+    "bio2_mdm": "Fondazione MDM",
+    "royalLabel": "Distinzione Reale",
+    "royalTitle": "Ordine al Merito Nazionale",
+    "royalDesc": "Decorato da Sua Maestà il Re Mohammed VI, in onore della sua straordinaria carriera e del suo impegno per il Regno del Marocco.",
+    "cta": "Esplora la Carriera"
+  },
+  "career": {
+    "badge": "Carriera",
+    "title": "Un Percorso di Vita Straordinario",
+    "subtitle": "Da prodigio delle arti marziali in Germania a campione del mondo e stimato leader civico",
+    "filterAll": "Tutti i Traguardi",
+    "filterSport": "Sport & Titoli",
+    "filterCivic": "Impegno Civico & Fondazioni",
+    "filterDiplomacy": "Diplomazia",
+    "items": [
+      {
+        "year": "1972",
+        "category": "Origini",
+        "type": ["origins"],
+        "title": "Nascita ad Hanau, Germania",
+        "desc": "Nato il 19 settembre 1972 ad Hanau, Germania, da una famiglia originaria del Medio Atlante marocchino, con un profondo legame con il Marocco.",
+        "tag": "Radici & Origini"
+      },
+      {
+        "year": "1985 — 1990",
+        "category": "Sport & Titoli",
+        "type": ["sport"],
+        "title": "Iniziazione alle Arti Marziali",
+        "desc": "Precoce introduzione alle arti marziali e inizio di una carriera da maestro. Campione Giovanile di Germania di Taekwondo (1986), disciplina che ha plasmato un vincitore.",
+        "tag": "Fondamenta"
+      },
+      {
+        "year": "1988 — 1991",
+        "category": "Sport & Titoli",
+        "type": ["sport"],
+        "title": "Ascesa Nazionale — Campione di Germania",
+        "desc": "Quattro volte Campione di Germania nel Kickboxing e Full-Contact. Un palmarès che ha conquistato il massimo rispetto.",
+        "tag": "Titoli Nazionali"
+      },
+      {
+        "year": "1995 — 2005",
+        "category": "Sport & Titoli",
+        "type": ["sport"],
+        "title": "Dominio Europeo & Africano",
+        "desc": "Tre volte Campione d'Europa di Full-Contact. Tre volte Campione d'Africa di Full-Contact. Campione d'Africa di Savate.",
+        "tag": "Corone Continentali"
+      },
+      {
+        "year": "2000 — 2010",
+        "category": "Sport & Titoli",
+        "type": ["sport"],
+        "title": "Titoli Mondiali & Consacrazione",
+        "desc": "Campione del Mondo WAKO PRO. Campione del Mondo WKN. Campione del Mondo WKPL. Oltre 70 vittorie professionistiche.",
+        "tag": "Titoli Mondiali"
+      },
+      {
+        "year": "2010",
+        "category": "Sport & Titoli",
+        "type": ["sport"],
+        "title": "Onorificenza Reale",
+        "desc": "Decorato da Sua Maestà il Re Mohammed VI con il Wissam dell'Ordine al Merito Nazionale di Grado Eccezionale.",
+        "tag": "Medaglia Reale"
+      },
+      {
+        "year": "2015",
+        "category": "Impegno Civico & Fondazioni",
+        "type": ["civic"],
+        "title": "Nascita della Fondazione Lakhsem",
+        "desc": "Creazione della Fondazione Lakhsem per l'istruzione, lo sport giovanile e lo sviluppo sociale ed umano.",
+        "tag": "Umanitario"
+      },
+      {
+        "year": "2021",
+        "category": "Impegno Civico & Fondazioni",
+        "type": ["civic"],
+        "title": "Sindaco di Imouzzer-Kandar",
+        "desc": "Eletto Sindaco di Imouzzer-Kandar, avviando una governance vicina ai cittadini, trasparente e incentrata sullo sviluppo.",
+        "tag": "Incarico Pubblico"
+      },
+      {
+        "year": "2022 — Presente",
+        "category": "Diplomazia",
+        "type": ["diplomacy"],
+        "title": "Diplomazia & Cooperazione Internazionale",
+        "desc": "Presidenza della Fondazione per i Marocchini nel Mondo (MDM). Accordi di partenariato in Senegal e forum Smart Cities globali.",
+        "tag": "Presenza Globale"
+      }
+    ]
+  },
+  "achievements": {
+    "badge": "Palmarès",
+    "title": "12× Campionato del Mondo",
+    "subtitle": "La collezione completa di titoli internazionali, difese della cintura e tappe storiche che hanno reso Mustafa Lakhsem una leggenda del Kickboxing.",
+    "sanction": "Riconoscimento Ufficiale",
+    "tabs": {
+      "all": "Tutti i Campionati",
+      "world": "Titoli Mondiali (12×)",
+      "continental": "Europa & Africa",
+      "national": "Titoli Nazionali"
+    },
+    "items": [
+      {
+        "id": "wako-pro-world",
+        "title": "Campione del Mondo WAKO PRO",
+        "category": "Kickboxing & Full-Contact",
+        "badge": "Titolo Mondiale · WAKO PRO",
+        "years": "Vittorie Multiple",
+        "desc": "Trionfato nella federazione professionistica più prestigiosa al mondo, difendendo il titolo attraverso i continenti."
+      },
+      {
+        "id": "wkn-world",
+        "title": "Campione del Mondo WKN",
+        "category": "Full-Contact Pesi Massimi / Massimi Leggeri",
+        "badge": "Titolo Mondiale · WKN",
+        "years": "Indiscusso",
+        "desc": "Ha dominato il World Kickboxing Network contro i migliori sfidanti internazionali in combattimenti memorabili."
+      },
+      {
+        "id": "wkpl-world",
+        "title": "Campione del Mondo WKPL",
+        "category": "World Kickboxing & Punchfighting League",
+        "badge": "Titolo Mondiale · WKPL",
+        "years": "Titolo Prestigioso",
+        "desc": "Vinto il prestigioso titolo mondiale WKPL con molteplici difese vittoriose contro i numeri uno del ranking mondiale."
+      },
+      {
+        "id": "african-champ",
+        "title": "3× Campione d'Africa",
+        "category": "Full-Contact · Savate",
+        "badge": "3× Campione",
+        "years": "Campione Continentale",
+        "desc": "Full-Contact (3×) · Campione d'Africa di Savate · Supremazia continentale assoluta negli sport da combattimento africani."
+      },
+      {
+        "id": "euro-champ",
+        "title": "3× Campione d'Europa",
+        "category": "Dominio Europeo",
+        "badge": "3× Campione",
+        "years": "Imbattuto in Europa",
+        "desc": "Full-Contact (3×) · Trionfo assoluto sulla scena europea grazie a velocità fulminea e knockouts spettacolari."
+      },
+      {
+        "id": "german-national",
+        "title": "4× Campione di Germania",
+        "category": "Kickboxing & Full-Contact",
+        "badge": "4× Campione",
+        "years": "Leggenda Nazionale",
+        "desc": "4 volte Campione di Germania in Kickboxing & Full-Contact · Campione giovanile di Taekwondo — le solide basi di una carriera mondiale."
+      }
+    ],
+    "stats": {
+      "fightsTitle": "Oltre 70 Combattimenti Professionistici",
+      "fightsDesc": "Una supremazia indiscussa nelle arene europee e mondiali con incontri storici a Parigi, Francoforte, Casablanca e Tokyo.",
+      "royalTitle": "Ordine al Merito Nazionale — Grado Eccezionale",
+      "royalDesc": "Conferito da Sua Maestà il Re Mohammed VI a Tangeri in occasione della Festa del Trono 2010 in omaggio ai suoi titoli mondiali."
+    }
+  },
+  "vision": {
+    "badge": "MANDATO MUNICIPALE & LEADERSHIP",
+    "quote": "Guidare una città richiede la stessa disciplina, lo stesso coraggio e la stessa integrità necessari per salire su un ring di campionato mondiale.",
+    "title": "Visione Strategica per",
+    "subtitle": "Imouzzer-Kandar & il Medio Atlante",
+    "desc": "Eletto Sindaco nel 2021, Mustafa Lakhsem guida un ambizioso programma di sviluppo in 8 pilastri per elevare il benessere dei cittadini, promuovere l'ecoturismo e garantire una gestione trasparente.",
+    "pillars": [
+      {
+        "num": "01",
+        "title": "Infrastrutture Comunali & Viabilità",
+        "desc": "Modernizzazione della rete stradale, illuminazione pubblica a LED, risanamento fognario e accessi alla città secondo standard elevati.",
+        "detail": "Oltre 15 km di strade e spazi pubblici riqualificati."
+      },
+      {
+        "num": "02",
+        "title": "Giovani, Sport & Accademie",
+        "desc": "Creazione di moderne strutture sportive, complessi di arti marziali e programmi di mentoring per giovani talenti.",
+        "detail": "Formazione della prossima generazione di campioni marocchini."
+      },
+      {
+        "num": "03",
+        "title": "Ecoturismo & Patrimonio Montano",
+        "desc": "Valorizzazione delle foreste di cedri incontaminate, delle sorgenti naturali e dei parchi nei circuiti turistici mondiali.",
+        "detail": "Iniziative di eco-resort sostenibili e protezione dell'ecosistema montano."
+      },
+      {
+        "num": "04",
+        "title": "Governance Trasparente & Digitale",
+        "desc": "Adozione di rigorosi controlli di bilancio, misure anti-corruzione e periodiche udienze pubbliche con i cittadini.",
+        "detail": "100% digitalizzazione dei servizi municipali e ascolto diretto dei cittadini."
+      },
+      {
+        "num": "05",
+        "title": "Salute & Assistenza Sociale",
+        "desc": "Potenziamento dei dispensari locali, trasporti sanitari d'emergenza e sostegno mirato alle famiglie in difficoltà.",
+        "detail": "Carovane mediche gratuite periodiche e ambulanze comunali dedicate."
+      },
+      {
+        "num": "06",
+        "title": "Istruzione, Biblioteche & Centri Digitali",
+        "desc": "Ristrutturazione delle scuole primarie, apertura di aule multimediali e scuolabus per le frazioni rurali.",
+        "detail": "Superamento del divario educativo nelle zone montane."
+      },
+      {
+        "num": "07",
+        "title": "Economia Locale & Artigianato",
+        "desc": "Rilancio dei souk tradizionali, sostegno agli artigiani amazigh e cooperative agricole locali.",
+        "detail": "Accesso diretto al mercato e valorizzazione dei raccolti di mele e ciliegie."
+      },
+      {
+        "num": "08",
+        "title": "Ponti d'Investimento per la Diaspora (MRE)",
+        "desc": "Semplificazione amministrativa per incentivare gli investimenti dei marocchini all'estero a Imouzzer e nella regione Fès-Meknès.",
+        "detail": "Sportello unico di supporto per imprenditori della diaspora."
+      }
+    ],
+    "bannerBadge": "COMUNE DI IMOUZZER-KANDAR · MANDATO 2021–2027",
+    "bannerTitle": "Un impegno instancabile per il progresso regionale, la trasparenza civica e l'emancipazione giovanile.",
+    "bannerBtn": "Contatta l'Ufficio del Sindaco"
+  },
+  "foundations": {
+    "badge": "Fondazioni",
+    "title": "Costruire un Futuro Migliore",
+    "subtitle": "Due importanti fondazioni dedicate all'emancipazione umana, alla solidarietà sociale e alla reputazione internazionale del Marocco.",
+    "lakhsem": {
+      "name": "Fondazione Lakhsem",
+      "tagline": "Sport · Educazione · Salute",
+      "since": "Fondata nel 2010 / 2015",
+      "status": "Fondazione Ufficiale",
+      "desc": "Un'iniziativa civica volta a promuovere l'inclusione sociale, l'eccellenza sportiva, l'educazione e lo sviluppo umano basato sulla solidarietà e l'autonomia.",
+      "missions": [
+        "Promozione dell'istruzione accessibile e della formazione professionale per i giovani",
+        "Sostegno a programmi sportivi e culturali nelle aree vulnerabili",
+        "Incentivazione di progetti sostenibili a forte impatto sociale",
+        "Rafforzamento della solidarietà, della cittadinanza attiva e del sostegno reciproco",
+        "Contributo a uno sviluppo locale equo, inclusivo e duraturo",
+        "Aiuto umanitario diretto e soccorso rapido alle famiglie bisognose"
+      ],
+      "missionTitle": "Obiettivi Principali & Campi d'Azione",
+      "btnVolunteer": "Partecipa & Sostieni"
+    },
+    "mdm": {
+      "name": "Fondazione dei Marocchini nel Mondo",
+      "subtitle": "Per lo Sviluppo e la Solidarietà (MDM)",
+      "tagline": "Diaspora · Cooperazione Globale · Investimenti",
+      "president": "Mustafa Lakhsem · Presidente",
+      "desc": "Rafforzare i legami tra i marocchini residenti all'estero e la loro terra d'origine attraverso lo sviluppo strategico, iniziative d'investimento e cooperazione globale.",
+      "missions": [
+        "Consolidamento delle relazioni durature tra la diaspora e il Marocco",
+        "Valorizzazione delle competenze e dei talenti dei marocchini nel mondo",
+        "Accompagnamento e supporto a progetti imprenditoriali e sociali",
+        "Promozione della solidarietà internazionale e della cooperazione Sud-Sud",
+        "Realizzazione di programmi di sviluppo sostenibile ad alto impatto",
+        "Rafforzamento del ruolo della diaspora come attore chiave del progresso nazionale"
+      ],
+      "missionTitle": "Pilastri Strategici della MDM",
+      "btnSupport": "Scopri la Rete MDM"
+    }
+  },
+  "imouzzer": {
+    "badge": "Medio Atlante · Marocco",
+    "title": "Imouzzer-Kandar — Il Gioiello del Medio Atlante",
+    "subtitle": "Situata nel cuore del Medio Atlante a 1.345 metri di altitudine, Imouzzer-Kandar è celebre per le sue maestose foreste di cedri, le sorgenti d'acqua pura e il clima rigenerante. Posizionata strategicamente tra Fès e Ifrane, è oggi un modello di sviluppo sostenibile.",
+    "features": [
+      {
+        "title": "Patrimonio Naturale",
+        "desc": "Foreste di cedro secolari, sorgenti protette e paesaggi montani incontaminati."
+      },
+      {
+        "title": "Posizione Strategica",
+        "desc": "Snodo centrale tra la città imperiale di Fès e la perla montana di Ifrane."
+      },
+      {
+        "title": "Ricchezza Culturale",
+        "desc": "Autentico artigianato amazigh, tradizioni secolari e calorosa ospitalità."
+      },
+      {
+        "title": "Risorse Idriche",
+        "desc": "Rinomate sorgenti naturali con acqua minerale montana purissima."
+      },
+      {
+        "title": "Crescita & Modernizzazione",
+        "desc": "Investimenti comunali moderni e continuo potenziamento delle infrastrutture."
+      },
+      {
+        "title": "Visione Futura",
+        "desc": "Una green smart city e una destinazione leader per l'ecoturismo mondiale."
+      }
+    ]
+  },
+  "media": {
+    "badge": "Centro Media",
+    "title": "Notizie & Comunicati Stampa",
+    "subtitle": "Resta aggiornato su notizie, interviste, vertici internazionali e iniziative di Mustafa Lakhsem.",
+    "readMore": "Leggi dettagli",
+    "closeModal": "Chiudi",
+    "pressReleaseNote": "Mustafa Lakhsem · Comunicato Stampa Ufficiale",
+    "articles": [
+      {
+        "id": "senegal-2024",
+        "category": "Diplomazia",
+        "title": "Accordo di Decentramento Marocco-Senegal a Dakar",
+        "date": "Gennaio 2024",
+        "location": "Dakar, Senegal",
+        "summary": "Storico accordo bilaterale per promuovere la cooperazione municipale e la solidarietà Sud-Sud.",
+        "fullText": "Mustafa Lakhsem ha guidato una delegazione marocchina a Dakar per firmare un importante accordo di cooperazione con i comuni senegalesi nei settori della gestione smart city e della valorizzazione giovanile."
+      },
+      {
+        "id": "smart-cities-2023",
+        "category": "Innovazione",
+        "title": "Imouzzer-Kandar all'International Smart Cities Forum",
+        "date": "Novembre 2023",
+        "location": "Vertice Internazionale",
+        "summary": "Presentazione del piano digitale di Imouzzer-Kandar e accordi tecnologici internazionali.",
+        "fullText": "Al prestigioso Smart Cities Forum, Mustafa Lakhsem ha presentato la tabella di marcia digitale di Imouzzer-Kandar con servizi digitali avanzati, illuminazione intelligente e gestione idrica ecologica."
+      },
+      {
+        "id": "metal-luxe-2023",
+        "category": "Sport",
+        "title": "Nuit de Metal Luxe — Mentoring per i Futuri Campioni",
+        "date": "2023",
+        "location": "Marocco / Internazionale",
+        "summary": "Serata di gala a sostegno dei giovani talenti degli sport da combattimento sotto la guida del 12 volte campione.",
+        "fullText": "Mustafa Lakhsem sostiene con passione giovani atleti meritevoli provenienti da contesti modesti offrendo attrezzature, borse sportive e coaching tecnico d'élite."
+      },
+      {
+        "id": "elus-2023",
+        "category": "Politica",
+        "title": "Conferenza Nazionale degli Eletti — Visione Medio Atlante",
+        "date": "2023",
+        "location": "Rabat / Fès-Meknès",
+        "summary": "Forte impegno per lo sviluppo delle comunità montane e il potenziamento infrastrutturale rurale.",
+        "fullText": "In dialogo diretto con ministeri e consigli regionali, Mustafa Lakhsem ha promosso programmi di investimento mirati per i comuni dell'Atlante."
+      },
+      {
+        "id": "african-conf-2023",
+        "category": "Internazionale",
+        "title": "Conferenza Africana sulla Governance Locale",
+        "date": "2023",
+        "location": "Africa",
+        "summary": "Dialogo panafricano sui modelli di decentramento e democrazia partecipativa.",
+        "fullText": "Rappresentanti di oltre 20 nazioni africane si sono riuniti per condividere le migliori pratiche di sviluppo municipale."
+      },
+      {
+        "id": "plan-2022",
+        "category": "Sviluppo",
+        "title": "Piano d'Azione Quinquennale di Imouzzer-Kandar 2022-2027",
+        "date": "2022",
+        "location": "Imouzzer-Kandar",
+        "summary": "Completo piano di sviluppo municipale per modernizzare le infrastrutture e creare occupazione locale.",
+        "fullText": "Un piano strategico e partecipativo per posizionare Imouzzer-Kandar come destinazione di riferimento ecologica e moderna."
+      }
+    ]
+  },
+  "diplomacy": {
+    "badge": "DIPLOMAZIA GLOBALE & COOPERAZIONE",
+    "titleGold": "Ambasciatore per il Marocco",
+    "titleWhite": "sulla Scena Mondiale",
+    "desc": "Con solide radici in Germania e un'incrollabile fedeltà al Regno del Marocco, Mustafa Lakhsem crea ponti strategici tra istituzioni europee, federazioni sportive internazionali e comuni esteri.",
+    "cta": "Richieste Diplomatiche",
+    "highlights": [
+      {
+        "title": "Relazioni Marocco-Germania",
+        "desc": "Valorizzazione della doppia eredità culturale per favorire scambi economici, municipali e sportivi."
+      },
+      {
+        "title": "Mobilitazione della Diaspora (MDM)",
+        "desc": "Coinvolgimento degli oltre 5 milioni di marocchini all'estero come investitori strategici e ambasciatori culturali."
+      },
+      {
+        "title": "Diplomazia Sportiva Internazionale",
+        "desc": "Promozione dell'eccellenza sportiva marocchina e attrazione di grandi eventi internazionali di arti marziali."
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Contatti",
+    "title": "Mettiti in Contatto",
+    "subtitle": "Per richieste stampa ufficiali, partnership con le fondazioni, affari municipali o cooperazione internazionale.",
+    "officeTitle": "Ufficio Ufficiale · Imouzzer-Kandar",
+    "locationLabel": "Sede",
+    "locationVal": "Imouzzer-Kandar, Provincia di Sefrou, Regione Fès-Meknès, Regno del Marocco",
+    "institutionsLabel": "Istituzioni",
+    "institutionsVal": "Comune di Imouzzer-Kandar · Fondazione Lakhsem · Fondazione dei Marocchini nel Mondo (MDM)",
+    "phoneLabel": "Telefono",
+    "phoneVal": "+212 661 31 42 31",
+    "socialLabel": "Social Network",
+    "socialNetworks": ["Facebook", "Instagram", "TikTok", "Twitter / X", "LinkedIn"],
+    "messageSent": "Messaggio inviato con successo!",
+    "messageFailed": "Invio del messaggio non riuscito.",
+    "rateLimitExceeded": "Limite di richieste superato. Riprova più tardi.",
+    "form": {
+      "name": "Nome e Cognome",
+      "namePlaceholder": "es. Mohamed Alami / Mario Rossi",
+      "email": "Indirizzo Email",
+      "emailPlaceholder": "nome@esempio.it",
+      "phone": "Numero di Telefono",
+      "phonePlaceholder": "+212 6XX XXX XXX",
+      "org": "Organizzazione / Testata / Istituzione",
+      "orgPlaceholder": "Azienda, ente pubblico o testata giornalistica",
+      "type": "Tipologia di Richiesta",
+      "types": [
+        "Richiesta Generale",
+        "Richiesta Stampa / Media",
+        "Partnership Fondazione Lakhsem",
+        "Partnership Fondazione MDM",
+        "Municipio di Imouzzer-Kandar",
+        "Invito / Evento",
+        "Cooperazione Internazionale"
+      ],
+      "msg": "Il tuo Messaggio",
+      "msgPlaceholder": "Descrivi la tua richiesta in modo dettagliato...",
+      "gdpr": "Accetto la politica sulla privacy (GDPR) e acconsento al trattamento dei miei dati personali.",
+      "submit": "Invia Messaggio",
+      "sending": "Invio in corso...",
+      "required": "Questo campo è obbligatorio",
+      "emailInvalid": "Inserisci un indirizzo email valido (es. nome@esempio.it)",
+      "phoneInvalid": "Inserisci un numero di telefono valido (es. +212 661 31 42 31)",
+      "gdprRequired": "Devi accettare i termini di utilizzo",
+      "formError": "Si prega di correggere gli errori nel modulo.",
+      "didYouMean": "Intendevi"
+    },
+    "newsletter": {
+      "title": "Resta Connesso",
+      "desc": "Iscriviti alla newsletter ufficiale per ricevere gli ultimi aggiornamenti su iniziative, progetti e impegni civici di Mustafa Lakhsem.",
+      "placeholder": "Inserisci il tuo indirizzo email",
+      "btn": "Iscriviti",
+      "subscribing": "Iscrizione in corso...",
+      "success": "Grazie per esserti iscritto!",
+      "alreadySubscribed": "Questo indirizzo email è già iscritto.",
+      "failed": "Iscrizione non riuscita.",
+      "rateLimitExceeded": "Limite di richieste superato. Riprova più tardi."
+    }
+  },
+  "footer": {
+    "name": "Mustafa Lakhsem",
+    "tagline": "12× Campione del Mondo · Sindaco di Imouzzer-Kandar",
+    "bio": "Dodici volte campione del mondo e oggi leader civico, Mustafa Lakhsem mette la disciplina, la determinazione e i valori dello sport al servizio di Imouzzer-Kandar e della comunità marocchina nel mondo.",
+    "honor": "Ordine al Merito Nazionale · Regno del Marocco",
+    "exploreTitle": "Navigazione",
+    "exploreLinks": [
+      {
+        "href": "#about",
+        "label": "Biografia"
+      },
+      {
+        "href": "#career",
+        "label": "Carriera"
+      },
+      {
+        "href": "#achievements",
+        "label": "Palmarès"
+      },
+      {
+        "href": "#vision",
+        "label": "Visione Municipale"
+      },
+      {
+        "href": "#foundations",
+        "label": "Fondazioni"
+      },
+      {
+        "href": "#contact",
+        "label": "Contatti"
+      }
+    ],
+    "institutionsTitle": "Istituzioni",
+    "institutions": [
+      "Comune di Imouzzer-Kandar",
+      "Fondazione Lakhsem",
+      "Fondazione dei Marocchini nel Mondo (MDM)"
+    ],
+    "officeTitle": "Ufficio Ufficiale",
+    "officeLocation": "Imouzzer-Kandar, Provincia di Sefrou, Fès-Meknès, Regno del Marocco",
+    "officePhone": "+212 661 31 42 31",
+    "copyright": "Tutti i diritti riservati. Regno del Marocco.",
+    "developedBy": "Sviluppato da Abdellah Edaoudi",
+    "backToTop": "Torna in alto",
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "twitter": "X / Twitter",
+      "linkedin": "LinkedIn"
+    }
+  }
+}

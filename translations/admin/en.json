@@ -1,0 +1,121 @@
+{
+  "login": {
+    "title": "MUSTAFA LAKHSEM",
+    "subtitle": "Administrative Portal Sign In",
+    "cardTitle": "Login",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "email@example.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "signInBtn": "Sign In",
+    "signingIn": "Signing in...",
+    "fillAllFields": "Please fill in all fields.",
+    "invalidCredentials": "Invalid email or password",
+    "rateLimitExceeded": "Request limit exceeded. Please try again later."
+  },
+  "dashboard": {
+    "brandName": "MUSTAFA LAKHSEM",
+    "portalTitle": "Admin Portal",
+    "refreshTitle": "Refresh Data",
+    "logout": "Logout",
+    "loadingData": "Loading data...",
+    "tabs": {
+      "messages": "Messages",
+      "subscribers": "Subscribers"
+    },
+    "search": {
+      "contactsPlaceholder": "Search sender, email, content...",
+      "subscribersPlaceholder": "Search subscriber email..."
+    },
+    "filters": {
+      "title": "Filter:",
+      "all": "All",
+      "unread": "Unread",
+      "starred": "Starred"
+    },
+    "table": {
+      "status": "Status",
+      "sender": "Sender",
+      "category": "Category",
+      "messagePreview": "Message Preview",
+      "date": "Date",
+      "actions": "Actions",
+      "subscriberEmail": "Subscriber Email",
+      "subscriptionDate": "Subscription Date"
+    },
+    "categories": {
+      "general": "General Request",
+      "press": "Press / Media Inquiry",
+      "lakhsem_foundation": "Lakhsem Foundation Partnership",
+      "mdm_foundation": "MDM Foundation Partnership",
+      "municipality": "Municipality of Imouzzer-Kandar",
+      "invitation": "Invitation / Event",
+      "cooperation": "International Cooperation"
+    },
+    "empty": {
+      "noContactsTitle": "No contact inquiries found",
+      "noContactsDesc": "Try adjusting your filters or search criteria.",
+      "noSubscribersTitle": "No email subscribers found",
+      "noSubscribersDesc": "No subscribers matched your current search query."
+    },
+    "actions": {
+      "star": "Star message",
+      "unstar": "Unstar message",
+      "markAsRead": "Mark as Read",
+      "markAsUnread": "Mark as Unread",
+      "read": "Read",
+      "unread": "Unread",
+      "deleteMessage": "Delete Message",
+      "deleteSubscriber": "Delete Subscriber",
+      "tapToRead": "Tap to open & read",
+      "newBadge": "NEW",
+      "viewDetails": "View Details"
+    },
+    "modal": {
+      "inquiryDetails": "Inquiry Details",
+      "id": "ID",
+      "senderName": "Sender Name",
+      "emailAddress": "Email Address",
+      "phoneNumber": "Phone Number",
+      "organization": "Organization / Entity",
+      "messageContent": "Message Content",
+      "received": "Received",
+      "gdprConsent": "GDPR Consent",
+      "gdprAccepted": "✅ Accepted",
+      "gdprDeclined": "❌ Declined",
+      "notAvailable": "N/A",
+      "delete": "Delete",
+      "star": "Star",
+      "unstar": "Unstar"
+    },
+    "confirmDelete": {
+      "deleteContactTitle": "Delete Message?",
+      "deleteContactMessage": "Are you sure you want to permanently delete the inquiry from {name}? This action cannot be undone.",
+      "deleteSubscriberTitle": "Delete Subscriber?",
+      "deleteSubscriberMessage": "Are you sure you want to remove {email} from newsletter subscribers?",
+      "cancel": "Cancel",
+      "confirmDelete": "Yes, Delete",
+      "deleting": "Deleting..."
+    },
+    "toasts": {
+      "sessionExpired": "Session expired. Please login again.",
+      "unauthorized": "Unauthorized: Please login again.",
+      "forbidden": "Forbidden: You don't have permission.",
+      "networkError": "Network error: No response received.",
+      "requestSetupError": "Error setting up request.",
+      "dashboardLoadFailed": "Failed to load dashboard data.",
+      "signedOut": "Signed out successfully",
+      "markedStarred": "Marked as starred",
+      "removedStarred": "Removed from starred",
+      "starUpdateFailed": "Failed to update starred status.",
+      "markedRead": "Marked as read",
+      "markedUnread": "Marked as unread",
+      "readUpdateFailed": "Failed to update read status.",
+      "messageDeleted": "Message deleted successfully",
+      "messageDeleteFailed": "Failed to delete message.",
+      "subscriberDeleted": "Subscriber deleted successfully",
+      "subscriberDeleteFailed": "Failed to delete subscriber.",
+      "operationFailed": "Operation failed."
+    }
+  }
+}

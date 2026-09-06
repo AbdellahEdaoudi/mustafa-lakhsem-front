@@ -1,0 +1,121 @@
+{
+  "login": {
+    "title": "MUSTAFA LAKHSEM",
+    "subtitle": "Anmeldung zum Administrationsportal",
+    "cardTitle": "Anmelden",
+    "emailLabel": "E-Mail-Adresse",
+    "emailPlaceholder": "email@example.com",
+    "passwordLabel": "Passwort",
+    "passwordPlaceholder": "••••••••",
+    "signInBtn": "Anmelden",
+    "signingIn": "Anmeldung läuft...",
+    "fillAllFields": "Bitte füllen Sie alle Felder aus.",
+    "invalidCredentials": "Ungültige E-Mail-Adresse oder Passwort",
+    "rateLimitExceeded": "Anfragelimit überschritten. Bitte versuchen Sie es später erneut."
+  },
+  "dashboard": {
+    "brandName": "MUSTAFA LAKHSEM",
+    "portalTitle": "Admin-Portal",
+    "refreshTitle": "Daten aktualisieren",
+    "logout": "Abmelden",
+    "loadingData": "Daten werden geladen...",
+    "tabs": {
+      "messages": "Nachrichten",
+      "subscribers": "Abonnenten"
+    },
+    "search": {
+      "contactsPlaceholder": "Absender, E-Mail, Inhalt suchen...",
+      "subscribersPlaceholder": "Abonnenten-E-Mail suchen..."
+    },
+    "filters": {
+      "title": "Filter:",
+      "all": "Alle",
+      "unread": "Ungelesen",
+      "starred": "Markiert"
+    },
+    "table": {
+      "status": "Status",
+      "sender": "Absender",
+      "category": "Kategorie",
+      "messagePreview": "Nachrichtenvorschau",
+      "date": "Datum",
+      "actions": "Aktionen",
+      "subscriberEmail": "Abonnenten-E-Mail",
+      "subscriptionDate": "Abonnementdatum"
+    },
+    "categories": {
+      "general": "Allgemeine Anfrage",
+      "press": "Presse- / Medienanfrage",
+      "lakhsem_foundation": "Partnerschaft Lakhsem-Stiftung",
+      "mdm_foundation": "Partnerschaft MDM-Stiftung",
+      "municipality": "Bürgermeisteramt Imouzzer-Kandar",
+      "invitation": "Einladung / Veranstaltung",
+      "cooperation": "Internationale Kooperation"
+    },
+    "empty": {
+      "noContactsTitle": "Keine Kontaktanfragen gefunden",
+      "noContactsDesc": "Versuchen Sie, Ihre Filter oder Suchbegriffe anzupassen.",
+      "noSubscribersTitle": "Keine E-Mail-Abonnenten gefunden",
+      "noSubscribersDesc": "Keine Abonnenten entsprechen Ihrer aktuellen Suche."
+    },
+    "actions": {
+      "star": "Nachricht markieren",
+      "unstar": "Markierung aufheben",
+      "markAsRead": "Als gelesen markieren",
+      "markAsUnread": "Als ungelesen markieren",
+      "read": "Gelesen",
+      "unread": "Ungelesen",
+      "deleteMessage": "Nachricht löschen",
+      "deleteSubscriber": "Abonnent löschen",
+      "tapToRead": "Tippen zum Lesen",
+      "newBadge": "NEU",
+      "viewDetails": "Details anzeigen"
+    },
+    "modal": {
+      "inquiryDetails": "Anfragedetails",
+      "id": "ID",
+      "senderName": "Absendername",
+      "emailAddress": "E-Mail-Adresse",
+      "phoneNumber": "Telefonnummer",
+      "organization": "Organisation / Einrichtung",
+      "messageContent": "Nachrichteninhalt",
+      "received": "Empfangen am",
+      "gdprConsent": "DSGVO-Zustimmung",
+      "gdprAccepted": "✅ Zugestimmt",
+      "gdprDeclined": "❌ Abgelehnt",
+      "notAvailable": "K.A.",
+      "delete": "Löschen",
+      "star": "Markieren",
+      "unstar": "Entmarkieren"
+    },
+    "confirmDelete": {
+      "deleteContactTitle": "Nachricht löschen?",
+      "deleteContactMessage": "Möchten Sie die Anfrage von {name} wirklich unwiderruflich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "deleteSubscriberTitle": "Abonnent löschen?",
+      "deleteSubscriberMessage": "Möchten Sie {email} wirklich aus den Newsletter-Abonnenten entfernen?",
+      "cancel": "Abbrechen",
+      "confirmDelete": "Ja, löschen",
+      "deleting": "Wird gelöscht..."
+    },
+    "toasts": {
+      "sessionExpired": "Sitzung abgelaufen. Bitte erneut anmelden.",
+      "unauthorized": "Nicht autorisiert: Bitte erneut anmelden.",
+      "forbidden": "Verboten: Sie haben keine Zugriffsberechtigung.",
+      "networkError": "Netzwerkfehler: Keine Antwort erhalten.",
+      "requestSetupError": "Fehler beim Konfigurieren der Anfrage.",
+      "dashboardLoadFailed": "Laden der Dashboard-Daten fehlgeschlagen.",
+      "signedOut": "Erfolgreich abgemeldet",
+      "markedStarred": "Als markiert gekennzeichnet",
+      "removedStarred": "Markierung entfernt",
+      "starUpdateFailed": "Aktualisieren des Markierungsstatus fehlgeschlagen.",
+      "markedRead": "Als gelesen markiert",
+      "markedUnread": "Als ungelesen markiert",
+      "readUpdateFailed": "Aktualisieren des Lesestatus fehlgeschlagen.",
+      "messageDeleted": "Nachricht erfolgreich gelöscht",
+      "messageDeleteFailed": "Löschen der Nachricht fehlgeschlagen.",
+      "subscriberDeleted": "Abonnent erfolgreich gelöscht",
+      "subscriberDeleteFailed": "Löschen des Abonnenten fehlgeschlagen.",
+      "operationFailed": "Vorgang fehlgeschlagen."
+    }
+  }
+}

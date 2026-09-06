@@ -1,0 +1,578 @@
+{
+  "meta": {
+    "title": "Mustafa Lakhsem | Officiële Website - Burgemeester van Imouzzer-Kandar & Wereldkampioen",
+    "description": "Officiële website van Mustafa Lakhsem — Burgemeester van Imouzzer-Kandar, 12-voudig Wereldkampioen Kickboksen & Full-Contact, Oprichter van de Lakhsem Stichting.",
+    "jobTitle": "Burgemeester van Imouzzer-Kandar & Wereldkampioen",
+    "knowsAbout": [
+      "Kickboksen",
+      "Full-Contact",
+      "Gemeentelijk Bestuur",
+      "Solidariteit"
+    ]
+  },
+  "nav": {
+    "about": "Over ons",
+    "career": "Carrière",
+    "achievements": "Prestaties",
+    "vision": "Visie",
+    "diplomacy": "Diplomatie",
+    "foundations": "Stichtingen",
+    "imouzzer": "Imouzzer",
+    "media": "Media",
+    "gallery": "Galerij",
+    "contact": "Contact",
+    "cta": "Neem Contact Op",
+    "role": "Wereldkampioen & Burgemeester",
+    "name": "MUSTAFA LAKHSEM",
+    "logoAlt": "Logo Democratische en Sociale Beweging (MDS) - Mustafa Lakhsem"
+  },
+  "hero": {
+    "subtitle1": "Wereldkampioen · Kickboksen & Full-Contact",
+    "subtitle2": "Burgemeester · Imouzzer-Kandar",
+    "subtitle3": "Oprichter · Lakhsem Stichting",
+    "subtitle4": "Humanitair · Leider · Visionair",
+    "badge": "Koninkrijk Marokko · Koninklijk Gedecoreerd Kampioen & Burgemeester",
+    "title": "MUSTAFA LAKHSEM",
+    "desc": "Van het domineren van kickboksringen op 5 continenten tot het leiden van maatschappelijke vooruitgang en humanitaire solidariteit als burgemeester van Imouzzer-Kandar.",
+    "btnDiscover": "Ontdek het Traject",
+    "btnFoundations": "Stichtingen",
+    "btnContact": "Contact",
+    "btn1": "Hall of Fame & Titels",
+    "btn2": "Koninklijk Traject",
+    "btn3": "Visie voor Imouzzer",
+    "scroll": "ONTDEK ERFGOED",
+    "roles": [
+      "Wereldkampioen · Kickboksen & Full-Contact",
+      "Burgemeester · Imouzzer-Kandar",
+      "Oprichter · Lakhsem Stichting",
+      "Humanitair · Leider · Visionair"
+    ],
+    "ticker": [
+      "Wereldkampioen",
+      "Burgemeester van Imouzzer-Kandar",
+      "Lakhsem Stichting",
+      "Tijger van de Ring",
+      "Koninkrijk Marokko",
+      "Humanitair Leider"
+    ],
+    "stats": [
+      {
+        "value": "12+",
+        "label": "Wereldtitels",
+        "highlight": "WAKO PRO / WKN / ISKA"
+      },
+      {
+        "value": "70+",
+        "label": "Professionele Overwinningen",
+        "highlight": "Ongeëvenaard Erfgoed"
+      },
+      {
+        "value": "30+",
+        "label": "Jaren Topsport & Bestuur",
+        "highlight": "Sport & Governance"
+      },
+      {
+        "value": "5+",
+        "label": "Geïnspireerde Continenten",
+        "highlight": "Wereldwijde Erkenning"
+      }
+    ]
+  },
+  "about": {
+    "badge": "Legende",
+    "title": "De Staatsman & Kampioen",
+    "bio1_prefix": "Geboren op ",
+    "bio1_date": "19 september 1972",
+    "bio1_mid": " in Hanau (Duitsland), transformeerde Mustafa Lakhsem van een historische vechtsportlegende als ",
+    "bio1_champion": "Wereldkampioen",
+    "bio1_suffix": " naar toegewijde publieke dienstverlening, thans actief als ",
+    "bio1_mayor": "Burgemeester van Imouzzer-Kandar",
+    "bio2_prefix": "Zijn traject ",
+    "bio2_quote": "„van de ring naar het stadhuis, en van Marokko naar de wereld”",
+    "bio2_mid": " vormt de drijfveer achter zijn toewijding aan de Marokkaanse diaspora en mondiale solidariteit — een missie die hij actief leidt als Oprichter van de ",
+    "bio2_lakhsem": "Lakhsem Stichting",
+    "bio2_connector": " en Voorzitter van de ",
+    "bio2_mdm": "MDM Stichting",
+    "royalLabel": "Koninklijke Onderscheiding",
+    "royalTitle": "Orde van Nationale Verdienste",
+    "royalDesc": "Toegekend door Zijne Majesteit Koning Mohammed VI, ter ere van zijn buitengewone carrière en toewijding aan het koninkrijk.",
+    "cta": "Ontdek Carrièretraject"
+  },
+  "career": {
+    "badge": "Carrière",
+    "title": "Een Uitzonderlijke Levensweg",
+    "subtitle": "Van een vechtsporttalent in Duitsland tot wereldkampioen en toegewijd bestuurder",
+    "filterAll": "Alle Mijlpalen",
+    "filterSport": "Sport & Titels",
+    "filterCivic": "Maatschappelijk & Stichtingen",
+    "filterDiplomacy": "Diplomatie",
+    "items": [
+      {
+        "year": "1972",
+        "category": "Oorsprong",
+        "type": ["origins"],
+        "title": "Geboorte in Hanau, Duitsland",
+        "desc": "Geboren op 19 september 1972 in Hanau, Duitsland, in een familie afkomstig uit de Marokkaanse Midden-Atlas met diepe wortels in Marokko.",
+        "tag": "Wortels & Erfgoed"
+      },
+      {
+        "year": "1985 — 1990",
+        "category": "Sport & Titels",
+        "type": ["sport"],
+        "title": "Start in de Vechtsport",
+        "desc": "Vroege kennismaking met vechtkunsten en het begin van een kampioenstraject. Duits Jeugdkampioen Taekwondo (1986) — vroege discipline die een winnaar vormde.",
+        "tag": "Fundament"
+      },
+      {
+        "year": "1988 — 1991",
+        "category": "Sport & Titels",
+        "type": ["sport"],
+        "title": "Nationale Opmars — Duits Kampioen",
+        "desc": "Viervoudig Duits Kampioen in Kickboksen en Full-Contact. Een palmares dat diep respect afdwingt.",
+        "tag": "Nationale Titels"
+      },
+      {
+        "year": "1995 — 2005",
+        "category": "Sport & Titels",
+        "type": ["sport"],
+        "title": "Europese & Afrikaanse Dominantie",
+        "desc": "Drievoudig Europees Kampioen Full-Contact. Drievoudig Afrikaans Kampioen Full-Contact. Afrikaans Kampioen Savate.",
+        "tag": "Continentale Kronen"
+      },
+      {
+        "year": "2000 — 2010",
+        "category": "Sport & Titels",
+        "type": ["sport"],
+        "title": "Wereldtitels & Kroning",
+        "desc": "WAKO PRO Wereldkampioen. WKN Wereldkampioen. WKPL Wereldkampioen. Meer dan 70 professionele overwinningen.",
+        "tag": "Wereldtitels"
+      },
+      {
+        "year": "2010",
+        "category": "Sport & Titels",
+        "type": ["sport"],
+        "title": "Koninklijke Onderscheiding",
+        "desc": "Gedecoreerd door Zijne Majesteit Koning Mohammed VI met de Orde van Nationale Verdienste in de buitengewone categorie.",
+        "tag": "Koninklijke Medaille"
+      },
+      {
+        "year": "2015",
+        "category": "Maatschappelijk & Stichtingen",
+        "type": ["civic"],
+        "title": "Oprichting van de Lakhsem Stichting",
+        "desc": "Oprichting van de Lakhsem Stichting, gericht op onderwijs, jeugdsport en sociale ontwikkeling.",
+        "tag": "Humanitair"
+      },
+      {
+        "year": "2021",
+        "category": "Maatschappelijk & Stichtingen",
+        "type": ["civic"],
+        "title": "Burgemeester van Imouzzer-Kandar",
+        "desc": "Politiek engagement gebaseerd op nabijheid, transparantie en lokale vooruitgang als Burgemeester van Imouzzer-Kandar.",
+        "tag": "Publiek Mandaat"
+      },
+      {
+        "year": "2022 — Heden",
+        "category": "Diplomatie",
+        "type": ["diplomacy"],
+        "title": "Diplomatie & Internationale Samenwerking",
+        "desc": "Voorzitterschap van de Stichting voor Marokkanen van de Wereld (MDM). Akkoorden in Senegal. Internationale Smart Cities fora.",
+        "tag": "Mondiaal Bereik"
+      }
+    ]
+  },
+  "achievements": {
+    "badge": "Prestaties",
+    "title": "12× Wereldkampioenschap",
+    "subtitle": "De complete trofeeënkast van internationale titels, titelverdedigingen en historische zeges die Mustafa Lakhsem tot een vechtsportlegende maakten.",
+    "sanction": "Officiële Erkenning",
+    "tabs": {
+      "all": "Alle Kampioenschappen",
+      "world": "Wereldtitels (12×)",
+      "continental": "Europa & Afrika",
+      "national": "Nationale Titels"
+    },
+    "items": [
+      {
+        "id": "wako-pro-world",
+        "title": "WAKO PRO Wereldkampioen",
+        "category": "Kickboksen & Full-Contact",
+        "badge": "Wereldtitel · WAKO PRO",
+        "years": "Meervoudig Kampioen",
+        "desc": "Heerste over 's werelds meest toonaangevende professionele kickboksbond en verdedigde de gordel op diverse continenten."
+      },
+      {
+        "id": "wkn-world",
+        "title": "WKN Wereldkampioen",
+        "category": "Full Contact Zwaargewicht / Cruisergewicht",
+        "badge": "Wereldtitel · WKN",
+        "years": "Ongeslagen",
+        "desc": "Domineerde het World Kickboxing Network circuit tegen internationale topuitdagers in legendarische titelgevechten."
+      },
+      {
+        "id": "wkpl-world",
+        "title": "WKPL Wereldkampioen",
+        "category": "World Kickboxing & Punchfighting League",
+        "badge": "Wereldtitel · WKPL",
+        "years": "Grote Titel",
+        "desc": "Veroverde de prestigieuze WKPL-wereldtitel met succesvolle titelverdedigingen tegen mondiale topvechters."
+      },
+      {
+        "id": "african-champ",
+        "title": "3× Afrikaans Kampioen",
+        "category": "Full-Contact · Savate",
+        "badge": "3× Kampioen",
+        "years": "Continentale Koning",
+        "desc": "Full-Contact (3×) · Afrikaans Kampioen Savate · Absolute dominantie over het Afrikaanse vechtsportcircuit."
+      },
+      {
+        "id": "euro-champ",
+        "title": "3× Europees Kampioen",
+        "category": "Europese Heerschappij",
+        "badge": "3× Kampioen",
+        "years": "Ongeslagen in Europa",
+        "desc": "Full-Contact (3×) · Volledige beheersing van het Europese vechtsportcircuit met kenmerkende knock-outs en snelheid."
+      },
+      {
+        "id": "german-national",
+        "title": "4× Duits Kampioen",
+        "category": "Kickboksen & Full-Contact",
+        "badge": "4× Kampioen",
+        "years": "Nationale Legende",
+        "desc": "Viervoudig Duits Kampioen Kickboksen & Full-Contact · Duits Jeugdkampioen Taekwondo — het fundament van een wereldcarrière."
+      }
+    ],
+    "stats": {
+      "fightsTitle": "Meer dan 70 Profpartijen",
+      "fightsDesc": "Onbetwiste dominantie op Europese en mondiale arena's met memorabele gala's in Parijs, Frankfurt, Casablanca en Tokio.",
+      "royalTitle": "Orde van Nationale Verdienste — Uitzonderlijke Categorie",
+      "royalDesc": "Toegekend door Zijne Majesteit Koning Mohammed VI te Tanger ter gelegenheid van het Troonfeest 2010 ter ere van zijn wereldtitels."
+    }
+  },
+  "vision": {
+    "badge": "GEMEENTELIJK MANDAAT & BESTUUR",
+    "quote": "Het besturen van een stad vereist dezelfde discipline, moed en integriteit als het betreden van een wereldkampioenschapsring.",
+    "title": "Strategische Visie voor",
+    "subtitle": "Imouzzer-Kandar & de Midden-Atlas",
+    "desc": "Sinds zijn verkiezing tot burgemeester in 2021 leidt Mustafa Lakhsem een ambitieus 8-pijlerprogramma ter bevordering van burgerwelzijn, bergtoerisme en transparantie.",
+    "pillars": [
+      {
+        "num": "01",
+        "title": "Gemeentelijke Infrastructuur & Wegennet",
+        "desc": "Modernisering van wegennetwerken, led-straatverlichting, riolering en stadsinvalswegen naar internationale standaarden.",
+        "detail": "Meer dan 15 km vernieuwde hoofdassen en openbare pleinen."
+      },
+      {
+        "num": "02",
+        "title": "Jeugd, Sport & Vechtsportacademies",
+        "desc": "Realisatie van moderne sportaccommodaties, gemeentelijke vechtsportcomplexen en jeugdbegeleidingsprogramma's.",
+        "detail": "Opleiden van de volgende generatie Marokkaanse kampioenen."
+      },
+      {
+        "num": "03",
+        "title": "Ecotourisme & Bergerfgoed",
+        "desc": "Promotie van ongerepte cederbossen, zuivere bergbronnen en natuurparken voor nationaal en internationaal toerisme.",
+        "detail": "Duurzame eco-resortprojecten en behoud van bergnatuur."
+      },
+      {
+        "num": "04",
+        "title": "Transparant & Integer Bestuur",
+        "desc": "Strenge begrotingscontrole, corruptiepreventie en structurele inloopspreekuren voor burgers.",
+        "detail": "100% gedigitaliseerde diensten en directe publieke consultaties."
+      },
+      {
+        "num": "05",
+        "title": "Gezondheid & Sociale Zekerheid",
+        "desc": "Modernisering van lokale gezondheidscentra, medisch noodvervoer en ondersteuning van kwetsbare gezinnen.",
+        "detail": "Regelmatige gratis medische karavanen en moderne ambulances."
+      },
+      {
+        "num": "06",
+        "title": "Onderwijs, Bibliotheken & Digitale Hubs",
+        "desc": "Renovatie van basisscholen, digitale leercentra en schoolvervoer voor landelijke berggebieden.",
+        "detail": "Dichten van de onderwijskloof in bergachtige gebieden."
+      },
+      {
+        "num": "07",
+        "title": "Lokale Handel & Ambacht",
+        "desc": "Revitalisering van traditionele souks, ondersteuning van Amazigh-ambachtslieden en agrarische coöperaties.",
+        "detail": "Directe markttoegang en promotie van de regionale appel- en kersenteelt."
+      },
+      {
+        "num": "08",
+        "title": "Investeringsbruggen voor de Diaspora (MRE)",
+        "desc": "Eenvoudige trajecten en loketten voor Marokkanen in het buitenland om te investeren in Imouzzer en Fès-Meknès.",
+        "detail": "Toegewijd één-loketsysteem voor diaspora-ondernemers."
+      }
+    ],
+    "bannerBadge": "GEMEENTE IMOUZZER-KANDAR · MANDAAT 2021–2027",
+    "bannerTitle": "Onwankelbare toewijding aan regionale vooruitgang, transparantie en kansen voor de jeugd.",
+    "bannerBtn": "Contact Gemeentelijk Bureau"
+  },
+  "foundations": {
+    "badge": "Stichtingen",
+    "title": "Bouwen aan een Betere Toekomst",
+    "subtitle": "Twee toonaangevende stichtingen gericht op menselijke emancipatie, maatschappelijke solidariteit en Marokko's internationale prestige.",
+    "lakhsem": {
+      "name": "Lakhsem Stichting",
+      "tagline": "Sport · Onderwijs · Gezondheid",
+      "since": "Opgericht 2010 / 2015",
+      "status": "Officiële Stichting",
+      "desc": "Een maatschappelijk initiatief ter bevordering van sociale inclusie, topsport, onderwijs en menselijke ontwikkeling, gefundeerd op solidariteit en burgerschap.",
+      "missions": [
+        "Bevorderen van toegankelijk onderwijs en beroepsopleiding voor jongeren",
+        "Ondersteunen van sport- en cultuurprogramma's in kwetsbare gebieden",
+        "Ondersteunen van duurzame projecten met directe sociale impact",
+        "Versterken van solidariteit, actief burgerschap en onderlinge hulp",
+        "Bijdragen aan een duurzame en rechtvaardige lokale ontwikkeling",
+        "Verlenen van directe humanitaire hulp en noodhulp aan kwetsbare gezinnen"
+      ],
+      "missionTitle": "Hoofddoelen & Actiepijlers",
+      "btnVolunteer": "Doe Mee & Steun Ons"
+    },
+    "mdm": {
+      "name": "Stichting voor Marokkanen van de Wereld",
+      "subtitle": "Voor Ontwikkeling en Solidariteit (MDM)",
+      "tagline": "Diaspora · Mondiale Samenwerking · Investeringen",
+      "president": "Mustafa Lakhsem · Voorzitter",
+      "desc": "Versterken van de banden tussen Marokkanen wereldwijd en hun moederland door strategische ontwikkelingsprojecten, investeringen en internationale samenwerking.",
+      "missions": [
+        "Versterken van duurzame banden tussen diaspora en Marokko",
+        "Inzetten van Marokkaanse expertise en talenten wereldwijd",
+        "Faciliteren van ondernemerschap en maatschappelijke initiatieven van MRE",
+        "Bevorderen van internationale solidariteit en Zuid-Zuid samenwerking",
+        "Uitvoeren van duurzame ontwikkelingsprogramma's met nationale impact",
+        "Versterken van de rol van diaspora als actieve bouwers aan nationale vooruitgang"
+      ],
+      "missionTitle": "Strategische Pijlers MDM",
+      "btnSupport": "Ontdek MDM Netwerk"
+    }
+  },
+  "imouzzer": {
+    "badge": "Midden-Atlas · Marokko",
+    "title": "Imouzzer-Kandar — Parel van de Midden-Atlas",
+    "subtitle": "Gelegen in het hart van de Midden-Atlas op 1.345 meter hoogte staat Imouzzer-Kandar bekend om eeuwenoude cederbossen, zuivere zoetwaterbronnen en een verkwikkend klimaat. Tussen Fès en Ifrane groeit de stad uit tot een model voor duurzame ontwikkeling.",
+    "features": [
+      {
+        "title": "Natuurlijk Erfgoed",
+        "desc": "Cederbossen, beschermde waterbronnen en ongerepte berglandschappen."
+      },
+      {
+        "title": "Strategische Ligging",
+        "desc": "Cruciale verbindingsschakel tussen de koningsstad Fès en het verfijnde Ifrane."
+      },
+      {
+        "title": "Culturele Rijkdom",
+        "desc": "Authentiek Amazigh-ambacht, eeuwenoude gebruiken en warme gastvrijheid."
+      },
+      {
+        "title": "Waterbronnen",
+        "desc": "Beroemde natuurlijke bronnen met zuiver mineraalrijk bergwater."
+      },
+      {
+        "title": "Groei & Modernisering",
+        "desc": "Toekomstgerichte gemeentelijke investeringen en infrastructuurontwikkeling."
+      },
+      {
+        "title": "Toekomstvisie",
+        "desc": "Een groene Smart City en een toonaangevende internationale ecotoerismebestemming."
+      }
+    ]
+  },
+  "media": {
+    "badge": "Mediacentrum",
+    "title": "Nieuws & Persberichten",
+    "subtitle": "Blijf op de hoogte van de nieuwste mediaoptredens, interviews, congressen en initiatieven onder leiding van Mustafa Lakhsem.",
+    "readMore": "Lees Meer",
+    "closeModal": "Sluiten",
+    "pressReleaseNote": "Mustafa Lakhsem · Officieel Persbericht",
+    "articles": [
+      {
+        "id": "senegal-2024",
+        "category": "Diplomatie",
+        "title": "Marokko-Senegal Decentralisatieakkoord in Dakar",
+        "date": "Januari 2024",
+        "location": "Dakar, Senegal",
+        "summary": "Historisch bilateraal samenwerkingsakkoord ter bevordering van lokaal bestuur en Zuid-Zuid solidariteit.",
+        "fullText": "Mustafa Lakhsem leidde een Marokkaanse delegatie naar Dakar om een belangrijk samenwerkingsakkoord te sluiten met Senegalese lokale overheden rondom slim stadsbeheer, waterbeheer en jeugdparticipatie."
+      },
+      {
+        "id": "smart-cities-2023",
+        "category": "Innovatie",
+        "title": "Imouzzer-Kandar op het Internationale Smart Cities Forum",
+        "date": "November 2023",
+        "location": "Internationale Top",
+        "summary": "Presentatie van het digitale masterplan van Imouzzer-Kandar en internationale technologiepartnerschappen.",
+        "fullText": "Tijdens het prestigieuze Smart Cities Forum presenteerde Mustafa Lakhsem het digitale stappenplan voor Imouzzer-Kandar, met nadruk op e-diensten, slimme verlichting en ecologisch waterbeheer."
+      },
+      {
+        "id": "metal-luxe-2023",
+        "category": "Sport",
+        "title": "Nuit de Metal Luxe — Mentoring voor Toekomstige Kampioenen",
+        "date": "2023",
+        "location": "Marokko / Internationaal",
+        "summary": "Gala-evenement ter ondersteuning van opkomend vechtsporttalent onder directe begeleiding van de 12-voudig wereldkampioen.",
+        "fullText": "Mustafa Lakhsem deelt zijn kampioenservaring met getalenteerde atleten uit kwetsbare milieus door middel van uitrusting, beurzen en hoogwaardige training."
+      },
+      {
+        "id": "elus-2023",
+        "category": "Politiek",
+        "title": "Nationale Conferentie van Gekozen Bestuurders — Visie Midden-Atlas",
+        "date": "2023",
+        "location": "Rabat / Fès-Meknès",
+        "summary": "Krachtig pleidooi voor extra investeringen in bergregio's en plattelandsinfrastructuur.",
+        "fullText": "In direct overleg met ministeries en regionale raden pleitte Mustafa Lakhsem voor gerichte investeringsprogramma's voor de berggemeenschappen in de Midden-Atlas."
+      },
+      {
+        "id": "african-conf-2023",
+        "category": "Internationaal",
+        "title": "Afrikaanse Conferentie over Lokaal Bestuur",
+        "date": "2023",
+        "location": "Afrika",
+        "summary": "Pan-Afrikaanse dialoog over decentralisatiemodellen en burgerdemocratie.",
+        "fullText": "Vertegenwoordigers uit meer dan 20 Afrikaanse landen kwamen samen om best practices uit te wisselen ter versterking van lokale besturen en burgers."
+      },
+      {
+        "id": "plan-2022",
+        "category": "Ontwikkeling",
+        "title": "Meerjarenplan Imouzzer-Kandar 2022-2027",
+        "date": "2022",
+        "location": "Imouzzer-Kandar",
+        "summary": "Integraal ontwikkelingsplan voor de modernisering van infrastructuur en het creëren van werkgelegenheid.",
+        "fullText": "Een participatief beleidsplan opgesteld met lokale belanghebbenden om Imouzzer-Kandar te positioneren als een duurzame bestemming in de Atlas."
+      }
+    ]
+  },
+  "diplomacy": {
+    "badge": "MONDIALE DIPLOMATIE & SAMENWERKING",
+    "titleGold": "Ambassadeur voor Marokko",
+    "titleWhite": "op het Wereldtoneel",
+    "desc": "Dankzij zijn wortels in Duitsland en zijn onvoorwaardelijke verbondenheid met het Koninkrijk Marokko fungeert Mustafa Lakhsem als een invloedrijke brug tussen Europese en internationale instellingen, sportfederaties en gemeenten.",
+    "cta": "Diplomatiek Contact",
+    "highlights": [
+      {
+        "title": "Duits-Marokkaanse Betrekkingen",
+        "desc": "Inzetten van zijn dubbele culturele achtergrond ter versterking van economische partnerschappen, gemeentelijke uitwisselingen en sportsamenwerking."
+      },
+      {
+        "title": "Mobilisatie van de Diaspora (MDM)",
+        "desc": "Versterken van ruim 5 miljoen Marokkanen in het buitenland als strategische investeerders en culturele ambassadeurs."
+      },
+      {
+        "title": "Internationale Sportdiplomatie",
+        "desc": "Bevorderen van de wereldwijde uitstraling van Marokko en organiseren van internationale vechtsportevenementen."
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Neem Contact Op",
+    "subtitle": "Voor officiële persaanvragen, stichtingspartnerschappen, gemeentelijke zaken of internationale samenwerking.",
+    "officeTitle": "Officieel Kantoor · Imouzzer-Kandar",
+    "locationLabel": "Locatie",
+    "locationVal": "Imouzzer-Kandar, Provincie Sefrou, Regio Fès-Meknès, Koninkrijk Marokko",
+    "institutionsLabel": "Instellingen",
+    "institutionsVal": "Gemeente Imouzzer-Kandar · Lakhsem Stichting · Stichting voor Marokkanen van de Wereld",
+    "phoneLabel": "Telefoon",
+    "phoneVal": "+212 661 31 42 31",
+    "socialLabel": "Sociale Netwerken",
+    "socialNetworks": ["Facebook", "Instagram", "TikTok", "Twitter / X", "LinkedIn"],
+    "messageSent": "Bericht succesvol verzonden!",
+    "messageFailed": "Verzenden van bericht mislukt.",
+    "rateLimitExceeded": "Verzoeklimiet overschreden. Probeer het later opnieuw.",
+    "form": {
+      "name": "Volledige Naam",
+      "namePlaceholder": "bijv. Mohamed Alami / Jan Jansen",
+      "email": "E-mailadres",
+      "emailPlaceholder": "naam@voorbeeld.nl",
+      "phone": "Telefoonnummer",
+      "phonePlaceholder": "+212 6XX XXX XXX",
+      "org": "Organisatie / Media / Instantie",
+      "orgPlaceholder": "Bedrijf, Mediabedrijf of Instelling",
+      "type": "Type Aanvraag",
+      "types": [
+        "Algemene Vraag",
+        "Pers- / Media-aanvraag",
+        "Partnerschap Lakhsem Stichting",
+        "Partnerschap MDM Stichting",
+        "Gemeente Imouzzer-Kandar",
+        "Uitnodiging / Evenement",
+        "Internationale Samenwerking"
+      ],
+      "msg": "Uw Bericht",
+      "msgPlaceholder": "Beschrijf uw vraag of voorstel in detail...",
+      "gdpr": "Ik accepteer het privacybeleid (AVG) en geef toestemming voor de verwerking van mijn gegevens.",
+      "submit": "Bericht Verzenden",
+      "sending": "Verzenden...",
+      "required": "Dit veld is verplicht",
+      "emailInvalid": "Voer een geldig e-mailadres in (bijv. naam@voorbeeld.nl)",
+      "phoneInvalid": "Voer een geldig telefoonnummer in (bijv. +212 661 31 42 31)",
+      "gdprRequired": "U dient akkoord te gaan met de voorwaarden",
+      "formError": "Corrigeer a.u.b. de fouten in het formulier.",
+      "didYouMean": "Bedoelde u"
+    },
+    "newsletter": {
+      "title": "Blijf op de Hoogte",
+      "desc": "Meld u aan voor de officiële nieuwsbrief voor actuele updates over projecten, initiatieven en werkzaamheden van Mustafa Lakhsem.",
+      "placeholder": "Voer uw e-mailadres in",
+      "btn": "Aanmelden",
+      "subscribing": "Aanmelden...",
+      "success": "Bedankt voor uw aanmelding!",
+      "alreadySubscribed": "Dit e-mailadres is al aangemeld.",
+      "failed": "Aanmelding mislukt.",
+      "rateLimitExceeded": "Verzoeklimiet overschreden. Probeer het later opnieuw."
+    }
+  },
+  "footer": {
+    "name": "Mustafa Lakhsem",
+    "tagline": "12× Wereldkampioen · Burgemeester van Imouzzer-Kandar",
+    "bio": "Als 12-voudig wereldkampioen in dienst van de gemeenschap brengt Mustafa Lakhsem discipline, daadkracht en sportwaarden naar Imouzzer-Kandar en de Marokkaanse gemeenschap wereldwijd.",
+    "honor": "Orde van Nationale Verdienste · Koninkrijk Marokko",
+    "exploreTitle": "Navigatie",
+    "exploreLinks": [
+      {
+        "href": "#about",
+        "label": "Biografie"
+      },
+      {
+        "href": "#career",
+        "label": "Carrière"
+      },
+      {
+        "href": "#achievements",
+        "label": "Wereldtitels"
+      },
+      {
+        "href": "#vision",
+        "label": "Gemeentelijke Visie"
+      },
+      {
+        "href": "#foundations",
+        "label": "Stichtingen"
+      },
+      {
+        "href": "#contact",
+        "label": "Contact"
+      }
+    ],
+    "institutionsTitle": "Instellingen",
+    "institutions": [
+      "Gemeente Imouzzer-Kandar",
+      "Lakhsem Stichting",
+      "Stichting voor Marokkanen van de Wereld (MDM)"
+    ],
+    "officeTitle": "Officieel Kantoor",
+    "officeLocation": "Imouzzer-Kandar, Provincie Sefrou, Fès-Meknès, Koninkrijk Marokko",
+    "officePhone": "+212 661 31 42 31",
+    "copyright": "Alle rechten voorbehouden. Koninkrijk Marokko.",
+    "developedBy": "Ontwikkeld door Abdellah Edaoudi",
+    "backToTop": "Naar Boven",
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "twitter": "X / Twitter",
+      "linkedin": "LinkedIn"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "login": {
+    "title": "MUSTAFA LAKHSEM",
+    "subtitle": "Connexion au Portail Administratif",
+    "cardTitle": "Connexion",
+    "emailLabel": "Adresse Email",
+    "emailPlaceholder": "email@example.com",
+    "passwordLabel": "Mot de Passe",
+    "passwordPlaceholder": "••••••••",
+    "signInBtn": "Se Connecter",
+    "signingIn": "Connexion en cours...",
+    "fillAllFields": "Veuillez remplir tous les champs.",
+    "invalidCredentials": "Email ou mot de passe incorrect"
+  },
+  "dashboard": {
+    "brandName": "MUSTAFA LAKHSEM",
+    "portalTitle": "Portail Admin",
+    "refreshTitle": "Actualiser les Données",
+    "logout": "Déconnexion",
+    "loadingData": "Chargement des données...",
+    "tabs": {
+      "messages": "Messages",
+      "subscribers": "Abonnés"
+    },
+    "search": {
+      "contactsPlaceholder": "Rechercher expéditeur, email, contenu...",
+      "subscribersPlaceholder": "Rechercher l'email d'un abonné..."
+    },
+    "filters": {
+      "title": "Filtrer :",
+      "all": "Tous",
+      "unread": "Non lus",
+      "starred": "Favoris"
+    },
+    "table": {
+      "status": "Statut",
+      "sender": "Expéditeur",
+      "category": "Catégorie",
+      "messagePreview": "Aperçu du Message",
+      "date": "Date",
+      "actions": "Actions",
+      "subscriberEmail": "Email de l'Abonné",
+      "subscriptionDate": "Date d'Abonnement"
+    },
+    "categories": {
+      "general": "Demande Générale",
+      "press": "Demande Presse / Médias",
+      "lakhsem_foundation": "Partenariat Fondation Lakhsem",
+      "mdm_foundation": "Partenariat Fondation MDM",
+      "municipality": "Mairie d'Imouzzer-Kandar",
+      "invitation": "Invitation / Événement",
+      "cooperation": "Coopération Internationale"
+    },
+    "empty": {
+      "noContactsTitle": "Aucun message trouvé",
+      "noContactsDesc": "Essayez de modifier vos filtres ou termes de recherche.",
+      "noSubscribersTitle": "Aucun abonné trouvé",
+      "noSubscribersDesc": "Aucun abonné ne correspond à votre recherche."
+    },
+    "actions": {
+      "star": "Ajouter aux favoris",
+      "unstar": "Retirer des favoris",
+      "markAsRead": "Marquer comme lu",
+      "markAsUnread": "Marquer comme non lu",
+      "read": "Lu",
+      "unread": "Non lu",
+      "deleteMessage": "Supprimer le message",
+      "deleteSubscriber": "Supprimer l'abonné",
+      "tapToRead": "Appuyez pour lire",
+      "newBadge": "NOUVEAU",
+      "viewDetails": "Voir les détails"
+    },
+    "modal": {
+      "inquiryDetails": "Détails du Message",
+      "id": "ID",
+      "senderName": "Nom de l'Expéditeur",
+      "emailAddress": "Adresse Email",
+      "phoneNumber": "Numéro de Téléphone",
+      "organization": "Organisation / Entité",
+      "messageContent": "Contenu du Message",
+      "received": "Reçu le",
+      "gdprConsent": "Consentement RGPD",
+      "gdprAccepted": "✅ Accepté",
+      "gdprDeclined": "❌ Refusé",
+      "notAvailable": "N/D",
+      "delete": "Supprimer",
+      "star": "Favori",
+      "unstar": "Retirer favori"
+    },
+    "confirmDelete": {
+      "deleteContactTitle": "Supprimer le message ?",
+      "deleteContactMessage": "Êtes-vous sûr de vouloir supprimer définitivement le message de {name} ? Cette action est irréversible.",
+      "deleteSubscriberTitle": "Supprimer l'abonné ?",
+      "deleteSubscriberMessage": "Êtes-vous sûr de vouloir retirer {email} de la liste des abonnés ?",
+      "cancel": "Annuler",
+      "confirmDelete": "Oui, Supprimer",
+      "deleting": "Suppression en cours..."
+    },
+    "toasts": {
+      "sessionExpired": "Session expirée. Veuillez vous reconnecter.",
+      "unauthorized": "Non autorisé : Veuillez vous reconnecter.",
+      "forbidden": "Interdit : Vous n'avez pas l'autorisation d'accès.",
+      "networkError": "Erreur réseau : Aucune réponse reçue.",
+      "requestSetupError": "Erreur lors de la configuration de la requête.",
+      "dashboardLoadFailed": "Échec du chargement des données du tableau de bord.",
+      "signedOut": "Déconnexion réussie",
+      "markedStarred": "Ajouté aux favoris",
+      "removedStarred": "Retiré des favoris",
+      "starUpdateFailed": "Échec de la mise à jour des favoris.",
+      "markedRead": "Marqué comme lu",
+      "markedUnread": "Marqué comme non lu",
+      "readUpdateFailed": "Échec de la mise à jour du statut de lecture.",
+      "messageDeleted": "Message supprimé avec succès",
+      "messageDeleteFailed": "Échec de la suppression du message.",
+      "subscriberDeleted": "Abonné supprimé avec succès",
+      "subscriberDeleteFailed": "Échec de la suppression de l'abonné.",
+      "operationFailed": "L'opération a échoué."
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "login": {
+    "title": "MUSTAFA LAKHSEM",
+    "subtitle": "Inicio de Sesión en el Portal Administrativo",
+    "cardTitle": "Iniciar Sesión",
+    "emailLabel": "Correo Electrónico",
+    "emailPlaceholder": "correo@ejemplo.com",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "••••••••",
+    "signInBtn": "Iniciar Sesión",
+    "signingIn": "Iniciando sesión...",
+    "fillAllFields": "Por favor, complete todos los campos.",
+    "invalidCredentials": "Correo electrónico o contraseña no válidos"
+  },
+  "dashboard": {
+    "brandName": "MUSTAFA LAKHSEM",
+    "portalTitle": "Portal de Administración",
+    "refreshTitle": "Actualizar Datos",
+    "logout": "Cerrar Sesión",
+    "loadingData": "Cargando datos...",
+    "tabs": {
+      "messages": "Mensajes",
+      "subscribers": "Suscriptores"
+    },
+    "search": {
+      "contactsPlaceholder": "Buscar remitente, correo, contenido...",
+      "subscribersPlaceholder": "Buscar correo de suscriptor..."
+    },
+    "filters": {
+      "title": "Filtrar:",
+      "all": "Todos",
+      "unread": "No leídos",
+      "starred": "Destacados"
+    },
+    "table": {
+      "status": "Estado",
+      "sender": "Remitente",
+      "category": "Categoría",
+      "messagePreview": "Vista Previa del Mensaje",
+      "date": "Fecha",
+      "actions": "Acciones",
+      "subscriberEmail": "Correo del Suscriptor",
+      "subscriptionDate": "Fecha de Suscripción"
+    },
+    "categories": {
+      "general": "Consulta General",
+      "press": "Prensa / Medios",
+      "lakhsem_foundation": "Alianza Fundación Lakhsem",
+      "mdm_foundation": "Alianza Fundación MDM",
+      "municipality": "Alcaldía de Imouzzer-Kandar",
+      "invitation": "Invitación / Evento",
+      "cooperation": "Cooperación Internacional"
+    },
+    "empty": {
+      "noContactsTitle": "No se encontraron mensajes",
+      "noContactsDesc": "Intente ajustar sus filtros o términos de búsqueda.",
+      "noSubscribersTitle": "No se encontraron suscriptores de correo",
+      "noSubscribersDesc": "Ningún suscriptor coincide con su búsqueda actual."
+    },
+    "actions": {
+      "star": "Destacar mensaje",
+      "unstar": "Quitar de destacados",
+      "markAsRead": "Marcar como leído",
+      "markAsUnread": "Marcar como no leído",
+      "read": "Leído",
+      "unread": "No leído",
+      "deleteMessage": "Eliminar mensaje",
+      "deleteSubscriber": "Eliminar suscriptor",
+      "tapToRead": "Toca para leer",
+      "newBadge": "NUEVO",
+      "viewDetails": "Ver detalles"
+    },
+    "modal": {
+      "inquiryDetails": "Detalles del Mensaje",
+      "id": "ID",
+      "senderName": "Nombre del Remitente",
+      "emailAddress": "Correo Electrónico",
+      "phoneNumber": "Número de Teléfono",
+      "organization": "Organización / Entidad",
+      "messageContent": "Contenido del Mensaje",
+      "received": "Recibido el",
+      "gdprConsent": "Consentimiento RGPD",
+      "gdprAccepted": "✅ Aceptado",
+      "gdprDeclined": "❌ Rechazado",
+      "notAvailable": "N/D",
+      "delete": "Eliminar",
+      "star": "Destacar",
+      "unstar": "Quitar estrella"
+    },
+    "confirmDelete": {
+      "deleteContactTitle": "¿Eliminar mensaje?",
+      "deleteContactMessage": "¿Está seguro de que desea eliminar permanentemente el mensaje de {name}? Esta acción no se puede deshacer.",
+      "deleteSubscriberTitle": "¿Eliminar suscriptor?",
+      "deleteSubscriberMessage": "¿Está seguro de que desea eliminar a {email} de los suscriptores del boletín?",
+      "cancel": "Cancelar",
+      "confirmDelete": "Sí, eliminar",
+      "deleting": "Eliminando..."
+    },
+    "toasts": {
+      "sessionExpired": "Sesión expirada. Por favor, inicie sesión nuevamente.",
+      "unauthorized": "No autorizado: Por favor, inicie sesión nuevamente.",
+      "forbidden": "Prohibido: No tiene permisos de acceso.",
+      "networkError": "Error de red: No se recibió respuesta.",
+      "requestSetupError": "Error al configurar la solicitud.",
+      "dashboardLoadFailed": "Error al cargar los datos del panel.",
+      "signedOut": "Sesión cerrada correctamente",
+      "markedStarred": "Marcado como destacado",
+      "removedStarred": "Eliminado de destacados",
+      "starUpdateFailed": "Error al actualizar el estado de destacado.",
+      "markedRead": "Marcado como leído",
+      "markedUnread": "Marcado como no leído",
+      "readUpdateFailed": "Error al actualizar el estado de lectura.",
+      "messageDeleted": "Mensaje eliminado con éxito",
+      "messageDeleteFailed": "Error al eliminar el mensaje.",
+      "subscriberDeleted": "Suscriptor eliminado con éxito",
+      "subscriberDeleteFailed": "Error al eliminar el suscriptor.",
+      "operationFailed": "La operación falló."
+    }
+  }
+}
