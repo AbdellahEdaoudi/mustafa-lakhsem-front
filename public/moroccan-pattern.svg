@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <g fill="none" stroke="#d4af37" stroke-width="0.8" opacity="0.4">
+    <!-- Moroccan 8-pointed star geometric pattern -->
+    <path d="M30 0 L40 10 L50 10 L50 20 L60 30 L50 40 L50 50 L40 50 L30 60 L20 50 L10 50 L10 40 L0 30 L10 20 L10 10 L20 10 Z" />
+    <path d="M30 10 L44 24 L44 36 L30 50 L16 36 L16 24 Z" />
+    <circle cx="30" cy="30" r="6" />
+    <circle cx="0" cy="0" r="10" />
+    <circle cx="60" cy="0" r="10" />
+    <circle cx="0" cy="60" r="10" />
+    <circle cx="60" cy="60" r="10" />
+  </g>
+</svg>
