@@ -33,6 +33,11 @@
       "unread": "Ungelesen",
       "starred": "Markiert"
     },
+    "pagination": {
+      "prev": "← Zurück",
+      "next": "Weiter →",
+      "total": "Gesamt:"
+    },
     "table": {
       "status": "Status",
       "sender": "Absender",

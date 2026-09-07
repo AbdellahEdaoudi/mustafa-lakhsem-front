@@ -32,6 +32,11 @@
       "unread": "Non lus",
       "starred": "Favoris"
     },
+    "pagination": {
+      "prev": "← Préc",
+      "next": "Suiv →",
+      "total": "Total :"
+    },
     "table": {
       "status": "Statut",
       "sender": "Expéditeur",

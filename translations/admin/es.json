@@ -32,6 +32,11 @@
       "unread": "No leídos",
       "starred": "Destacados"
     },
+    "pagination": {
+      "prev": "← Ant",
+      "next": "Sig →",
+      "total": "Total:"
+    },
     "table": {
       "status": "Estado",
       "sender": "Remitente",

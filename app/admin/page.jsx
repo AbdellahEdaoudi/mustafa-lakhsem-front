@@ -32,6 +32,12 @@ export default function AdminDashboard() {
   const [starringId, setStarringId] = useState(null);
   const [readingId, setReadingId] = useState(null);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [contactsPage, setContactsPage] = useState(1);
+  const [subscribersPage, setSubscribersPage] = useState(1);
+  const [contactsTotalPages, setContactsTotalPages] = useState(1);
+  const [subscribersTotalPages, setSubscribersTotalPages] = useState(1);
+  const [contactsTotal, setContactsTotal] = useState(0);
+  const [subscribersTotal, setSubscribersTotal] = useState(0);
 
   // Helper to translate inquiry category type
   const getCategoryLabel = (type) => {
@@ -135,18 +141,23 @@ export default function AdminDashboard() {
     };
   };
 
-  const fetchData = async () => {
+  const fetchData = async (cPage = contactsPage, sPage = subscribersPage) => {
     setLoading(true);
     setError("");
     try {
       const config = getAuthConfig();
       const [contactsRes, subscribersRes] = await Promise.all([
-        axios.get("/api/admin/contacts", config),
-        axios.get("/api/admin/subscribers", config),
+        axios.get(`/api/admin/contacts?page=${cPage}&limit=20`, config),
+        axios.get(`/api/admin/subscribers?page=${sPage}&limit=20`, config),
       ]);
 
-      setContacts(contactsRes.data);
-      setSubscribers(subscribersRes.data);
+      setContacts(contactsRes.data.contacts || []);
+      setContactsTotal(contactsRes.data.total || 0);
+      setContactsTotalPages(contactsRes.data.totalPages || 1);
+
+      setSubscribers(subscribersRes.data.subscribers || []);
+      setSubscribersTotal(subscribersRes.data.total || 0);
+      setSubscribersTotalPages(subscribersRes.data.totalPages || 1);
     } catch (err) {
       const message =
         err.response?.data?.message || err.message || t?.dashboard?.toasts?.dashboardLoadFailed || "Failed to load dashboard data.";
@@ -324,19 +335,20 @@ export default function AdminDashboard() {
 
   // Stats calculation
   const stats = useMemo(() => {
-    const unreadCount = contacts.filter((c) => !c.isRead).length;
-    const starredCount = contacts.filter((c) => c.isStarred).length;
+    const safeContacts = contacts || [];
+    const unreadCount = safeContacts.filter((c) => !c.isRead).length;
+    const starredCount = safeContacts.filter((c) => c.isStarred).length;
     return {
-      totalContacts: contacts.length,
+      totalContacts: contactsTotal,
       unreadContacts: unreadCount,
       starredContacts: starredCount,
-      totalSubscribers: subscribers.length,
+      totalSubscribers: subscribersTotal,
     };
-  }, [contacts, subscribers]);
+  }, [contacts, subscribers, contactsTotal, subscribersTotal]);
 
   // Filter & Search contacts
   const filteredContacts = useMemo(() => {
-    return contacts.filter((c) => {
+    return (contacts || []).filter((c) => {
       // Tab / Filter
       if (filter === "starred" && !c.isStarred) return false;
       if (filter === "unread" && c.isRead) return false;
@@ -356,12 +368,14 @@ export default function AdminDashboard() {
 
   // Filter & Search subscribers
   const filteredSubscribers = useMemo(() => {
-    if (!searchQuery.trim()) return subscribers;
+    if (!searchQuery.trim()) return subscribers || [];
     const q = searchQuery.toLowerCase();
-    return subscribers.filter((s) => s.email?.toLowerCase().includes(q));
+    return (subscribers || []).filter((s) => s.email?.toLowerCase().includes(q));
   }, [subscribers, searchQuery]);
 
   const isRtl = lang === "ar";
+
+  const isArabic = (text) => /[\u0600-\u06FF]/.test(text);
 
   return (
     <div
@@ -487,7 +501,7 @@ export default function AdminDashboard() {
               </svg>
               <span>{t?.dashboard?.tabs?.messages || "Messages"}</span>
               <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${activeTab === "contacts" ? "bg-black/20 text-black font-extrabold" : "bg-slate-800 text-slate-300"}`}>
-                {contacts.length}
+                {contactsTotal}
               </span>
             </button>
 
@@ -506,7 +520,7 @@ export default function AdminDashboard() {
               </svg>
               <span>{t?.dashboard?.tabs?.subscribers || "Subscribers"}</span>
               <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${activeTab === "subscribers" ? "bg-black/20 text-black font-extrabold" : "bg-slate-800 text-slate-300"}`}>
-                {subscribers.length}
+                {subscribersTotal}
               </span>
             </button>
           </div>
@@ -558,27 +572,59 @@ export default function AdminDashboard() {
             {/* Contacts View */}
             {activeTab === "contacts" && (
               <div>
-                {/* Filter Pills */}
-                <div className="flex items-center gap-1.5 sm:gap-2 mb-4 overflow-x-auto pb-1">
-                  <span className="text-xs font-semibold text-slate-500 mr-1 shrink-0">
-                    {t?.dashboard?.filters?.title || "Filter:"}
-                  </span>
-                  {[
-                    { key: "all", label: `${t?.dashboard?.filters?.all || "All"} (${contacts.length})` },
-                    { key: "unread", label: `${t?.dashboard?.filters?.unread || "Unread"} (${stats.unreadContacts})` },
-                    { key: "starred", label: `${t?.dashboard?.filters?.starred || "Starred"} (${stats.starredContacts})` },
-                  ].map((f) => (
-                    <button
-                      key={f.key}
-                      onClick={() => setFilter(f.key)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${filter === f.key
-                        ? "bg-amber-500/15 border border-amber-500 text-amber-400"
-                        : "border border-slate-800 bg-slate-900/40 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
-                        }`}
-                    >
-                      {f.label}
-                    </button>
-                  ))}
+                {/* Filter Pills & Top Pagination */}
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1">
+                    <span className="text-xs font-semibold text-slate-500 mr-1 shrink-0">
+                      {t?.dashboard?.filters?.title || "Filter:"}
+                    </span>
+                    {[
+                      { key: "all", label: `${t?.dashboard?.filters?.all || "All"} (${contactsTotal})` },
+                      { key: "unread", label: `${t?.dashboard?.filters?.unread || "Unread"} (${stats.unreadContacts})` },
+                      { key: "starred", label: `${t?.dashboard?.filters?.starred || "Starred"} (${stats.starredContacts})` },
+                    ].map((f) => (
+                      <button
+                        key={f.key}
+                        onClick={() => setFilter(f.key)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${filter === f.key
+                          ? "bg-amber-500/15 border border-amber-500 text-amber-400"
+                          : "border border-slate-800 bg-slate-900/40 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
+                          }`}
+                      >
+                        {f.label}
+                      </button>
+                    ))}
+                  </div>
+
+                  {contactsTotalPages > 1 && (
+                    <div className="flex items-center gap-2 ms-auto">
+                      <button
+                        disabled={contactsPage === 1}
+                        onClick={() => {
+                          const newPage = contactsPage - 1;
+                          setContactsPage(newPage);
+                          fetchData(newPage, subscribersPage);
+                        }}
+                        className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                      >
+                        {t?.dashboard?.pagination?.prev || "← Prev"}
+                      </button>
+                      <span className="text-xs text-slate-400 px-1">
+                        {contactsPage} / {contactsTotalPages}
+                      </span>
+                      <button
+                        disabled={contactsPage === contactsTotalPages}
+                        onClick={() => {
+                          const newPage = contactsPage + 1;
+                          setContactsPage(newPage);
+                          fetchData(newPage, subscribersPage);
+                        }}
+                        className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                      >
+                        {t?.dashboard?.pagination?.next || "Next →"}
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 {/* Table & Cards List */}
@@ -701,7 +747,10 @@ export default function AdminDashboard() {
                                 <span className="text-xs">👇</span>
                               </div>
                             )}
-                            <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed bg-slate-950/40 p-2.5 rounded-xl border border-slate-800/60">
+                            <p
+                              dir={isArabic(c.message) ? "rtl" : "ltr"}
+                              className="text-xs text-slate-300 line-clamp-2 leading-relaxed bg-slate-950/40 p-2.5 rounded-xl border border-slate-800/60"
+                            >
                               {c.message}
                             </p>
                           </div>
@@ -798,7 +847,10 @@ export default function AdminDashboard() {
 
                                 <td className="py-3.5 sm:py-4 px-4 sm:px-5 max-w-xs xl:max-w-md">
                                   <div className="flex items-center gap-2">
-                                    <p className="truncate text-xs text-slate-400 font-normal group-hover:text-slate-300 transition-colors">
+                                    <p
+                                      dir={isArabic(c.message) ? "rtl" : "ltr"}
+                                      className="truncate text-xs text-slate-400 font-normal group-hover:text-slate-300 transition-colors"
+                                    >
                                       {c.message}
                                     </p>
                                     {index === 0 && !hasInteracted && (
@@ -900,12 +952,76 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 )}
+
+                {contactsTotalPages > 1 && (
+                  <div className="flex items-center justify-center gap-2 mt-6">
+                    <button
+                      disabled={contactsPage === 1}
+                      onClick={() => {
+                        const newPage = contactsPage - 1;
+                        setContactsPage(newPage);
+                        fetchData(newPage, subscribersPage);
+                      }}
+                      className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                    >
+                      {t?.dashboard?.pagination?.prev || "← Prev"}
+                    </button>
+                    <span className="text-xs text-slate-400 px-2">
+                      {contactsPage} / {contactsTotalPages}
+                    </span>
+                    <button
+                      disabled={contactsPage === contactsTotalPages}
+                      onClick={() => {
+                        const newPage = contactsPage + 1;
+                        setContactsPage(newPage);
+                        fetchData(newPage, subscribersPage);
+                      }}
+                      className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                    >
+                      {t?.dashboard?.pagination?.next || "Next →"}
+                    </button>
+                  </div>
+                )}
               </div>
             )}
 
             {/* Subscribers View */}
             {activeTab === "subscribers" && (
               <div>
+                {subscribersTotalPages > 1 && (
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-semibold text-slate-400">
+                      {t?.dashboard?.pagination?.total || "Total:"} {subscribersTotal}
+                    </span>
+                    <div className="flex items-center gap-2 ms-auto">
+                      <button
+                        disabled={subscribersPage === 1}
+                        onClick={() => {
+                          const newPage = subscribersPage - 1;
+                          setSubscribersPage(newPage);
+                          fetchData(contactsPage, newPage);
+                        }}
+                        className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                      >
+                        {t?.dashboard?.pagination?.prev || "← Prev"}
+                      </button>
+                      <span className="text-xs text-slate-400 px-1">
+                        {subscribersPage} / {subscribersTotalPages}
+                      </span>
+                      <button
+                        disabled={subscribersPage === subscribersTotalPages}
+                        onClick={() => {
+                          const newPage = subscribersPage + 1;
+                          setSubscribersPage(newPage);
+                          fetchData(contactsPage, newPage);
+                        }}
+                        className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                      >
+                        {t?.dashboard?.pagination?.next || "Next →"}
+                      </button>
+                    </div>
+                  </div>
+                )}
                 {filteredSubscribers.length === 0 ? (
                   <div className="text-center py-16 sm:py-20 bg-slate-900/20 border border-slate-800/80 rounded-2xl p-4">
                     <div className="w-12 h-12 rounded-full bg-slate-800/50 flex items-center justify-center mx-auto mb-3 text-slate-500">
@@ -1011,6 +1127,36 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 )}
+
+                {subscribersTotalPages > 1 && (
+                  <div className="flex items-center justify-center gap-2 mt-6">
+                    <button
+                      disabled={subscribersPage === 1}
+                      onClick={() => {
+                        const newPage = subscribersPage - 1;
+                        setSubscribersPage(newPage);
+                        fetchData(contactsPage, newPage);
+                      }}
+                      className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                    >
+                      {t?.dashboard?.pagination?.prev || "← Prev"}
+                    </button>
+                    <span className="text-xs text-slate-400 px-2">
+                      {subscribersPage} / {subscribersTotalPages}
+                    </span>
+                    <button
+                      disabled={subscribersPage === subscribersTotalPages}
+                      onClick={() => {
+                        const newPage = subscribersPage + 1;
+                        setSubscribersPage(newPage);
+                        fetchData(contactsPage, newPage);
+                      }}
+                      className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                    >
+                      {t?.dashboard?.pagination?.next || "Next →"}
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </>
@@ -1098,7 +1244,10 @@ export default function AdminDashboard() {
                 <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
                   {t?.dashboard?.modal?.messageContent || "Message Content"}
                 </span>
-                <div className="bg-slate-950/80 border border-slate-800 rounded-xl p-3.5 sm:p-4 text-slate-200 text-xs sm:text-sm leading-relaxed max-h-48 sm:max-h-60 overflow-y-auto whitespace-pre-wrap font-sans">
+                <div
+                  dir={isArabic(selectedContact.message) ? "rtl" : "ltr"}
+                  className="bg-slate-950/80 border border-slate-800 rounded-xl p-3.5 sm:p-4 text-slate-200 text-xs sm:text-sm leading-relaxed max-h-48 sm:max-h-60 overflow-y-auto whitespace-pre-wrap font-sans"
+                >
                   {selectedContact.message}
                 </div>
               </div>

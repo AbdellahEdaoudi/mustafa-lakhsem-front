@@ -33,6 +33,11 @@
       "unread": "Non letti",
       "starred": "Preferiti"
     },
+    "pagination": {
+      "prev": "← Prec",
+      "next": "Succ →",
+      "total": "Totale:"
+    },
     "table": {
       "status": "Stato",
       "sender": "Mittente",

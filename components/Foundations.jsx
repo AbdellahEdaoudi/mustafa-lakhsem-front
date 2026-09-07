@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 
 import {
   HeartHandshake,
@@ -47,10 +48,11 @@ export default function Foundations({ t = {}, lang }) {
                   className="w-20 h-14 bg-white rounded-xl flex items-center justify-center shrink-0 overflow-hidden p-1.5 shadow-md border border-slate-200/10 cursor-zoom-in hover:scale-105 transition-transform"
                   title="Click to view large logo"
                 >
-                  <img
+                  <Image
                     src="/foundation/mlf.png"
                     alt="Lakhsem Foundation Logo"
-                    className="w-full h-full object-contain"
+                    fill
+                    className="object-contain"
                   />
                 </div>
                 <div>
@@ -93,10 +95,11 @@ export default function Foundations({ t = {}, lang }) {
                   className="w-20 h-14 bg-white rounded-xl flex items-center justify-center shrink-0 overflow-hidden p-1.5 shadow-md border border-slate-200/10 cursor-zoom-in hover:scale-105 transition-transform"
                   title="Click to view large logo"
                 >
-                  <img
+                  <Image
                     src="/foundation/mdmpds.png"
                     alt="MDM Foundation Logo"
-                    className="w-full h-full object-contain"
+                    fill
+                    className="object-contain"
                   />
                 </div>
                 <div>
@@ -152,10 +155,12 @@ export default function Foundations({ t = {}, lang }) {
 
             {/* Large Image Container */}
             <div className="w-full aspect-4/3 flex items-center justify-center bg-white rounded-2xl overflow-hidden p-6 mt-4">
-              <img
+              <Image
                 src={activeImage}
                 alt="Enlarged logo"
-                className="w-full h-full object-contain"
+                fill
+                unoptimized
+                className="object-contain"
               />
             </div>
           </div>

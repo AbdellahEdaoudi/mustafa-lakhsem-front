@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   Trees, Navigation, Sparkles, Droplets, Building2, Cpu, Compass, X,
 } from "@/components/lucide-react";
@@ -93,10 +94,11 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
                 onClick={() => setActiveImage("/Imouzzer/image1.jpg")}
                 className="absolute top-0 left-0 w-3/4 aspect-4/5 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl cursor-zoom-in group transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 z-10"
               >
-                <img
+                <Image
                   src="/Imouzzer/image1.jpg"
                   alt="Imouzzer Landscape 1"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
@@ -106,10 +108,11 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
                 onClick={() => setActiveImage("/Imouzzer/image2.jpg")}
                 className="absolute bottom-0 right-0 w-3/4 aspect-4/5 rounded-2xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl cursor-zoom-in group transform rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-500 z-20"
               >
-                <img
+                <Image
                   src="/Imouzzer/image2.jpg"
                   alt="Imouzzer Landscape 2"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
@@ -142,10 +145,12 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
 
             {/* Large Image Container */}
             <div className="w-full aspect-16/10 max-h-[75vh] flex items-center justify-center bg-slate-950 rounded-2xl overflow-hidden mt-4">
-              <img
+              <Image
                 src={activeImage}
                 alt="Enlarged Imouzzer Spot"
-                className="w-full h-full object-contain"
+                fill
+                unoptimized
+                className="object-contain"
               />
             </div>
           </div>

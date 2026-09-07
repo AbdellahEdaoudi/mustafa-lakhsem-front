@@ -32,6 +32,11 @@
       "unread": "Ongelezen",
       "starred": "Met ster"
     },
+    "pagination": {
+      "prev": "← Vorige",
+      "next": "Volgende →",
+      "total": "Totaal:"
+    },
     "table": {
       "status": "Status",
       "sender": "Afzender",

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 
 import {
   Newspaper,
@@ -125,10 +126,11 @@ export default function MediaCenter({ t = {}, lang }) {
               <div>
                 {/* Premium Image Header */}
                 <div className="relative w-full h-48 rounded-xl overflow-hidden mb-5 border border-slate-800/80 shadow-md">
-                  <img
+                  <Image
                     src={IMAGE_MAP[art.id] || "/galerie/Evenement_Officiel.jpg"}
                     alt={art.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                     style={{ objectPosition: art.id === "plan-2022" ? "center 20%" : art.id === "metal-luxe-2023" ? "center 15%" : "center" }}
                   />
                   {/* Subtle hover overlay */}

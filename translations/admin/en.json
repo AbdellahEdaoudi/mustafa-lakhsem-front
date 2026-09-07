@@ -33,6 +33,11 @@
       "unread": "Unread",
       "starred": "Starred"
     },
+    "pagination": {
+      "prev": "← Prev",
+      "next": "Next →",
+      "total": "Total:"
+    },
     "table": {
       "status": "Status",
       "sender": "Sender",
