@@ -2,6 +2,7 @@ import "@/app/globals.css";
 import { notFound } from "next/navigation";
 import { Prompt } from "next/font/google";
 import { ToastProvider } from "@/components/Toast";
+import { Analytics } from "@vercel/analytics/next";
 
 const prompt = Prompt({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default async function LocaleLayout({ children, params }) {
         className={`${prompt.className} bg-[#060913] text-[#f8fafc] min-h-screen selection:bg-[#d4af37] selection:text-black font-sans antialiased`}
       >
         <ToastProvider>{children}</ToastProvider>
+        <Analytics />
       </body>
     </html>
   );
