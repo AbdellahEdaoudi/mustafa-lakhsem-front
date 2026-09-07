@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import { Prompt } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 const prompt = Prompt({
   subsets: ["latin"],
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
         className={`${prompt.className} bg-[#060913] text-[#f8fafc] min-h-screen antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
