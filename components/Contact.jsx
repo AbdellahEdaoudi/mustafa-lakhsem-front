@@ -495,7 +495,7 @@ export default function Contact({ t = {}, lang }) {
                     <label className="block text-xs font-bold text-slate-300">
                       {f?.msg} <span className="text-red-400">*</span>
                     </label>
-                    <span className={`text-[11px] font-mono ${message.length >= 3000 ? "text-red-400 font-bold" : message.length > 2700 ? "text-amber-400" : "text-slate-500"}`}>
+                    <span className={`text-[11px] font-mono ${message.length >= 3000 ? "text-red-400 font-bold" : message.length > 2700 ? "text-amber-400" : "text-slate-400"}`}>
                       {message.length} / 3000
                     </span>
                   </div>

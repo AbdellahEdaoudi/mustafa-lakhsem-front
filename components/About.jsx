@@ -21,7 +21,15 @@ export default function About({ t = {}, lang }) {
           <div className="w-full lg:w-5/12 relative group">
             <div className="absolute -inset-1 bg-linear-to-tr from-amber-500/20 to-emerald-500/25 rounded-[2.2rem] blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             <div className="relative aspect-4/5 w-full rounded-4xl overflow-hidden border border-amber-500/30 bg-[#040711] shadow-[0_0_50px_rgba(212,175,55,0.1)]">
-              <Image src="/about/image.jpg" alt="Mustafa Lakhsem - About" fill priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 500px" className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" />
+              <Image 
+                src="/about/image.jpg" 
+                alt="Mustafa Lakhsem - About" 
+                fill 
+                sizes="(max-width: 640px) 92vw, (max-width: 1024px) 75vw, 480px" 
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" 
+                quality={80}
+                loading="lazy"
+              />
               <div className="absolute inset-0 bg-linear-to-t from-[#040711]/60 via-transparent to-transparent opacity-60" />
               <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(4,7,17,0.5)]" />
               <div className="absolute top-5 left-5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/60 border border-amber-500/25 backdrop-blur-md text-[10px] font-bold text-amber-300 tracking-wider uppercase shadow-md">

@@ -130,6 +130,7 @@ export default function MediaCenter({ t = {}, lang }) {
                     src={IMAGE_MAP[art.id] || "/galerie/Evenement_Officiel.jpg"}
                     alt={art.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     style={{ objectPosition: art.id === "plan-2022" ? "center 20%" : art.id === "metal-luxe-2023" ? "center 15%" : "center" }}
                   />

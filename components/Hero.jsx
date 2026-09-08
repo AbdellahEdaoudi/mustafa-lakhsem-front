@@ -64,26 +64,31 @@ export default function Hero({ t = {}, lang }) {
 
         {/* Right Column on desktop, shown FIRST on mobile: Image */}
         <div className="order-1 lg:order-2 w-full lg:w-1/2 h-70 sm:h-100 lg:h-137.5 relative rounded-4xl overflow-hidden border border-amber-500/20 shadow-[0_0_30px_rgba(212,175,55,0.15)] shrink-0">
-          {heroImages.map((src, idx) => (
-            <div
-              key={src}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === activeImageIdx ? "opacity-100 scale-100" : "opacity-0 scale-105"
-                }`}
-              style={{ transitionProperty: 'opacity, transform', transitionDuration: '1.5s' }}
-            >
-              <Image
-                src={src}
-                alt={`Mustafa Lakhsem image ${idx + 1}`}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 640px"
-                className="object-cover object-center lg:object-top"
-                priority={true}
-                loading="eager"
-              />
-              {/* Very light inner shadow to frame the image, no full overlay */}
-              <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(4,7,17,0.3)] pointer-events-none" />
-            </div>
-          ))}
+          {heroImages.map((src, idx) => {
+            const isFirst = idx === 0;
+            return (
+              <div
+                key={src}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === activeImageIdx ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                  }`}
+                style={{ transitionProperty: 'opacity, transform', transitionDuration: '1.5s' }}
+              >
+                <Image
+                  src={src}
+                  alt={`Mustafa Lakhsem image ${idx + 1}`}
+                  fill
+                  sizes="(max-width: 640px) 92vw, (max-width: 1024px) 85vw, 550px"
+                  className="object-cover object-center lg:object-top"
+                  priority={isFirst}
+                  loading={isFirst ? "eager" : "lazy"}
+                  fetchPriority={isFirst ? "high" : "auto"}
+                  quality={80}
+                />
+                {/* Very light inner shadow to frame the image, no full overlay */}
+                <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(4,7,17,0.3)] pointer-events-none" />
+              </div>
+            );
+          })}
         </div>
 
         {/* Left Column on desktop, shown SECOND on mobile: Text & Content */}

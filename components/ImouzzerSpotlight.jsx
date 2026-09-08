@@ -21,6 +21,27 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
   const imouzzerData = t.imouzzer || {};
   const features = imouzzerData.features || [];
 
+  const galleryImages = [
+    { src: "/Imouzzer/image1.jpg", alt: "Imouzzer Landscape 1" },
+    { src: "/Imouzzer/image2.jpg", alt: "Imouzzer Landscape 2" },
+  ];
+
+  const currentIdx = galleryImages.findIndex((img) => img.src === activeImage);
+
+  const showNext = () => {
+    if (currentIdx !== -1) {
+      const next = (currentIdx + 1) % galleryImages.length;
+      setActiveImage(galleryImages[next].src);
+    }
+  };
+
+  const showPrev = () => {
+    if (currentIdx !== -1) {
+      const prev = (currentIdx - 1 + galleryImages.length) % galleryImages.length;
+      setActiveImage(galleryImages[prev].src);
+    }
+  };
+
   return (
     <section id="imouzzer" className="py-20 relative overflow-hidden bg-[#090e1e]">
       {/* Dynamic Glows */}
@@ -98,6 +119,7 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
                   src="/Imouzzer/image1.jpg"
                   alt="Imouzzer Landscape 1"
                   fill
+                  sizes="(max-width: 768px) 75vw, (max-width: 1200px) 40vw, 350px"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -112,6 +134,7 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
                   src="/Imouzzer/image2.jpg"
                   alt="Imouzzer Landscape 2"
                   fill
+                  sizes="(max-width: 768px) 75vw, (max-width: 1200px) 40vw, 350px"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -124,34 +147,67 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
 
       </div>
 
-      {/* Image Lightbox Modal */}
+      {/* Premium Lightbox Modal */}
       {activeImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 animate-[fadeIn_0.2s_ease-out_both]"
+          className="fixed inset-0 z-9999 flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 sm:p-8 animate-[fadeIn_0.25s_ease-out_both]"
           onClick={() => setActiveImage(null)}
         >
+          {/* Top Bar Controls */}
           <div
-            className="relative max-w-4xl w-full bg-[#0d1629] p-4 sm:p-6 rounded-3xl border border-slate-800 shadow-2xl flex flex-col items-center animate-[scaleIn_0.2s_ease-out_both]"
+            className="absolute top-4 inset-x-4 sm:inset-x-8 flex items-center justify-between z-30 pointer-events-none"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
+            <div className="pointer-events-auto flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 backdrop-blur-md text-xs font-semibold text-emerald-400">
+              <span>{currentIdx + 1} / {galleryImages.length}</span>
+            </div>
+
             <button
               onClick={() => setActiveImage(null)}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900 border border-slate-700 text-slate-400 hover:text-white flex items-center justify-center cursor-pointer shadow-lg hover:border-emerald-500/40 transition-colors"
+              className="pointer-events-auto w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700/80 hover:border-emerald-500/50 hover:bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center shadow-2xl transition-all cursor-pointer hover:scale-105 active:scale-95"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
+          </div>
 
-            {/* Large Image Container */}
-            <div className="w-full aspect-16/10 max-h-[75vh] flex items-center justify-center bg-slate-950 rounded-2xl overflow-hidden mt-4">
+          {/* Main Modal Wrapper */}
+          <div
+            className="relative w-full max-w-5xl h-[85vh] flex flex-col items-center justify-center animate-[scaleIn_0.25s_ease-out_both]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Image Stage */}
+            <div className="relative w-full flex-1 max-h-[72vh] flex items-center justify-center rounded-2xl overflow-hidden border border-slate-800/80 bg-slate-950/90 shadow-[0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-sm">
               <Image
                 src={activeImage}
-                alt="Enlarged Imouzzer Spot"
+                alt={galleryImages[currentIdx]?.alt || "Imouzzer Spot"}
                 fill
                 unoptimized
-                className="object-contain"
+                priority
+                className="object-contain p-2 sm:p-4 select-none"
               />
+            </div>
+
+            {/* Bottom Thumbnails Strip */}
+            <div className="mt-4 flex items-center gap-3 p-1.5 rounded-2xl bg-slate-900/70 border border-slate-800/70 backdrop-blur-md">
+              {galleryImages.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveImage(img.src)}
+                  className={`relative w-16 h-12 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
+                    activeImage === img.src
+                      ? "border-emerald-400 scale-105 shadow-[0_0_12px_rgba(16,185,129,0.4)]"
+                      : "border-transparent opacity-50 hover:opacity-100 hover:border-slate-600"
+                  }`}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                  />
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -163,7 +219,7 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
           to   { opacity: 1; }
         }
         @keyframes scaleIn {
-          from { transform: scale(0.95); opacity: 0; }
+          from { transform: scale(0.96); opacity: 0; }
           to   { transform: scale(1); opacity: 1; }
         }
       `}</style>

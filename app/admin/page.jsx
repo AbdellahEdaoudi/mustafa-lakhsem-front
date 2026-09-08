@@ -85,6 +85,7 @@ export default function AdminDashboard() {
     setLang(newLang);
     if (typeof window !== "undefined") {
       localStorage.setItem("admin_lang", newLang);
+      document.title = newLang === "ar" ? "مصطفى لخصم | لوحة التحكم" : "Mustafa Lakhsem | Admin";
     }
     const dict = await getTranslation(newLang);
     setT(dict);
@@ -172,7 +173,12 @@ export default function AdminDashboard() {
   useEffect(() => {
     const saved = typeof window !== "undefined" ? localStorage.getItem("admin_lang") || "en" : "en";
     setLang(saved);
-    getTranslation(saved).then(setT);
+    getTranslation(saved).then((dict) => {
+      setT(dict);
+      if (typeof document !== "undefined") {
+        document.title = saved === "ar" ? "مصطفى لخصم | لوحة التحكم" : "Mustafa Lakhsem | Admin";
+      }
+    });
     fetchData();
   }, []);
 

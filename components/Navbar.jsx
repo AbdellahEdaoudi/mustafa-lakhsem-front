@@ -15,22 +15,32 @@ export default function Navbar({ t = {}, lang }) {
   const pathname = usePathname();
   const dropdownRef = useRef(null);
 
-  // Track the current hash (#section) for preserving it on language switch
+  // Synchronize hash with scroll and clean up when user scrolls to top
   useEffect(() => {
-    const updateHash = () => setCurrentHash(window.location.hash || "");
-    updateHash();
-    window.addEventListener("hashchange", updateHash);
-    window.addEventListener("scroll", updateHash);
-    return () => {
-      window.removeEventListener("hashchange", updateHash);
-      window.removeEventListener("scroll", updateHash);
+    let scrollTimeout;
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+      
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        if (window.scrollY < 100 && window.location.hash) {
+          history.replaceState(null, "", window.location.pathname);
+          setCurrentHash("");
+        }
+      }, 100);
     };
-  }, []);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash || "");
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("hashchange", handleHashChange);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", handleHashChange);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   // Close dropdown on outside click
@@ -154,6 +164,7 @@ export default function Navbar({ t = {}, lang }) {
                 type="button"
                 onClick={() => setLangOpen((o) => !o)}
                 className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-amber-500/30 bg-slate-900/70 hover:border-amber-400/60 hover:bg-slate-800/80 transition-all duration-200 cursor-pointer"
+                aria-label="Select Language"
               >
                 <span className="shrink-0 rounded-sm overflow-hidden flex items-center justify-center shadow-xs">
                   <span className={`fi fi-${currentLang.countryCode || currentLang.code} text-sm leading-none`}></span>
