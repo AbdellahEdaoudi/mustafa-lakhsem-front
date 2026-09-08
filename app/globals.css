@@ -1,5 +1,25 @@
-@import url("https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css");
 @import "tailwindcss";
+
+/* Authentic Local Flag Icons (Fast, Zero External Requests, Pixel-Perfect) */
+.fi {
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-block;
+  width: 1.333333em;
+  line-height: 1em;
+}
+.fi:before {
+  content: "\00a0";
+}
+.fi-ma, .fi-ar { background-image: url("/flags/4x3/ma.svg"); }
+.fi-gb, .fi-en { background-image: url("/flags/4x3/gb.svg"); }
+.fi-fr { background-image: url("/flags/4x3/fr.svg"); }
+.fi-de { background-image: url("/flags/4x3/de.svg"); }
+.fi-nl { background-image: url("/flags/4x3/nl.svg"); }
+.fi-es { background-image: url("/flags/4x3/es.svg"); }
+.fi-it { background-image: url("/flags/4x3/it.svg"); }
 
 :root {
   --bg-primary: #040711;

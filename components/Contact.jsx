@@ -330,7 +330,9 @@ export default function Contact({ t = {}, lang }) {
               <form onSubmit={AddSubscribe} className="flex flex-col gap-2">
                 <div className="flex gap-2">
                   <input
+                    id="newsletter-email"
                     type="email"
+                    aria-label={n?.placeholder || "Email address"}
                     value={emailsubscribe}
                     onChange={(e) => {
                       setEmailsubscribe(e.target.value);
@@ -372,10 +374,11 @@ export default function Contact({ t = {}, lang }) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {/* Name */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                    <label htmlFor="contact-name" className="block text-xs font-bold text-slate-300 mb-1.5">
                       {f?.name} <span className="text-red-400">*</span>
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       maxLength={100}
                       value={name}
@@ -392,10 +395,11 @@ export default function Contact({ t = {}, lang }) {
 
                   {/* Email */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                    <label htmlFor="contact-email" className="block text-xs font-bold text-slate-300 mb-1.5">
                       {f?.email} <span className="text-red-400">*</span>
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       maxLength={100}
                       value={email}
@@ -414,10 +418,11 @@ export default function Contact({ t = {}, lang }) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {/* Phone */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                    <label htmlFor="contact-phone" className="block text-xs font-bold text-slate-300 mb-1.5">
                       {f?.phone} <span className="text-red-400">*</span>
                     </label>
                     <input
+                      id="contact-phone"
                       type="text"
                       dir="ltr"
                       maxLength={30}
@@ -435,10 +440,11 @@ export default function Contact({ t = {}, lang }) {
 
                   {/* Organization */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                    <label htmlFor="contact-org" className="block text-xs font-bold text-slate-300 mb-1.5">
                       {f?.org} <span className="text-red-400">*</span>
                     </label>
                     <input
+                      id="contact-org"
                       type="text"
                       maxLength={150}
                       value={organization}
@@ -492,7 +498,7 @@ export default function Contact({ t = {}, lang }) {
                 {/* Message */}
                 <div>
                   <div className="flex justify-between items-center mb-1.5">
-                    <label className="block text-xs font-bold text-slate-300">
+                    <label htmlFor="contact-msg" className="block text-xs font-bold text-slate-300">
                       {f?.msg} <span className="text-red-400">*</span>
                     </label>
                     <span className={`text-[11px] font-mono ${message.length >= 3000 ? "text-red-400 font-bold" : message.length > 2700 ? "text-amber-400" : "text-slate-400"}`}>
@@ -500,6 +506,7 @@ export default function Contact({ t = {}, lang }) {
                     </span>
                   </div>
                   <textarea
+                    id="contact-msg"
                     rows={4}
                     maxLength={3000}
                     value={message}

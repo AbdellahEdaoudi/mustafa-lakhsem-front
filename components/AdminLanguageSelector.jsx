@@ -44,7 +44,7 @@ export default function AdminLanguageSelector({ currentLang = "en", onLangChange
         className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-amber-500/30 bg-slate-900/70 hover:border-amber-400/60 hover:bg-slate-800/80 transition-all duration-200 cursor-pointer"
         aria-label="Select Language"
       >
-        <span className="shrink-0 rounded-sm overflow-hidden flex items-center justify-center shadow-xs">
+        <span className="shrink-0 rounded-xs overflow-hidden flex items-center justify-center shadow-xs">
           <span className={`fi fi-${activeLang.countryCode || activeLang.code} text-sm leading-none`}></span>
         </span>
         <span className="text-[11px] font-bold uppercase tracking-widest text-slate-200 group-hover:text-amber-300 transition-colors leading-none">
@@ -85,7 +85,7 @@ export default function AdminLanguageSelector({ currentLang = "en", onLangChange
                 }}
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="shrink-0 rounded-sm overflow-hidden flex items-center justify-center shadow-xs">
+                  <span className="shrink-0 rounded-xs overflow-hidden flex items-center justify-center shadow-xs">
                     <span className={`fi fi-${lang.countryCode || lang.code} text-sm leading-none`}></span>
                   </span>
                   <span

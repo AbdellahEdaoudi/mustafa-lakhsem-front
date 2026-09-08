@@ -8,7 +8,7 @@ const nextConfig = {
   allowedDevOrigins: ["192.168.1.111", "localhost:3000"],
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [75, 80],
+    qualities: [75, 80, 90],
     deviceSizes: [384, 480, 640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },

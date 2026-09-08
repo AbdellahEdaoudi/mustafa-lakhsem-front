@@ -65,13 +65,14 @@ export default function Footer({ t = {}, lang }) {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#d4af37] via-[#fef08a] to-[#855d10] p-[1.5px] shadow-md shrink-0">
-              <div className="w-full h-full bg-[#050814] rounded-[10px] flex items-center justify-center overflow-hidden">
+              <div className="relative w-full h-full bg-[#050814] rounded-[10px] flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 bg-slate-800 animate-pulse pointer-events-none" />
                 <Image
                   src="/mds-logo.png"
                   alt="MDS"
                   width={46}
                   height={46}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain relative z-1"
                   priority
                 />
               </div>

@@ -1,16 +1,19 @@
+import dynamic from "next/dynamic";
 import { getTranslation } from "@/translations";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Achievements from "@/components/Achievements";
 import Career from "@/components/Career";
-import Vision from "@/components/Vision";
-import ImouzzerSpotlight from "@/components/ImouzzerSpotlight";
-import MediaCenter from "@/components/MediaCenter";
-import Diplomacy from "@/components/Diplomacy";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import Foundations from "@/components/Foundations";
+
+// Lazy-load below-the-fold sections to optimize mobile First Contentful Paint & TBT
+const Vision = dynamic(() => import("@/components/Vision"));
+const Diplomacy = dynamic(() => import("@/components/Diplomacy"));
+const Foundations = dynamic(() => import("@/components/Foundations"));
+const ImouzzerSpotlight = dynamic(() => import("@/components/ImouzzerSpotlight"));
+const MediaCenter = dynamic(() => import("@/components/MediaCenter"));
+const Contact = dynamic(() => import("@/components/Contact"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mustafa-lakhsem.vercel.app";
 

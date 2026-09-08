@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 import {
@@ -21,16 +21,18 @@ const IMAGE_MAP = {
   "plan-2022": "/galerie/Engagement_Politique.jpg",
 };
 
+// ─── Article Text Detail Modal ──────────────────────────────────────────────
 function NewsDetailModal({ newsModalData, onClose, t = {}, lang }) {
   if (!newsModalData) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-[fadeIn_0.2s_ease-out]">
       <div className="relative w-full max-w-2xl rounded-3xl bg-[#0b1122] border border-amber-500/40 shadow-2xl p-6 sm:p-8 overflow-hidden max-h-[90vh] overflow-y-auto">
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
+          aria-label="Close article details"
           className={`absolute ${lang === "ar" ? "top-4 left-4" : "top-4 right-4"} p-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-white hover:border-amber-400 transition-colors cursor-pointer`}
         >
           <X className="w-5 h-5" />
@@ -87,8 +89,166 @@ function NewsDetailModal({ newsModalData, onClose, t = {}, lang }) {
   );
 }
 
+// ─── High-End Image Lightbox Modal ──────────────────────────────────────────
+function MediaImageModal({ activeIdx, setActiveIdx, articles, onClose, lang }) {
+  const isRtl = lang === "ar";
+  const currentArt = articles[activeIdx];
+
+  const handlePrev = useCallback(() => {
+    setActiveIdx((prev) => (prev > 0 ? prev - 1 : articles.length - 1));
+  }, [articles.length, setActiveIdx]);
+
+  const handleNext = useCallback(() => {
+    setActiveIdx((prev) => (prev < articles.length - 1 ? prev + 1 : 0));
+  }, [articles.length, setActiveIdx]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") isRtl ? handlePrev() : handleNext();
+      if (e.key === "ArrowLeft") isRtl ? handleNext() : handlePrev();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleNext, handlePrev, isRtl, onClose]);
+
+  // Prevent background scroll
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  if (!currentArt) return null;
+
+  const currentImgSrc = IMAGE_MAP[currentArt.id] || "/galerie/Evenement_Officiel.jpg";
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-xl p-3 sm:p-6 animate-[fadeIn_0.25s_ease-out_both]"
+      onClick={onClose}
+    >
+      {/* Top Controls Bar */}
+      <div
+        className="absolute top-4 inset-x-4 sm:inset-x-8 flex items-center justify-between z-30 pointer-events-none"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="pointer-events-auto flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900/80 border border-amber-500/30 backdrop-blur-md text-xs font-bold text-amber-400 shadow-xl">
+          <span>{activeIdx + 1} / {articles.length}</span>
+          <span className="text-slate-500">·</span>
+          <span className="text-slate-300 truncate max-w-45 sm:max-w-xs">{currentArt.category}</span>
+        </div>
+
+        <button
+          type="button"
+          onClick={onClose}
+          className="pointer-events-auto w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700 hover:border-amber-400 hover:bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center shadow-2xl transition-all cursor-pointer hover:scale-105 active:scale-95"
+          aria-label="Close image lightbox"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Prev & Next Arrow Buttons */}
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          isRtl ? handleNext() : handlePrev();
+        }}
+        className="absolute left-3 sm:left-6 z-30 p-3 rounded-full bg-slate-900/80 border border-slate-700/80 hover:border-amber-400 text-slate-300 hover:text-white hover:bg-slate-800 transition-all cursor-pointer hover:scale-110 shadow-2xl"
+        aria-label="Previous image"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          isRtl ? handlePrev() : handleNext();
+        }}
+        className="absolute right-3 sm:right-6 z-30 p-3 rounded-full bg-slate-900/80 border border-slate-700/80 hover:border-amber-400 text-slate-300 hover:text-white hover:bg-slate-800 transition-all cursor-pointer hover:scale-110 shadow-2xl"
+        aria-label="Next image"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      {/* Main Image Stage */}
+      <div
+        className="relative w-full max-w-5xl h-[85vh] flex flex-col items-center justify-center animate-[scaleIn_0.25s_ease-out_both]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="relative w-full flex-1 max-h-[66vh] flex items-center justify-center rounded-2xl overflow-hidden border border-amber-500/20 bg-slate-950/90 shadow-[0_25px_60px_rgba(0,0,0,0.85)]">
+          {/* Pulse skeleton behind active image */}
+          <div className="absolute inset-0 bg-slate-900/90 animate-pulse pointer-events-none" />
+
+          <Image
+            src={currentImgSrc}
+            alt={currentArt.title}
+            fill
+            sizes="(max-width: 1024px) 95vw, 1000px"
+            unoptimized
+            priority
+            className="object-contain p-2 sm:p-4 select-none relative z-1"
+          />
+        </div>
+
+        {/* Caption */}
+        <div className="mt-3 text-center px-4 max-w-2xl">
+          <h4 className="text-sm sm:text-base font-bold text-white leading-snug line-clamp-1">
+            {currentArt.title}
+          </h4>
+          <p className="text-xs text-slate-400 mt-0.5">
+            {currentArt.date} {currentArt.location ? `· ${currentArt.location}` : ""}
+          </p>
+        </div>
+
+        {/* Thumbnails Navigation Strip */}
+        <div className="mt-3 flex items-center gap-2 p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800/80 backdrop-blur-md overflow-x-auto max-w-full">
+          {articles.map((art, i) => {
+            const thumbSrc = IMAGE_MAP[art.id] || "/galerie/Evenement_Officiel.jpg";
+            const isActive = i === activeIdx;
+            return (
+              <button
+                key={art.id}
+                type="button"
+                onClick={() => setActiveIdx(i)}
+                aria-label={`View image for ${art.title}`}
+                className={`relative w-14 sm:w-16 h-10 sm:h-11 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${
+                  isActive
+                    ? "border-amber-400 scale-105 shadow-[0_0_12px_rgba(212,175,55,0.4)]"
+                    : "border-transparent opacity-50 hover:opacity-100 hover:border-slate-600"
+                }`}
+              >
+                <div className="absolute inset-0 bg-slate-800/80 animate-pulse pointer-events-none" />
+                <Image
+                  src={thumbSrc}
+                  alt={art.title}
+                  style={{ objectPosition: art.id === "plan-2022" ? "center 10%" : art.id === "metal-luxe-2023" ? "center 15%" : "center" }}
+                  fill
+                  sizes="64px"
+                  className="object-cover relative z-1"
+                />
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Main MediaCenter Component ─────────────────────────────────────────────
 export default function MediaCenter({ t = {}, lang }) {
   const [newsModalData, setNewsModalData] = useState(null);
+  const [activeImageIdx, setActiveImageIdx] = useState(null);
 
   const articles = t.media?.articles || [];
 
@@ -118,24 +278,40 @@ export default function MediaCenter({ t = {}, lang }) {
 
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.map((art) => (
+          {articles.map((art, idx) => (
             <div
               key={art.id}
               className="glass-panel glass-panel-hover rounded-2xl p-5 relative overflow-hidden flex flex-col justify-between group border-slate-800 hover:border-amber-500/50"
             >
               <div>
-                {/* Premium Image Header */}
-                <div className="relative w-full h-48 rounded-xl overflow-hidden mb-5 border border-slate-800/80 shadow-md">
+                {/* Premium Clickable Image with Skeleton (Imouzzer style) */}
+                <div
+                  onClick={() => setActiveImageIdx(idx)}
+                  className="relative w-full h-48 rounded-xl overflow-hidden mb-5 border border-slate-800/80 shadow-md cursor-zoom-in group/img"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setActiveImageIdx(idx);
+                    }
+                  }}
+                  aria-label={`Enlarge image: ${art.title}`}
+                >
+                  {/* Universal Skeleton Pulse Background */}
+                  <div className="absolute inset-0 bg-slate-900/90 animate-pulse pointer-events-none" />
+
                   <Image
                     src={IMAGE_MAP[art.id] || "/galerie/Evenement_Officiel.jpg"}
                     alt={art.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover/img:scale-105 transition-transform duration-500 relative z-1"
                     style={{ objectPosition: art.id === "plan-2022" ? "center 20%" : art.id === "metal-luxe-2023" ? "center 15%" : "center" }}
                   />
-                  {/* Subtle hover overlay */}
-                  <div className="absolute inset-0 bg-linear-to-t from-slate-950/45 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  {/* Subtle hover overlay (Imouzzer style) */}
+                  <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity z-2" />
                 </div>
 
                 {/* Meta Badges */}
@@ -177,7 +353,31 @@ export default function MediaCenter({ t = {}, lang }) {
           ))}
         </div>
       </div>
+
+      {/* Article Detail Modal */}
       <NewsDetailModal newsModalData={newsModalData} onClose={() => setNewsModalData(null)} t={t} lang={lang} />
+
+      {/* High-End Image Lightbox Modal */}
+      {activeImageIdx !== null && (
+        <MediaImageModal
+          activeIdx={activeImageIdx}
+          setActiveIdx={setActiveImageIdx}
+          articles={articles}
+          onClose={() => setActiveImageIdx(null)}
+          lang={lang}
+        />
+      )}
+
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes scaleIn {
+          from { transform: scale(0.96); opacity: 0; }
+          to   { transform: scale(1); opacity: 1; }
+        }
+      `}</style>
     </section>
   );
 }

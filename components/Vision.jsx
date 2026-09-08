@@ -128,13 +128,14 @@ export default function Vision({ t = {}, lang }) {
             : "bg-linear-to-r from-emerald-950/50 via-[#070c1a] to-amber-950/40 lg:text-left"
         }`}>
           <div className="flex flex-col sm:flex-row items-center gap-6">
-            <div className="relative w-28 h-28 rounded-2xl overflow-hidden border border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.2)] shrink-0">
+            <div className="relative w-28 h-28 rounded-2xl overflow-hidden border border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.2)] shrink-0 bg-slate-950">
+              <div className="absolute inset-0 bg-slate-900/90 animate-pulse pointer-events-none" />
               <Image
                 src="/galerie/Portrait_Officiel.jpg"
                 alt="Mustafa Lakhsem Mayor"
                 width={112}
                 height={112}
-                className={`w-full h-full object-cover object-top ${isRtl ? "scale-x-[-1]" : ""}`}
+                className={`w-full h-full object-cover object-top relative z-1 ${isRtl ? "scale-x-[-1]" : ""}`}
               />
             </div>
             <div>

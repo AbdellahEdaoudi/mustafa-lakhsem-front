@@ -56,12 +56,13 @@ export default function Foundations({ t = {}, lang }) {
                   title="Click to view large logo"
                   aria-label="View Lakhsem Foundation Logo"
                 >
+                  <div className="absolute inset-0 bg-slate-200 animate-pulse pointer-events-none" />
                   <Image
                     src="/foundation/mlf.png"
                     alt={lakhsem.name || "Lakhsem Foundation"}
                     width={80}
                     height={56}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain relative z-1"
                   />
                 </button>
                 <div>
@@ -106,12 +107,13 @@ export default function Foundations({ t = {}, lang }) {
                   title="Click to view large logo"
                   aria-label="View MDM Foundation Logo"
                 >
+                  <div className="absolute inset-0 bg-slate-200 animate-pulse pointer-events-none" />
                   <Image
                     src="/foundation/mdmpds.png"
                     alt={mdm.name || "MDM Foundation"}
                     width={80}
                     height={56}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain relative z-1"
                   />
                 </button>
                 <div>
@@ -181,13 +183,15 @@ export default function Foundations({ t = {}, lang }) {
           >
             {/* Logo Display Box */}
             <div className="relative w-full aspect-16/10 max-h-[60vh] flex items-center justify-center bg-linear-to-b from-white via-slate-50 to-slate-100 rounded-3xl overflow-hidden border border-amber-500/20 shadow-[0_25px_60px_rgba(0,0,0,0.8)] p-8 sm:p-12">
+              <div className="absolute inset-0 bg-slate-200 animate-pulse pointer-events-none" />
               <Image
                 src={activeImage}
                 alt="Enlarged Foundation Logo"
                 fill
+                sizes="(max-width: 768px) 90vw, 700px"
                 unoptimized
                 priority
-                className="object-contain p-6 sm:p-8 select-none drop-shadow-md"
+                className="object-contain p-6 sm:p-8 select-none drop-shadow-md relative z-1"
               />
             </div>
 

@@ -25,12 +25,21 @@ export default function Hero({ t = {}, lang }) {
     "/hero/hero4.jpg",
   ];
 
+  const [loadedImages, setLoadedImages] = useState([0]);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveRoleIdx((prev) => (prev + 1) % roles.length);
-    }, 1900);
+    }, 2500);
     return () => clearInterval(timer);
   }, [roles.length]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoadedImages([0, 1, 2, 3]);
+    }, 2000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   useEffect(() => {
     const imgTimer = setInterval(() => {
@@ -63,9 +72,15 @@ export default function Hero({ t = {}, lang }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 relative z-10">
 
         {/* Right Column on desktop, shown FIRST on mobile: Image */}
-        <div className="order-1 lg:order-2 w-full lg:w-1/2 h-70 sm:h-100 lg:h-137.5 relative rounded-4xl overflow-hidden border border-amber-500/20 shadow-[0_0_30px_rgba(212,175,55,0.15)] shrink-0">
+        <div className="order-1 lg:order-2 w-full lg:w-1/2 h-70 sm:h-100 lg:h-137.5 relative rounded-4xl overflow-hidden border border-amber-500/20 shadow-[0_0_30px_rgba(212,175,55,0.15)] shrink-0 bg-slate-950">
+          {/* Universal Loading Skeleton Placeholder */}
+          <div className="absolute inset-0 bg-slate-900/90 animate-pulse pointer-events-none" />
+
           {heroImages.map((src, idx) => {
             const isFirst = idx === 0;
+            // Only mount first image initially; mount others after initial load
+            if (!isFirst && !loadedImages.includes(idx)) return null;
+
             return (
               <div
                 key={src}
@@ -80,7 +95,7 @@ export default function Hero({ t = {}, lang }) {
                   sizes="(max-width: 640px) 92vw, (max-width: 1024px) 85vw, 550px"
                   className="object-cover object-center lg:object-top"
                   priority={isFirst}
-                  loading={isFirst ? "eager" : "lazy"}
+                  loading="eager"
                   fetchPriority={isFirst ? "high" : "auto"}
                   quality={80}
                 />
@@ -95,7 +110,7 @@ export default function Hero({ t = {}, lang }) {
         <div className="order-2 lg:order-1 w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-start">
 
           <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-amber-500/30 bg-[#040711]/80 backdrop-blur-md mb-5 shadow-sm">
-            <span className="text-[10px] sm:text-xs font-bold tracking-[0.15em] text-amber-300/90 uppercase">
+            <span className={`font-bold text-amber-300/90 uppercase ${lang === "ar" ? "text-sm sm:text-base tracking-normal" : "text-[10px] sm:text-xs tracking-[0.15em]"}`}>
               {badgeText}
             </span>
           </div>

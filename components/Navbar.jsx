@@ -76,11 +76,11 @@ export default function Navbar({ t = {}, lang }) {
 
   const languages = [
     { code: "en", label: "English", countryCode: "gb" },
-    { code: "de", label: "Deutsch", countryCode: "de" },
-    { code: "ar", label: "العربية", countryCode: "ma" },
     { code: "fr", label: "Français", countryCode: "fr" },
-    { code: "nl", label: "Nederlands", countryCode: "nl" },
+    { code: "ar", label: "العربية", countryCode: "ma" },
+    { code: "de", label: "Deutsch", countryCode: "de" },
     { code: "es", label: "Español", countryCode: "es" },
+    { code: "nl", label: "Nederlands", countryCode: "nl" },
     { code: "it", label: "Italiano", countryCode: "it" },
   ];
 
@@ -100,6 +100,9 @@ export default function Navbar({ t = {}, lang }) {
           {/* Brand */}
           <Link
             href={`/${lang}`}
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             className="flex items-center gap-3 group transition-transform duration-300 hover:scale-105 cursor-pointer"
           >
             {/* Logo frame — gold ring square */}
@@ -112,7 +115,7 @@ export default function Navbar({ t = {}, lang }) {
                   boxShadow: "0 0 12px rgba(212,175,55,0.35)",
                 }}
               >
-                <div className="w-full h-full rounded-md bg-[#060913] overflow-hidden flex items-center justify-center">
+                <div className="relative w-full h-full rounded-md bg-[#060913] overflow-hidden flex items-center justify-center">
                   <Image
                     src="/mds-logo.png"
                     alt={t?.nav?.logoAlt || "Democratic and Social Movement (MDS) Logo - Mustafa Lakhsem"}
@@ -166,7 +169,7 @@ export default function Navbar({ t = {}, lang }) {
                 className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-amber-500/30 bg-slate-900/70 hover:border-amber-400/60 hover:bg-slate-800/80 transition-all duration-200 cursor-pointer"
                 aria-label="Select Language"
               >
-                <span className="shrink-0 rounded-sm overflow-hidden flex items-center justify-center shadow-xs">
+                <span className="shrink-0 rounded-xs overflow-hidden flex items-center justify-center shadow-xs">
                   <span className={`fi fi-${currentLang.countryCode || currentLang.code} text-sm leading-none`}></span>
                 </span>
                 <span className="text-[11px] font-bold uppercase tracking-widest text-slate-200 group-hover:text-amber-300 transition-colors leading-none">
@@ -208,8 +211,7 @@ export default function Navbar({ t = {}, lang }) {
                           if (!isActive) e.currentTarget.style.background = "transparent";
                         }}
                       >
-                        {/* Flag + Label */}
-                        <span className="shrink-0 rounded-sm overflow-hidden flex items-center justify-center shadow-xs">
+                        <span className="shrink-0 rounded-xs overflow-hidden flex items-center justify-center shadow-xs">
                           <span className={`fi fi-${l.countryCode || l.code} text-sm leading-none`}></span>
                         </span>
                         <span
@@ -265,7 +267,14 @@ export default function Navbar({ t = {}, lang }) {
           >
             {/* Panel header */}
             <div className="flex items-center justify-between px-6 py-6 border-b border-slate-800/70">
-              <div className="flex items-center gap-3">
+              <Link
+                href={`/${lang}`}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="flex items-center gap-3 cursor-pointer"
+              >
                 {/* Logo frame — gold ring square identical to desktop */}
                 <div className="relative shrink-0" style={{ width: 46, height: 46 }}>
                   <div
@@ -276,7 +285,7 @@ export default function Navbar({ t = {}, lang }) {
                       boxShadow: "0 0 12px rgba(212,175,55,0.35)",
                     }}
                   >
-                    <div className="w-full h-full rounded-md bg-[#060913] overflow-hidden flex items-center justify-center">
+                    <div className="relative w-full h-full rounded-md bg-[#060913] overflow-hidden flex items-center justify-center">
                       <Image
                         src="/mds-logo.png"
                         alt={t?.nav?.logoAlt || "Democratic and Social Movement (MDS) Logo - Mustafa Lakhsem"}
@@ -303,7 +312,7 @@ export default function Navbar({ t = {}, lang }) {
                     {t?.nav?.role || "World Champion & Mayor"}
                   </span>
                 </div>
-              </div>
+              </Link>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}

@@ -116,6 +116,22 @@ export function ChevronDown(p) {
   );
 }
 
+export function ChevronLeft(p) {
+  return (
+    <Icon {...p}>
+      <path d="m15 18-6-6 6-6" />
+    </Icon>
+  );
+}
+
+export function ChevronRight(p) {
+  return (
+    <Icon {...p}>
+      <path d="m9 18 6-6-6-6" />
+    </Icon>
+  );
+}
+
 export function ArrowRight(p) {
   return (
     <Icon {...p}>

@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import {
-  Trees, Navigation, Sparkles, Droplets, Building2, Cpu, Compass, X,
+  Trees, Navigation, Sparkles, Droplets, Building2, Cpu, Compass, X, ChevronLeft, ChevronRight,
 } from "@/components/lucide-react";
 
 export default function ImouzzerSpotlight({ t = {}, lang }) {
   const [activeImage, setActiveImage] = useState(null);
+  const [loaded, setLoaded] = useState({ img1: false, img2: false });
 
   const featureIcons = [
     Trees,
@@ -41,6 +42,18 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
       setActiveImage(galleryImages[prev].src);
     }
   };
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!activeImage) return;
+    const handleKey = (e) => {
+      if (e.key === "ArrowRight") showNext();
+      else if (e.key === "ArrowLeft") showPrev();
+      else if (e.key === "Escape") setActiveImage(null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [activeImage, currentIdx]);
 
   return (
     <section id="imouzzer" className="py-20 relative overflow-hidden bg-[#090e1e]">
@@ -113,31 +126,37 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
               {/* Image 1: Background Layer (Offset Top/Left) */}
               <div
                 onClick={() => setActiveImage("/Imouzzer/image1.jpg")}
-                className="absolute top-0 left-0 w-3/4 aspect-4/5 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl cursor-zoom-in group transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 z-10"
+                className="absolute top-0 left-0 w-3/4 aspect-4/5 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl cursor-zoom-in group transform-gpu -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 z-10 bg-slate-950"
               >
+                <div className={`absolute inset-0 bg-slate-800 animate-pulse pointer-events-none transition-opacity duration-500 ${loaded.img1 ? "opacity-0" : "opacity-100"}`} />
                 <Image
                   src="/Imouzzer/image1.jpg"
                   alt="Imouzzer Landscape 1"
                   fill
+                  quality={90}
                   sizes="(max-width: 768px) 75vw, (max-width: 1200px) 40vw, 350px"
-                  className="object-cover"
+                  className="object-cover relative z-1"
+                  onLoad={() => setLoaded((p) => ({ ...p, img1: true }))}
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-2" />
               </div>
 
               {/* Image 2: Foreground Layer (Offset Bottom/Right) */}
               <div
                 onClick={() => setActiveImage("/Imouzzer/image2.jpg")}
-                className="absolute bottom-0 right-0 w-3/4 aspect-4/5 rounded-2xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl cursor-zoom-in group transform rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-500 z-20"
+                className="absolute bottom-0 right-0 w-3/4 aspect-4/5 rounded-2xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl cursor-zoom-in group transform-gpu rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-500 z-20 bg-slate-950"
               >
+                <div className={`absolute inset-0 bg-slate-800 animate-pulse pointer-events-none transition-opacity duration-500 ${loaded.img2 ? "opacity-0" : "opacity-100"}`} />
                 <Image
                   src="/Imouzzer/image2.jpg"
                   alt="Imouzzer Landscape 2"
                   fill
+                  quality={90}
                   sizes="(max-width: 768px) 75vw, (max-width: 1200px) 40vw, 350px"
-                  className="object-cover"
+                  className="object-cover relative z-1"
+                  onLoad={() => setLoaded((p) => ({ ...p, img2: true }))}
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-2" />
               </div>
 
             </div>
@@ -171,6 +190,24 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
             </button>
           </div>
 
+          {/* Prev Button */}
+          <button
+            onClick={(e) => { e.stopPropagation(); showPrev(); }}
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/80 border border-slate-700/80 hover:border-emerald-500/50 hover:bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center shadow-2xl transition-all cursor-pointer hover:scale-105 active:scale-95"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Next Button */}
+          <button
+            onClick={(e) => { e.stopPropagation(); showNext(); }}
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/80 border border-slate-700/80 hover:border-emerald-500/50 hover:bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center shadow-2xl transition-all cursor-pointer hover:scale-105 active:scale-95"
+            aria-label="Next image"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
           {/* Main Modal Wrapper */}
           <div
             className="relative w-full max-w-5xl h-[85vh] flex flex-col items-center justify-center animate-[scaleIn_0.25s_ease-out_both]"
@@ -178,13 +215,15 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
           >
             {/* Image Stage */}
             <div className="relative w-full flex-1 max-h-[72vh] flex items-center justify-center rounded-2xl overflow-hidden border border-slate-800/80 bg-slate-950/90 shadow-[0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-sm">
+              <div className="absolute inset-0 bg-slate-900/90 animate-pulse pointer-events-none" />
               <Image
                 src={activeImage}
                 alt={galleryImages[currentIdx]?.alt || "Imouzzer Spot"}
                 fill
+                sizes="(max-width: 1024px) 95vw, 1000px"
                 unoptimized
                 priority
-                className="object-contain p-2 sm:p-4 select-none"
+                className="object-contain p-2 sm:p-4 select-none relative z-1"
               />
             </div>
 
@@ -200,11 +239,13 @@ export default function ImouzzerSpotlight({ t = {}, lang }) {
                       : "border-transparent opacity-50 hover:opacity-100 hover:border-slate-600"
                   }`}
                 >
+                  <div className="absolute inset-0 bg-slate-800 animate-pulse pointer-events-none" />
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-cover"
+                    sizes="64px"
+                    className="object-cover relative z-1"
                   />
                 </button>
               ))}
