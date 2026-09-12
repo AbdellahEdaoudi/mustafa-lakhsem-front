@@ -38,34 +38,8 @@ export default function AdminDashboard() {
   const [subscribersTotalPages, setSubscribersTotalPages] = useState(1);
   const [contactsTotal, setContactsTotal] = useState(0);
   const [subscribersTotal, setSubscribersTotal] = useState(0);
-
-  // Helper to translate inquiry category type
-  const getCategoryLabel = (type) => {
-    if (!type) return "";
-    const str = type.toLowerCase();
-    if (str.includes("general") || str.includes("عام") || str.includes("générale") || str.includes("allgemeine") || str.includes("algemene")) {
-      return t?.dashboard?.categories?.general || type;
-    }
-    if (str.includes("press") || str.includes("presse") || str.includes("صحف") || str.includes("إعلام") || str.includes("médias") || str.includes("medien") || str.includes("medios")) {
-      return t?.dashboard?.categories?.press || type;
-    }
-    if (str.includes("lakhsem") || str.includes("لخصم")) {
-      return t?.dashboard?.categories?.lakhsem_foundation || type;
-    }
-    if (str.includes("mdm") || str.includes("مغاربة العالم")) {
-      return t?.dashboard?.categories?.mdm_foundation || type;
-    }
-    if (str.includes("mairie") || str.includes("imouzzer") || str.includes("جماعة") || str.includes("إيموزار") || str.includes("bürgermeister") || str.includes("gemeente") || str.includes("alcaldía")) {
-      return t?.dashboard?.categories?.municipality || type;
-    }
-    if (str.includes("invitation") || str.includes("دعوة") || str.includes("تظاهرة") || str.includes("événement") || str.includes("veranstaltung") || str.includes("evenement") || str.includes("evento")) {
-      return t?.dashboard?.categories?.invitation || type;
-    }
-    if (str.includes("cooperation") || str.includes("coopération") || str.includes("تعاون") || str.includes("kooperation") || str.includes("samenwerking") || str.includes("cooperación")) {
-      return t?.dashboard?.categories?.cooperation || type;
-    }
-    return type;
-  };
+  const [contactsUnreadTotal, setContactsUnreadTotal] = useState(0);
+  const [contactsStarredTotal, setContactsStarredTotal] = useState(0);
 
   // Helper to get locale string based on active language
   const getLocale = (l) => {
@@ -85,10 +59,12 @@ export default function AdminDashboard() {
     setLang(newLang);
     if (typeof window !== "undefined") {
       localStorage.setItem("admin_lang", newLang);
-      document.title = newLang === "ar" ? "مصطفى لخصم | لوحة التحكم" : "Mustafa Lakhsem | Admin";
     }
     const dict = await getTranslation(newLang);
     setT(dict);
+    if (typeof document !== "undefined") {
+      document.title = newLang === "ar" ? "مصطفى لخصم | لوحة التحكم" : `Mustafa Lakhsem | ${dict?.dashboard?.portalTitle || "Admin"}`;
+    }
   };
 
   const handleApiError = async (
@@ -142,28 +118,44 @@ export default function AdminDashboard() {
     };
   };
 
+  const fetchContacts = async (cPage = contactsPage) => {
+    try {
+      const res = await axios.get(`/api/admin/contacts?page=${cPage}&limit=20`, getAuthConfig());
+      setContacts(res.data.contacts || []);
+      setContactsTotal(res.data.total || 0);
+      setContactsTotalPages(res.data.totalPages || 1);
+      setContactsUnreadTotal(res.data.unreadCount ?? 0);
+      setContactsStarredTotal(res.data.starredCount ?? 0);
+    } catch (err) {
+      await handleApiError(err, () => fetchContacts(cPage), t?.dashboard?.toasts?.dashboardLoadFailed || "Failed to load contacts.");
+      throw err;
+    }
+  };
+
+  const fetchSubscribers = async (sPage = subscribersPage) => {
+    try {
+      const res = await axios.get(`/api/admin/subscribers?page=${sPage}&limit=20`, getAuthConfig());
+      setSubscribers(res.data.subscribers || []);
+      setSubscribersTotal(res.data.total || 0);
+      setSubscribersTotalPages(res.data.totalPages || 1);
+    } catch (err) {
+      await handleApiError(err, () => fetchSubscribers(sPage), t?.dashboard?.toasts?.dashboardLoadFailed || "Failed to load subscribers.");
+      throw err;
+    }
+  };
+
   const fetchData = async (cPage = contactsPage, sPage = subscribersPage) => {
     setLoading(true);
     setError("");
     try {
-      const config = getAuthConfig();
-      const [contactsRes, subscribersRes] = await Promise.all([
-        axios.get(`/api/admin/contacts?page=${cPage}&limit=20`, config),
-        axios.get(`/api/admin/subscribers?page=${sPage}&limit=20`, config),
+      await Promise.all([
+        fetchContacts(cPage),
+        fetchSubscribers(sPage),
       ]);
-
-      setContacts(contactsRes.data.contacts || []);
-      setContactsTotal(contactsRes.data.total || 0);
-      setContactsTotalPages(contactsRes.data.totalPages || 1);
-
-      setSubscribers(subscribersRes.data.subscribers || []);
-      setSubscribersTotal(subscribersRes.data.total || 0);
-      setSubscribersTotalPages(subscribersRes.data.totalPages || 1);
     } catch (err) {
       const message =
         err.response?.data?.message || err.message || t?.dashboard?.toasts?.dashboardLoadFailed || "Failed to load dashboard data.";
       setError(message);
-      await handleApiError(err, () => fetchData(), t?.dashboard?.toasts?.dashboardLoadFailed || "Failed to load dashboard data.");
     } finally {
       setLoading(false);
     }
@@ -176,7 +168,7 @@ export default function AdminDashboard() {
     getTranslation(saved).then((dict) => {
       setT(dict);
       if (typeof document !== "undefined") {
-        document.title = saved === "ar" ? "مصطفى لخصم | لوحة التحكم" : "Mustafa Lakhsem | Admin";
+        document.title = saved === "ar" ? "مصطفى لخصم | لوحة التحكم" : `Mustafa Lakhsem | ${dict?.dashboard?.portalTitle || "Admin"}`;
       }
     });
     fetchData();
@@ -217,6 +209,8 @@ export default function AdminDashboard() {
       if (selectedContact && selectedContact._id === contactId) {
         setSelectedContact(updated);
       }
+      // Update starred count locally
+      setContactsStarredTotal((prev) => updated.isStarred ? prev + 1 : Math.max(0, prev - 1));
       toast.success(
         updated.isStarred
           ? (t?.dashboard?.toasts?.markedStarred || "Marked as starred")
@@ -249,6 +243,8 @@ export default function AdminDashboard() {
       if (selectedContact && selectedContact._id === contactId) {
         setSelectedContact(updated);
       }
+      // Update unread count locally
+      setContactsUnreadTotal((prev) => updated.isRead ? Math.max(0, prev - 1) : prev + 1);
       toast.success(
         updated.isRead
           ? (t?.dashboard?.toasts?.markedRead || "Marked as read")
@@ -280,6 +276,8 @@ export default function AdminDashboard() {
           prev.map((c) => (c._id === contact._id ? updated : c))
         );
         setSelectedContact(updated);
+        // Decrement unread count since we just marked it as read
+        setContactsUnreadTotal((prev) => Math.max(0, prev - 1));
       } catch (err) {
         console.error("Auto mark as read error:", err);
       }
@@ -289,6 +287,8 @@ export default function AdminDashboard() {
   const confirmDeleteContact = async () => {
     if (!contactToDelete) return;
     const targetId = contactToDelete._id;
+    const wasUnread = !contactToDelete.isRead;
+    const wasStarred = contactToDelete.isStarred;
     setDeleting(true);
 
     try {
@@ -301,6 +301,10 @@ export default function AdminDashboard() {
       if (selectedContact && selectedContact._id === targetId) {
         setSelectedContact(null);
       }
+      // Update counts locally after deletion
+      setContactsTotal((prev) => Math.max(0, prev - 1));
+      if (wasUnread) setContactsUnreadTotal((prev) => Math.max(0, prev - 1));
+      if (wasStarred) setContactsStarredTotal((prev) => Math.max(0, prev - 1));
       toast.success(t?.dashboard?.toasts?.messageDeleted || "Message deleted successfully");
       setContactToDelete(null);
     } catch (err) {
@@ -339,18 +343,15 @@ export default function AdminDashboard() {
     }
   };
 
-  // Stats calculation
+  // Stats calculation — uses server-side counts for accuracy across all pages
   const stats = useMemo(() => {
-    const safeContacts = contacts || [];
-    const unreadCount = safeContacts.filter((c) => !c.isRead).length;
-    const starredCount = safeContacts.filter((c) => c.isStarred).length;
     return {
       totalContacts: contactsTotal,
-      unreadContacts: unreadCount,
-      starredContacts: starredCount,
+      unreadContacts: contactsUnreadTotal,
+      starredContacts: contactsStarredTotal,
       totalSubscribers: subscribersTotal,
     };
-  }, [contacts, subscribers, contactsTotal, subscribersTotal]);
+  }, [contactsTotal, contactsUnreadTotal, contactsStarredTotal, subscribersTotal]);
 
   // Filter & Search contacts
   const filteredContacts = useMemo(() => {
@@ -365,12 +366,12 @@ export default function AdminDashboard() {
         const matchName = c.name?.toLowerCase().includes(q);
         const matchEmail = c.email?.toLowerCase().includes(q);
         const matchMsg = c.message?.toLowerCase().includes(q);
-        const matchType = c.type?.toLowerCase().includes(q) || getCategoryLabel(c.type)?.toLowerCase().includes(q);
+        const matchType = c.type?.toLowerCase().includes(q);
         return matchName || matchEmail || matchMsg || matchType;
       }
       return true;
     });
-  }, [contacts, filter, searchQuery, t]);
+  }, [contacts, filter, searchQuery]);
 
   // Filter & Search subscribers
   const filteredSubscribers = useMemo(() => {
@@ -609,7 +610,7 @@ export default function AdminDashboard() {
                         onClick={() => {
                           const newPage = contactsPage - 1;
                           setContactsPage(newPage);
-                          fetchData(newPage, subscribersPage);
+                          fetchContacts(newPage);
                         }}
                         className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                       >
@@ -623,7 +624,7 @@ export default function AdminDashboard() {
                         onClick={() => {
                           const newPage = contactsPage + 1;
                           setContactsPage(newPage);
-                          fetchData(newPage, subscribersPage);
+                          fetchContacts(newPage);
                         }}
                         className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                       >
@@ -650,48 +651,50 @@ export default function AdminDashboard() {
                   </div>
                 ) : (
                   <div>
-                    {/* Mobile View: Modern Cards (Visible on mobile/tablet screens < md) */}
-                    <div className="grid grid-cols-1 gap-3 md:hidden">
+                    {/* Mobile View: Modern Compact Cards (Visible on mobile screens < md) */}
+                    <div className="grid grid-cols-1 gap-2.5 md:hidden">
                       {filteredContacts.map((c, index) => (
                         <div
                           key={c._id}
                           onClick={() => openContact(c)}
-                          className={`p-4 rounded-2xl border transition-all cursor-pointer relative flex flex-col gap-2.5 ${!c.isRead
-                            ? "bg-slate-900/90 border-amber-500/40 shadow-lg shadow-amber-500/5"
-                            : "bg-slate-950/50 border-slate-800/80 hover:border-slate-700"
+                          className={`p-3 sm:p-3.5 rounded-xl border transition-all cursor-pointer relative flex flex-col gap-1.5 ${!c.isRead
+                            ? "bg-slate-900/95 border-amber-500/40 shadow-sm shadow-amber-500/5"
+                            : "bg-slate-950/40 border-slate-800/70 hover:border-slate-700"
                             }`}
                         >
-                          {/* Card Header: Sender Info + NEW Badge + Star */}
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="flex items-center gap-2 min-w-0">
-                              <span className={`text-sm font-bold truncate ${!c.isRead ? "text-white" : "text-slate-200"}`}>
+                          {/* Top Row: Unread Indicator + Name + Subject + Date + Actions */}
+                          <div className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-2 min-w-0 flex-1">
+                              {!c.isRead ? (
+                                <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0 shadow-xs shadow-amber-400" />
+                              ) : (
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-700 shrink-0" />
+                              )}
+                              <span className={`text-xs sm:text-sm truncate ${!c.isRead ? "font-bold text-white" : "font-medium text-slate-200"}`}>
                                 {c.name}
                               </span>
-                              {!c.isRead && (
-                                <span className="inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-extrabold uppercase tracking-wider bg-amber-500 text-black shadow-xs shrink-0">
-                                  {t?.dashboard?.actions?.newBadge || (lang === "ar" ? "جديد" : "NEW")}
+                              {c.type && (
+                                <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-amber-400 border border-slate-700/50 truncate max-w-28 shrink-0">
+                                  {c.type}
                                 </span>
                               )}
                             </div>
+
                             <div className="flex items-center gap-1.5 shrink-0" onClick={(e) => e.stopPropagation()}>
-                              <button
-                                onClick={() => openContact(c)}
-                                title={t?.dashboard?.actions?.viewDetails || (lang === "ar" ? "عرض التفاصيل" : "View Details")}
-                                className="p-1.5 rounded-lg border border-slate-700 hover:border-amber-500/40 text-slate-300 hover:text-amber-400 bg-slate-900 transition-all cursor-pointer"
-                              >
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                </svg>
-                              </button>
+                              <span className="text-[10px] sm:text-[11px] text-slate-500 whitespace-nowrap">
+                                {new Date(c.createdAt).toLocaleDateString(getLocale(lang), {
+                                  month: "short",
+                                  day: "numeric",
+                                })}
+                              </span>
                               <button
                                 onClick={() => toggleStar(c._id)}
                                 disabled={starringId === c._id}
                                 title={c.isStarred ? (t?.dashboard?.actions?.unstar || "Unstar") : (t?.dashboard?.actions?.star || "Star")}
-                                className="p-1 focus:outline-none cursor-pointer disabled:opacity-50"
+                                className="p-1 text-slate-400 hover:text-amber-400 focus:outline-none cursor-pointer disabled:opacity-50"
                               >
                                 {starringId === c._id ? (
-                                  <Loader2 className="w-4 h-4 animate-spin text-amber-400" />
+                                  <Loader2 className="w-3.5 h-3.5 animate-spin text-amber-400" />
                                 ) : (
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -699,7 +702,7 @@ export default function AdminDashboard() {
                                     fill={c.isStarred ? "#f59e0b" : "none"}
                                     stroke={c.isStarred ? "#f59e0b" : "#64748b"}
                                     strokeWidth="2"
-                                    className="w-4 h-4"
+                                    className="w-3.5 h-3.5"
                                   >
                                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                   </svg>
@@ -709,27 +712,20 @@ export default function AdminDashboard() {
                                 onClick={() => toggleRead(c._id)}
                                 disabled={readingId === c._id}
                                 title={c.isRead ? (t?.dashboard?.actions?.markAsUnread || "Mark as Unread") : (t?.dashboard?.actions?.markAsRead || "Mark as Read")}
-                                className={`p-1.5 rounded-lg border transition-all cursor-pointer disabled:opacity-50 ${c.isRead
-                                  ? "border-slate-800 text-slate-400 bg-slate-900/60"
-                                  : "border-amber-500/30 text-amber-400 bg-amber-500/10"
-                                  }`}
+                                className="p-1 text-slate-500 hover:text-amber-400 focus:outline-none cursor-pointer disabled:opacity-50"
                               >
                                 {readingId === c._id ? (
                                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                                ) : c.isRead ? (
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                                  </svg>
                                 ) : (
                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" d={c.isRead ? "M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5z" : "M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"} />
                                   </svg>
                                 )}
                               </button>
                               <button
                                 onClick={() => setContactToDelete(c)}
                                 title={t?.dashboard?.actions?.deleteMessage || "Delete Message"}
-                                className="p-1.5 rounded-lg border border-red-500/20 text-red-400 bg-red-500/10 cursor-pointer"
+                                className="p-1 text-slate-500 hover:text-red-400 focus:outline-none cursor-pointer"
                               >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
                                   <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
@@ -738,41 +734,22 @@ export default function AdminDashboard() {
                             </div>
                           </div>
 
-                          {/* Email */}
-                          <span className="text-xs text-slate-400 font-mono truncate">{c.email}</span>
+                          {/* Message Snippet */}
+                          <p
+                            dir={isArabic(c.message) ? "rtl" : "ltr"}
+                            className="text-xs text-slate-300 line-clamp-1 leading-relaxed"
+                          >
+                            {c.message}
+                          </p>
 
-                          {/* Message Snippet with Tap Hint positioned directly above it */}
-                          <div className="relative">
-                            {index === 0 && !hasInteracted && (
-                              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1 rounded-full bg-linear-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 text-[11px] font-extrabold shadow-lg shadow-amber-500/40 pointer-events-none animate-bounce border border-white/30 whitespace-nowrap">
-                                <span className="relative flex h-2 w-2">
-                                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-90"></span>
-                                  <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-950"></span>
-                                </span>
-                                <span>{t?.dashboard?.actions?.tapToRead || (lang === "ar" ? "اضغط هنا لقراءة الرسالة" : "Tap to open & read")}</span>
-                                <span className="text-xs">👇</span>
-                              </div>
+                          {/* Footer: Email + NEW label */}
+                          <div className="flex items-center justify-between text-[11px] text-slate-500 pt-0.5">
+                            <span className="truncate max-w-[70%] font-mono text-[10px] text-slate-400">{c.email}</span>
+                            {!c.isRead && (
+                              <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                                {t?.dashboard?.actions?.newBadge || (lang === "ar" ? "جديد" : "NEW")}
+                              </span>
                             )}
-                            <p
-                              dir={isArabic(c.message) ? "rtl" : "ltr"}
-                              className="text-xs text-slate-300 line-clamp-2 leading-relaxed bg-slate-950/40 p-2.5 rounded-xl border border-slate-800/60"
-                            >
-                              {c.message}
-                            </p>
-                          </div>
-
-                          {/* Bottom Row: Category + Date */}
-                          <div className="flex items-center justify-between pt-1 border-t border-slate-800/50 text-[11px] text-slate-400">
-                            <span className="px-2 py-0.5 rounded-md bg-slate-800/80 text-slate-300 font-medium">
-                              {getCategoryLabel(c.type)}
-                            </span>
-                            <span>
-                              {new Date(c.createdAt).toLocaleDateString(getLocale(lang), {
-                                month: "short",
-                                day: "numeric",
-                                year: "numeric",
-                              })}
-                            </span>
                           </div>
                         </div>
                       ))}
@@ -845,9 +822,9 @@ export default function AdminDashboard() {
                                   </div>
                                 </td>
 
-                                <td className="py-3.5 sm:py-4 px-4 sm:px-5 whitespace-nowrap">
-                                  <span className="inline-block px-2.5 py-1 text-[11px] font-semibold rounded-md bg-slate-800/80 text-slate-300 border border-slate-700/60">
-                                    {getCategoryLabel(c.type)}
+                                <td className="py-3.5 sm:py-4 px-4 sm:px-5">
+                                  <span className="inline-block px-2.5 py-1 text-[11px] font-semibold rounded-md bg-slate-800/80 text-slate-300 border border-slate-700/60 max-w-44 truncate">
+                                    {c.type || t?.dashboard?.modal?.notAvailable || "N/A"}
                                   </span>
                                 </td>
 
@@ -912,7 +889,7 @@ export default function AdminDashboard() {
                                           <path
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                                            d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5z"
                                           />
                                         </svg>
                                       ) : (
@@ -927,7 +904,7 @@ export default function AdminDashboard() {
                                           <path
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5z"
+                                            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
                                           />
                                         </svg>
                                       )}
@@ -966,7 +943,7 @@ export default function AdminDashboard() {
                       onClick={() => {
                         const newPage = contactsPage - 1;
                         setContactsPage(newPage);
-                        fetchData(newPage, subscribersPage);
+                        fetchContacts(newPage);
                       }}
                       className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                     >
@@ -980,7 +957,7 @@ export default function AdminDashboard() {
                       onClick={() => {
                         const newPage = contactsPage + 1;
                         setContactsPage(newPage);
-                        fetchData(newPage, subscribersPage);
+                        fetchContacts(newPage);
                       }}
                       className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                     >
@@ -1005,7 +982,7 @@ export default function AdminDashboard() {
                         onClick={() => {
                           const newPage = subscribersPage - 1;
                           setSubscribersPage(newPage);
-                          fetchData(contactsPage, newPage);
+                          fetchSubscribers(newPage);
                         }}
                         className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                       >
@@ -1019,7 +996,7 @@ export default function AdminDashboard() {
                         onClick={() => {
                           const newPage = subscribersPage + 1;
                           setSubscribersPage(newPage);
-                          fetchData(contactsPage, newPage);
+                          fetchSubscribers(newPage);
                         }}
                         className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                       >
@@ -1197,8 +1174,8 @@ export default function AdminDashboard() {
                 </div>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <span className="px-2.5 py-1 text-[11px] font-medium rounded-full bg-slate-800 text-slate-300 border border-slate-700/60">
-                  {getCategoryLabel(selectedContact.type)}
+                <span className="px-2.5 py-1 text-[11px] font-medium rounded-full bg-slate-800 text-slate-300 border border-slate-700/60 max-w-44 sm:max-w-xs truncate">
+                  {selectedContact.type || t?.dashboard?.modal?.notAvailable || "N/A"}
                 </span>
                 <button
                   onClick={() => setSelectedContact(null)}
@@ -1262,12 +1239,6 @@ export default function AdminDashboard() {
                 <span>
                   {t?.dashboard?.modal?.received || "Received"}: {new Date(selectedContact.createdAt).toLocaleString(getLocale(lang))}
                 </span>
-                <span>
-                  {t?.dashboard?.modal?.gdprConsent || "GDPR Consent"}:{" "}
-                  {selectedContact.gdpr
-                    ? (t?.dashboard?.modal?.gdprAccepted || "✅ Accepted")
-                    : (t?.dashboard?.modal?.gdprDeclined || "❌ Declined")}
-                </span>
               </div>
             </div>
 
@@ -1319,11 +1290,11 @@ export default function AdminDashboard() {
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
                   ) : selectedContact.isRead ? (
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5z" />
                     </svg>
                   ) : (
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                     </svg>
                   )}
                   <span className="hidden xs:inline">

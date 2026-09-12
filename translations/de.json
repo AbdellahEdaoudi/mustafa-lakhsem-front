@@ -110,7 +110,9 @@
       {
         "year": "1972",
         "category": "Herkunft",
-        "type": ["origins"],
+        "type": [
+          "origins"
+        ],
         "title": "Geburt in Hanau, Deutschland",
         "desc": "Geboren am 19. September 1972 in Hanau (Deutschland) als Sohn einer Familie aus dem marokkanischen Mittleren Atlas mit tiefen Wurzeln in Marokko.",
         "tag": "Wurzeln & Herkunft"
@@ -118,7 +120,9 @@
       {
         "year": "1985 — 1990",
         "category": "Sport & Titel",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Einstieg in den Kampfsport",
         "desc": "Frühe Einführung in die Kampfkünste und Beginn eines Meisterweges. Deutscher Jugendmeister im Taekwondo (1986) — frühe Disziplin, die einen Champion formte.",
         "tag": "Fundament"
@@ -126,7 +130,9 @@
       {
         "year": "1988 — 1991",
         "category": "Sport & Titel",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Nationaler Aufstieg — Deutscher Meister",
         "desc": "Vierfacher Deutscher Meister im Kickboxen und Vollkontakt. Eine Erfolgsbilanz, die höchsten Respekt abverlangt.",
         "tag": "Nationale Titel"
@@ -134,7 +140,9 @@
       {
         "year": "1995 — 2005",
         "category": "Sport & Titel",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Europäische & Afrikanische Dominanz",
         "desc": "Dreifacher Europameister im Vollkontakt. Dreifacher Afrikameister im Vollkontakt. Afrikameister im Savate.",
         "tag": "Kontinentale Kronen"
@@ -142,7 +150,9 @@
       {
         "year": "2000 — 2010",
         "category": "Sport & Titel",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Weltmeistertitel & Krönung",
         "desc": "WAKO PRO Weltmeister. WKN Weltmeister. WKPL Weltmeister. Über 70 professionelle Siege.",
         "tag": "Weltmeistertitel"
@@ -150,7 +160,9 @@
       {
         "year": "2010",
         "category": "Sport & Titel",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Königliche Ehrung",
         "desc": "Ausgezeichnet von Seiner Majestät König Mohammed VI. mit dem Wissam des Nationalen Verdienstordens der Ausnahmekategorie.",
         "tag": "Königliche Medaille"
@@ -158,7 +170,9 @@
       {
         "year": "2015",
         "category": "Gemeinwesen & Stiftungen",
-        "type": ["civic"],
+        "type": [
+          "civic"
+        ],
         "title": "Gründung der Lakhsem-Stiftung",
         "desc": "Gründung der Lakhsem-Stiftung, die sich der Bildung, dem Jugendsport und der sozialen Entwicklung widmet.",
         "tag": "Humanitär"
@@ -166,7 +180,9 @@
       {
         "year": "2021",
         "category": "Gemeinwesen & Stiftungen",
-        "type": ["civic"],
+        "type": [
+          "civic"
+        ],
         "title": "Bürgermeister von Imouzzer-Kandar",
         "desc": "Bürgernahes, transparentes und entwicklungsorientiertes politisches Engagement als Bürgermeister von Imouzzer-Kandar.",
         "tag": "Öffentliches Amt"
@@ -174,7 +190,9 @@
       {
         "year": "2022 — Gegenwart",
         "category": "Diplomatie",
-        "type": ["diplomacy"],
+        "type": [
+          "diplomacy"
+        ],
         "title": "Diplomatie & Internationale Zusammenarbeit",
         "desc": "Präsidentschaft der Stiftung für Auslandsmarokkaner (MDM). Abkommen im Senegal. Smart-Cities-Foren weltweit.",
         "tag": "Globale Präsenz"
@@ -476,7 +494,13 @@
     "phoneLabel": "Telefon",
     "phoneVal": "+212 661 31 42 31",
     "socialLabel": "Soziale Netzwerke",
-    "socialNetworks": ["Facebook", "Instagram", "TikTok", "Twitter / X", "LinkedIn"],
+    "socialNetworks": [
+      "Facebook",
+      "Instagram",
+      "TikTok",
+      "Twitter / X",
+      "LinkedIn"
+    ],
     "messageSent": "Nachricht erfolgreich gesendet!",
     "messageFailed": "Fehler beim Senden der Nachricht.",
     "rateLimitExceeded": "Anfragelimit überschritten. Bitte versuchen Sie es später erneut.",
@@ -489,25 +513,17 @@
       "phonePlaceholder": "+212 6XX XXX XXX",
       "org": "Organisation / Medium / Institution",
       "orgPlaceholder": "Unternehmen, Medienunternehmen oder Behörde",
-      "type": "Art der Anfrage",
-      "types": [
-        "Allgemeine Anfrage",
-        "Presse- / Medienanfrage",
-        "Partnerschaft Lakhsem-Stiftung",
-        "Partnerschaft MDM-Stiftung",
-        "Bürgermeisteramt Imouzzer-Kandar",
-        "Einladung / Veranstaltung",
-        "Internationale Kooperation"
-      ],
+      "type": "Betreff",
+      "typePlaceholder": "Betreff Ihrer Nachricht...",
       "msg": "Ihre Nachricht",
       "msgPlaceholder": "Bitte beschreiben Sie Ihr Anliegen detailliert...",
-      "gdpr": "Ich akzeptiere die Datenschutzbestimmungen (DSGVO) und stimme der Datenverarbeitung zu.",
       "submit": "Nachricht Senden",
       "sending": "Wird gesendet...",
       "required": "Dieses Feld ist erforderlich",
+      "msgMinLength": "Die Nachricht muss mindestens 100 Zeichen lang sein",
+      "msgMaxLength": "Die Nachricht darf maximal 5000 Zeichen lang sein",
       "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@beispiel.de)",
       "phoneInvalid": "Bitte geben Sie eine gültige Telefonnummer ein (z.B. +212 661 31 42 31)",
-      "gdprRequired": "Sie müssen die Bedingungen akzeptieren",
       "formError": "Bitte korrigieren Sie die Fehler im Formular.",
       "didYouMean": "Meinten Sie"
     },

@@ -110,7 +110,9 @@
       {
         "year": "1972",
         "category": "Oorsprong",
-        "type": ["origins"],
+        "type": [
+          "origins"
+        ],
         "title": "Geboorte in Hanau, Duitsland",
         "desc": "Geboren op 19 september 1972 in Hanau, Duitsland, in een familie afkomstig uit de Marokkaanse Midden-Atlas met diepe wortels in Marokko.",
         "tag": "Wortels & Erfgoed"
@@ -118,7 +120,9 @@
       {
         "year": "1985 — 1990",
         "category": "Sport & Titels",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Start in de Vechtsport",
         "desc": "Vroege kennismaking met vechtkunsten en het begin van een kampioenstraject. Duits Jeugdkampioen Taekwondo (1986) — vroege discipline die een winnaar vormde.",
         "tag": "Fundament"
@@ -126,7 +130,9 @@
       {
         "year": "1988 — 1991",
         "category": "Sport & Titels",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Nationale Opmars — Duits Kampioen",
         "desc": "Viervoudig Duits Kampioen in Kickboksen en Full-Contact. Een palmares dat diep respect afdwingt.",
         "tag": "Nationale Titels"
@@ -134,7 +140,9 @@
       {
         "year": "1995 — 2005",
         "category": "Sport & Titels",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Europese & Afrikaanse Dominantie",
         "desc": "Drievoudig Europees Kampioen Full-Contact. Drievoudig Afrikaans Kampioen Full-Contact. Afrikaans Kampioen Savate.",
         "tag": "Continentale Kronen"
@@ -142,7 +150,9 @@
       {
         "year": "2000 — 2010",
         "category": "Sport & Titels",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Wereldtitels & Kroning",
         "desc": "WAKO PRO Wereldkampioen. WKN Wereldkampioen. WKPL Wereldkampioen. Meer dan 70 professionele overwinningen.",
         "tag": "Wereldtitels"
@@ -150,7 +160,9 @@
       {
         "year": "2010",
         "category": "Sport & Titels",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Koninklijke Onderscheiding",
         "desc": "Gedecoreerd door Zijne Majesteit Koning Mohammed VI met de Orde van Nationale Verdienste in de buitengewone categorie.",
         "tag": "Koninklijke Medaille"
@@ -158,7 +170,9 @@
       {
         "year": "2015",
         "category": "Maatschappelijk & Stichtingen",
-        "type": ["civic"],
+        "type": [
+          "civic"
+        ],
         "title": "Oprichting van de Lakhsem Stichting",
         "desc": "Oprichting van de Lakhsem Stichting, gericht op onderwijs, jeugdsport en sociale ontwikkeling.",
         "tag": "Humanitair"
@@ -166,7 +180,9 @@
       {
         "year": "2021",
         "category": "Maatschappelijk & Stichtingen",
-        "type": ["civic"],
+        "type": [
+          "civic"
+        ],
         "title": "Burgemeester van Imouzzer-Kandar",
         "desc": "Politiek engagement gebaseerd op nabijheid, transparantie en lokale vooruitgang als Burgemeester van Imouzzer-Kandar.",
         "tag": "Publiek Mandaat"
@@ -174,7 +190,9 @@
       {
         "year": "2022 — Heden",
         "category": "Diplomatie",
-        "type": ["diplomacy"],
+        "type": [
+          "diplomacy"
+        ],
         "title": "Diplomatie & Internationale Samenwerking",
         "desc": "Voorzitterschap van de Stichting voor Marokkanen van de Wereld (MDM). Akkoorden in Senegal. Internationale Smart Cities fora.",
         "tag": "Mondiaal Bereik"
@@ -476,7 +494,13 @@
     "phoneLabel": "Telefoon",
     "phoneVal": "+212 661 31 42 31",
     "socialLabel": "Sociale Netwerken",
-    "socialNetworks": ["Facebook", "Instagram", "TikTok", "Twitter / X", "LinkedIn"],
+    "socialNetworks": [
+      "Facebook",
+      "Instagram",
+      "TikTok",
+      "Twitter / X",
+      "LinkedIn"
+    ],
     "messageSent": "Bericht succesvol verzonden!",
     "messageFailed": "Verzenden van bericht mislukt.",
     "rateLimitExceeded": "Verzoeklimiet overschreden. Probeer het later opnieuw.",
@@ -489,25 +513,17 @@
       "phonePlaceholder": "+212 6XX XXX XXX",
       "org": "Organisatie / Media / Instantie",
       "orgPlaceholder": "Bedrijf, Mediabedrijf of Instelling",
-      "type": "Type Aanvraag",
-      "types": [
-        "Algemene Vraag",
-        "Pers- / Media-aanvraag",
-        "Partnerschap Lakhsem Stichting",
-        "Partnerschap MDM Stichting",
-        "Gemeente Imouzzer-Kandar",
-        "Uitnodiging / Evenement",
-        "Internationale Samenwerking"
-      ],
+      "type": "Onderwerp",
+      "typePlaceholder": "Onderwerp van uw bericht...",
       "msg": "Uw Bericht",
       "msgPlaceholder": "Beschrijf uw vraag of voorstel in detail...",
-      "gdpr": "Ik accepteer het privacybeleid (AVG) en geef toestemming voor de verwerking van mijn gegevens.",
       "submit": "Bericht Verzenden",
       "sending": "Verzenden...",
       "required": "Dit veld is verplicht",
+      "msgMinLength": "Het bericht moet minimaal 100 tekens bevatten",
+      "msgMaxLength": "Het bericht mag niet langer zijn dan 5000 tekens",
       "emailInvalid": "Voer een geldig e-mailadres in (bijv. naam@voorbeeld.nl)",
       "phoneInvalid": "Voer een geldig telefoonnummer in (bijv. +212 661 31 42 31)",
-      "gdprRequired": "U dient akkoord te gaan met de voorwaarden",
       "formError": "Corrigeer a.u.b. de fouten in het formulier.",
       "didYouMean": "Bedoelde u"
     },

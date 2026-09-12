@@ -74,32 +74,12 @@ export default function Contact({ t = {}, lang }) {
   const [organization, setOrganization] = useState("");
   const [type, setType] = useState("");
   const [message, setMessage] = useState("");
-  const [gdpr, setGdpr] = useState(false);
   const [loadingMsg, setLoadingMsg] = useState(false);
   const [errors, setErrors] = useState({});
 
   const [emailsubscribe, setEmailsubscribe] = useState("");
   const [loadingSubscribe, setLoadingSubscribe] = useState(false);
   const [subscribeError, setSubscribeError] = useState("");
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
-
-  // Set default type from translation once available
-  useEffect(() => {
-    if (f?.types?.[0]) setType(f.types[0]);
-  }, [f?.types?.[0]]);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   // ─── Email domain typo detection ──────────────────────────────────────────
   const KNOWN_DOMAINS = [
@@ -158,8 +138,14 @@ export default function Contact({ t = {}, lang }) {
     }
 
     if (!organization.trim()) tempErrors.organization = f?.required || "This field is required";
-    if (!message.trim()) tempErrors.message = f?.required || "This field is required";
-    if (!gdpr) tempErrors.gdpr = f?.gdprRequired || "You must accept the terms";
+    if (!type.trim()) tempErrors.type = f?.required || "This field is required";
+    if (!message.trim()) {
+      tempErrors.message = f?.required || "This field is required";
+    } else if (message.trim().length < 100) {
+      tempErrors.message = f?.msgMinLength || "Message must be at least 100 characters";
+    } else if (message.trim().length > 5000) {
+      tempErrors.message = f?.msgMaxLength || "Message cannot exceed 5000 characters";
+    }
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
@@ -175,7 +161,7 @@ export default function Contact({ t = {}, lang }) {
     }
 
     setLoadingMsg(true);
-    const data = { name, email, phone, organization, type, message, gdpr };
+    const data = { name, email, phone, organization, type, message };
     try {
       await axios.post("/api/contact", data);
       toast.success(c?.messageSent || "Message sent successfully!");
@@ -183,9 +169,8 @@ export default function Contact({ t = {}, lang }) {
       setEmail("");
       setPhone("");
       setOrganization("");
-      setType(f?.types?.[0] || "");
+      setType("");
       setMessage("");
-      setGdpr(false);
       setErrors({});
     } catch (error) {
       if (error.response?.status === 429) {
@@ -340,8 +325,8 @@ export default function Contact({ t = {}, lang }) {
                     }}
                     placeholder={n?.placeholder}
                     className={`flex-1 px-3.5 py-2 rounded-xl bg-slate-950 border text-xs text-white placeholder-slate-500 focus:outline-none transition-colors ${subscribeError
-                        ? "border-red-500 focus:border-red-400"
-                        : "border-slate-700 focus:border-emerald-400"
+                      ? "border-red-500 focus:border-red-400"
+                      : "border-slate-700 focus:border-emerald-400"
                       }`}
                   />
                   <button
@@ -460,39 +445,25 @@ export default function Contact({ t = {}, lang }) {
                   </div>
                 </div>
 
-                {/* Inquiry Type Dropdown */}
-                <div className="relative" ref={dropdownRef}>
-                  <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                {/* Subject */}
+                <div>
+                  <label htmlFor="contact-subject" className="block text-xs font-bold text-slate-300 mb-1.5">
                     {f?.type} <span className="text-red-400">*</span>
                   </label>
-                  <button
-                    type="button"
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700 text-sm text-white flex items-center justify-between hover:border-amber-500/40 focus:outline-none focus:border-amber-400 transition-all cursor-pointer text-start"
-                  >
-                    <span className="font-semibold text-slate-200">{type}</span>
-                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
-                  </button>
-
-                  {dropdownOpen && f?.types && (
-                    <div className="absolute left-0 right-0 mt-2 rounded-xl bg-[#0b1122] border border-amber-500/30 shadow-2xl z-20 animate-in fade-in slide-in-from-top-2 duration-150">
-                      {f.types.map((option, idx) => {
-                        const isSelected = type === option;
-                        return (
-                          <button
-                            key={idx}
-                            type="button"
-                            onClick={() => { setType(option); setDropdownOpen(false); }}
-                            className={`w-full px-3.5 py-2 text-xs text-start hover:bg-slate-900 transition-all flex items-center justify-between cursor-pointer ${isSelected ? "text-amber-400 bg-amber-500/5 font-bold" : "text-slate-300"
-                              }`}
-                          >
-                            <span>{option}</span>
-                            {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
+                  <input
+                    id="contact-subject"
+                    type="text"
+                    maxLength={150}
+                    value={type}
+                    onChange={(e) => {
+                      setType(e.target.value);
+                      if (errors.type) setErrors(prev => ({ ...prev, type: null }));
+                    }}
+                    placeholder={f?.typePlaceholder}
+                    className={`w-full px-4 py-2.5 rounded-xl bg-slate-950/80 border text-sm text-white placeholder-slate-500 focus:outline-none transition-colors ${errors.type ? "border-red-500 bg-red-950/10 focus:border-red-400" : "border-slate-700 focus:border-amber-400"
+                      }`}
+                  />
+                  {errors.type && <p className="text-red-400 text-[10px] mt-1 transition-all duration-300">{errors.type}</p>}
                 </div>
 
                 {/* Message */}
@@ -501,14 +472,14 @@ export default function Contact({ t = {}, lang }) {
                     <label htmlFor="contact-msg" className="block text-xs font-bold text-slate-300">
                       {f?.msg} <span className="text-red-400">*</span>
                     </label>
-                    <span className={`text-[11px] font-mono ${message.length >= 3000 ? "text-red-400 font-bold" : message.length > 2700 ? "text-amber-400" : "text-slate-400"}`}>
-                      {message.length} / 3000
+                    <span className={`text-[11px] font-mono ${message.length >= 5000 ? "text-red-400 font-bold" : message.length > 4500 ? "text-amber-400" : "text-slate-400"}`}>
+                      {message.length} / 5000
                     </span>
                   </div>
                   <textarea
                     id="contact-msg"
                     rows={4}
-                    maxLength={3000}
+                    maxLength={5000}
                     value={message}
                     onChange={(e) => {
                       setMessage(e.target.value);
@@ -519,29 +490,6 @@ export default function Contact({ t = {}, lang }) {
                       }`}
                   />
                   {errors.message && <p className="text-red-400 text-[10px] mt-1 transition-all duration-300">{errors.message}</p>}
-                </div>
-
-                {/* GDPR */}
-                <div className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    id="gdpr"
-                    checked={gdpr}
-                    onChange={(e) => {
-                      setGdpr(e.target.checked);
-                      if (errors.gdpr) setErrors(prev => ({ ...prev, gdpr: null }));
-                    }}
-                    className={`mt-1 w-4 h-4 rounded cursor-pointer ${errors.gdpr ? "accent-red-500" : "accent-amber-500"}`}
-                  />
-                  <div>
-                    <label
-                      htmlFor="gdpr"
-                      className={`text-xs leading-relaxed cursor-pointer ${errors.gdpr ? "text-red-400" : "text-slate-400"}`}
-                    >
-                      {f?.gdpr} <span className="text-red-400">*</span>
-                    </label>
-                    {errors.gdpr && <p className="text-red-400 text-[10px] mt-0.5 transition-all duration-300">{errors.gdpr}</p>}
-                  </div>
                 </div>
 
                 {/* Submit */}

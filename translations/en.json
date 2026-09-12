@@ -110,7 +110,9 @@
       {
         "year": "1972",
         "category": "Origins",
-        "type": ["origins"],
+        "type": [
+          "origins"
+        ],
         "title": "Birth in Hanau, Germany",
         "desc": "Born on September 19, 1972, in Hanau, Germany, into a family from the Moroccan Middle Atlas. Deep roots closely tying him to Morocco.",
         "tag": "Roots & Heritage"
@@ -118,7 +120,9 @@
       {
         "year": "1985 — 1990",
         "category": "Sport & Titles",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Introduction to Martial Arts",
         "desc": "Early introduction to martial arts and the beginning of a champion's path. Junior Champion of Germany in Taekwondo (title won in 1986). An early discipline that forged a true champion.",
         "tag": "Foundations"
@@ -126,7 +130,9 @@
       {
         "year": "1988 — 1991",
         "category": "Sport & Titles",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "National Rise — German Champion",
         "desc": "Four-time German Champion in Kickboxing and Full-Contact. A record that commands respect.",
         "tag": "National Titles"
@@ -134,7 +140,9 @@
       {
         "year": "1995 — 2005",
         "category": "Sport & Titles",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "European & African Domination",
         "desc": "Three-time European Champion in Full-Contact. Three-time African Champion in Full-Contact. African Savate Champion.",
         "tag": "Continental Crowns"
@@ -142,7 +150,9 @@
       {
         "year": "2000 — 2010",
         "category": "Sport & Titles",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "World Titles & Consecration",
         "desc": "WAKO PRO World Champion. WKN World Champion. WKPL World Champion. More than 70 professional victories.",
         "tag": "World Titles"
@@ -150,7 +160,9 @@
       {
         "year": "2010",
         "category": "Sport & Titles",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Royal Distinction",
         "desc": "Decorated by His Majesty King Mohammed VI — Ouissam du Mérite National de catégorie exceptionnelle — in recognition of exceptional services rendered to Morocco.",
         "tag": "Royal Medal"
@@ -158,7 +170,9 @@
       {
         "year": "2015",
         "category": "Civic & Foundations",
-        "type": ["civic"],
+        "type": [
+          "civic"
+        ],
         "title": "Lakhsem Foundation",
         "desc": "Creation of the Lakhsem Foundation, dedicated to education, youth sports, and social development.",
         "tag": "Humanitarian"
@@ -166,7 +180,9 @@
       {
         "year": "2021",
         "category": "Civic & Foundations",
-        "type": ["civic"],
+        "type": [
+          "civic"
+        ],
         "title": "Mayor of Imouzzer-Kandar",
         "desc": "Political commitment rooted in proximity, transparency, and local development as Mayor of Imouzzer-Kandar.",
         "tag": "Public Office"
@@ -174,7 +190,9 @@
       {
         "year": "2022 — Present",
         "category": "Diplomacy",
-        "type": ["diplomacy"],
+        "type": [
+          "diplomacy"
+        ],
         "title": "Diplomacy & International Cooperation",
         "desc": "Presidency of the Moroccans of the World Foundation. Agreements in Senegal. Smart Cities forums.",
         "tag": "Global Presence"
@@ -476,7 +494,13 @@
     "phoneLabel": "Phone",
     "phoneVal": "+212 661 31 42 31",
     "socialLabel": "Social Networks",
-    "socialNetworks": ["Facebook", "Instagram", "TikTok", "Twitter / X", "LinkedIn"],
+    "socialNetworks": [
+      "Facebook",
+      "Instagram",
+      "TikTok",
+      "Twitter / X",
+      "LinkedIn"
+    ],
     "messageSent": "Message sent successfully!",
     "messageFailed": "Failed to send message.",
     "rateLimitExceeded": "Request limit exceeded. Please try again later.",
@@ -489,25 +513,17 @@
       "phonePlaceholder": "+212 6XX XXX XXX",
       "org": "Organization / Media / Entity",
       "orgPlaceholder": "Company, Media Outlet, or Institution",
-      "type": "Inquiry Type",
-      "types": [
-        "General Request",
-        "Demande Presse / Médias",
-        "Lakhsem Foundation Partnership",
-        "MDM Foundation Partnership",
-        "Mairie d'Imouzzer-Kandar",
-        "Invitation / Event",
-        "International Cooperation"
-      ],
+      "type": "Subject",
+      "typePlaceholder": "Subject of your message...",
       "msg": "Your Message",
       "msgPlaceholder": "Please describe your inquiry with relevant details...",
-      "gdpr": "I accept the privacy policy (GDPR) and consent to the processing of my data.",
       "submit": "Send Message",
       "sending": "Sending...",
       "required": "This field is required",
+      "msgMinLength": "Message must be at least 100 characters",
+      "msgMaxLength": "Message cannot exceed 5000 characters",
       "emailInvalid": "Please enter a valid email address (e.g. name@example.com)",
       "phoneInvalid": "Please enter a valid phone number (e.g. +212 661 31 42 31)",
-      "gdprRequired": "You must accept the terms",
       "formError": "Please correct the errors in the form.",
       "didYouMean": "Did you mean"
     },

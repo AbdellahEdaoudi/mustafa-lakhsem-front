@@ -15,7 +15,7 @@
   },
   "dashboard": {
     "brandName": "MUSTAFA LAKHSEM",
-    "portalTitle": "Admin-Portal",
+    "portalTitle": "Administrationsportal",
     "refreshTitle": "Daten aktualisieren",
     "logout": "Abmelden",
     "loadingData": "Daten werden geladen...",
@@ -41,21 +41,12 @@
     "table": {
       "status": "Status",
       "sender": "Absender",
-      "category": "Kategorie",
+      "category": "Betreff",
       "messagePreview": "Nachrichtenvorschau",
       "date": "Datum",
       "actions": "Aktionen",
       "subscriberEmail": "Abonnenten-E-Mail",
       "subscriptionDate": "Abonnementdatum"
-    },
-    "categories": {
-      "general": "Allgemeine Anfrage",
-      "press": "Presse- / Medienanfrage",
-      "lakhsem_foundation": "Partnerschaft Lakhsem-Stiftung",
-      "mdm_foundation": "Partnerschaft MDM-Stiftung",
-      "municipality": "Bürgermeisteramt Imouzzer-Kandar",
-      "invitation": "Einladung / Veranstaltung",
-      "cooperation": "Internationale Kooperation"
     },
     "empty": {
       "noContactsTitle": "Keine Kontaktanfragen gefunden",
@@ -85,9 +76,6 @@
       "organization": "Organisation / Einrichtung",
       "messageContent": "Nachrichteninhalt",
       "received": "Empfangen am",
-      "gdprConsent": "DSGVO-Zustimmung",
-      "gdprAccepted": "✅ Zugestimmt",
-      "gdprDeclined": "❌ Abgelehnt",
       "notAvailable": "K.A.",
       "delete": "Löschen",
       "star": "Markieren",

@@ -110,7 +110,9 @@
       {
         "year": "1972",
         "category": "Orígenes",
-        "type": ["origins"],
+        "type": [
+          "origins"
+        ],
         "title": "Nacimiento en Hanau, Alemania",
         "desc": "Nacido el 19 de septiembre de 1972 en Hanau, Alemania, en el seno de una familia oriunda del Medio Atlas marroquí, fuertemente arraigado a Marruecos.",
         "tag": "Raíces y Herencia"
@@ -118,7 +120,9 @@
       {
         "year": "1985 — 1990",
         "category": "Deporte y Títulos",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Iniciación en las Artes Marciales",
         "desc": "Temprana iniciación en las artes marciales y génesis de un futuro campeón. Campeón Júnior de Alemania de Taekwondo (1986) con una disciplina que forjó un vencedor.",
         "tag": "Fundamentos"
@@ -126,7 +130,9 @@
       {
         "year": "1988 — 1991",
         "category": "Deporte y Títulos",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Ascenso Nacional — Campeón de Alemania",
         "desc": "Cuatro veces Campeón de Alemania en Kickboxing y Full-Contact. Un palmarés que se ganó el respeto unánime.",
         "tag": "Títulos Nacionales"
@@ -134,7 +140,9 @@
       {
         "year": "1995 — 2005",
         "category": "Deporte y Títulos",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Dominio Europeo y Africano",
         "desc": "Tres veces Campeón de Europa en Full-Contact. Tres veces Campeón de África en Full-Contact. Campeón de África de Savate.",
         "tag": "Coronas Continentales"
@@ -142,7 +150,9 @@
       {
         "year": "2000 — 2010",
         "category": "Deporte y Títulos",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Títulos Mundiales y Consagración",
         "desc": "Campeón del Mundo WAKO PRO. Campeón del Mundo WKN. Campeón del Mundo WKPL. Más de 70 victorias profesionales.",
         "tag": "Títulos Mundiales"
@@ -150,7 +160,9 @@
       {
         "year": "2010",
         "category": "Deporte y Títulos",
-        "type": ["sport"],
+        "type": [
+          "sport"
+        ],
         "title": "Distinción Real",
         "desc": "Condecorado por Su Majestad el Rey Mohammed VI — Wissam del Mérito Nacional de Categoría Excepcional — en reconocimiento a sus servicios eminentes al Reino.",
         "tag": "Medalla Real"
@@ -158,7 +170,9 @@
       {
         "year": "2015",
         "category": "Compromiso Cívico y Fundaciones",
-        "type": ["civic"],
+        "type": [
+          "civic"
+        ],
         "title": "Creación de la Fundación Lakhsem",
         "desc": "Lanzamiento de la Fundación Lakhsem, dedicada a la educación, el deporte para jóvenes y el desarrollo social.",
         "tag": "Humanitario"
@@ -166,7 +180,9 @@
       {
         "year": "2021",
         "category": "Compromiso Cívico y Fundaciones",
-        "type": ["civic"],
+        "type": [
+          "civic"
+        ],
         "title": "Alcalde de Imouzzer-Kandar",
         "desc": "Compromiso político y de gestión fundamentado en la proximidad, la transparencia y el desarrollo local como Alcalde de Imouzzer-Kandar.",
         "tag": "Cargo Público"
@@ -174,7 +190,9 @@
       {
         "year": "2022 — Presente",
         "category": "Diplomacia",
-        "type": ["diplomacy"],
+        "type": [
+          "diplomacy"
+        ],
         "title": "Diplomacia y Cooperación Internacional",
         "desc": "Presidencia de la Fundación de Marroquíes del Mundo (MDM). Acuerdos en Senegal. Foros mundiales de Ciudades Inteligentes.",
         "tag": "Presencia Global"
@@ -476,7 +494,13 @@
     "phoneLabel": "Teléfono",
     "phoneVal": "+212 661 31 42 31",
     "socialLabel": "Redes Sociales",
-    "socialNetworks": ["Facebook", "Instagram", "TikTok", "Twitter / X", "LinkedIn"],
+    "socialNetworks": [
+      "Facebook",
+      "Instagram",
+      "TikTok",
+      "Twitter / X",
+      "LinkedIn"
+    ],
     "messageSent": "¡Mensaje enviado con éxito!",
     "messageFailed": "Error al enviar el mensaje.",
     "rateLimitExceeded": "Límite de solicitudes superado. Por favor, inténtelo de nuevo más tarde.",
@@ -489,25 +513,17 @@
       "phonePlaceholder": "+212 6XX XXX XXX",
       "org": "Organización / Medio / Entidad",
       "orgPlaceholder": "Empresa, Medio de Comunicación o Institución",
-      "type": "Tipo de Consulta",
-      "types": [
-        "Consulta General",
-        "Prensa / Medios",
-        "Alianza Fundación Lakhsem",
-        "Alianza Fundación MDM",
-        "Alcaldía de Imouzzer-Kandar",
-        "Invitación / Evento",
-        "Cooperación Internacional"
-      ],
+      "type": "Asunto",
+      "typePlaceholder": "Asunto de su mensaje...",
       "msg": "Su Mensaje",
       "msgPlaceholder": "Describa los detalles relevantes de su consulta...",
-      "gdpr": "Acepto la política de privacidad (RGPD) y consiento el tratamiento de mis datos.",
       "submit": "Enviar Mensaje",
       "sending": "Enviando...",
       "required": "Este campo es obligatorio",
+      "msgMinLength": "El mensaje debe tener al menos 100 caracteres",
+      "msgMaxLength": "El mensaje no puede superar los 5000 caracteres",
       "emailInvalid": "Introduzca un correo electrónico válido (ej: nombre@ejemplo.com)",
       "phoneInvalid": "Introduzca un número de teléfono válido (ej: +212 661 31 42 31)",
-      "gdprRequired": "Debe aceptar los términos",
       "formError": "Por favor corrija los errores en el formulario.",
       "didYouMean": "¿Quiso decir"
     },

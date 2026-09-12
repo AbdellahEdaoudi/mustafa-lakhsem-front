@@ -43,21 +43,12 @@
     "table": {
       "status": "الحالة",
       "sender": "المرسل",
-      "category": "الفئة",
+      "category": "الموضوع",
       "messagePreview": "معاينة الرسالة",
       "date": "التاريخ",
       "actions": "الإجراءات",
       "subscriberEmail": "بريد المشترك",
       "subscriptionDate": "تاريخ الاشتراك"
-    },
-    "categories": {
-      "general": "طلب عام",
-      "press": "طلب صحفي / إعلامي",
-      "lakhsem_foundation": "شراكة مع مؤسسة لخصم",
-      "mdm_foundation": "شراكة مع مؤسسة مغاربة العالم (MDM)",
-      "municipality": "شؤون جماعة إيموزار كندر",
-      "invitation": "دعوة / حضور تظاهرة",
-      "cooperation": "التعاون الدولي"
     },
     "empty": {
       "noContactsTitle": "لم يتم العثور على أي رسائل",
@@ -87,9 +78,6 @@
       "organization": "المؤسسة / الجهة",
       "messageContent": "نص الرسالة",
       "received": "تاريخ الاستلام",
-      "gdprConsent": "الموافقة على سياسة الخصوصية",
-      "gdprAccepted": "✅ تمت الموافقة",
-      "gdprDeclined": "❌ مرفوض",
       "notAvailable": "غير متوفر",
       "delete": "حذف",
       "star": "تمييز بنجمة",

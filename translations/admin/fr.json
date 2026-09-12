@@ -40,21 +40,12 @@
     "table": {
       "status": "Statut",
       "sender": "Expéditeur",
-      "category": "Catégorie",
+      "category": "Objet",
       "messagePreview": "Aperçu du Message",
       "date": "Date",
       "actions": "Actions",
       "subscriberEmail": "Email de l'Abonné",
       "subscriptionDate": "Date d'Abonnement"
-    },
-    "categories": {
-      "general": "Demande Générale",
-      "press": "Demande Presse / Médias",
-      "lakhsem_foundation": "Partenariat Fondation Lakhsem",
-      "mdm_foundation": "Partenariat Fondation MDM",
-      "municipality": "Mairie d'Imouzzer-Kandar",
-      "invitation": "Invitation / Événement",
-      "cooperation": "Coopération Internationale"
     },
     "empty": {
       "noContactsTitle": "Aucun message trouvé",
@@ -84,9 +75,6 @@
       "organization": "Organisation / Entité",
       "messageContent": "Contenu du Message",
       "received": "Reçu le",
-      "gdprConsent": "Consentement RGPD",
-      "gdprAccepted": "✅ Accepté",
-      "gdprDeclined": "❌ Refusé",
       "notAvailable": "N/D",
       "delete": "Supprimer",
       "star": "Favori",

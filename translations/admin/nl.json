@@ -40,21 +40,12 @@
     "table": {
       "status": "Status",
       "sender": "Afzender",
-      "category": "Categorie",
+      "category": "Onderwerp",
       "messagePreview": "Berichtvoorbeeld",
       "date": "Datum",
       "actions": "Acties",
       "subscriberEmail": "E-mail van Abonnee",
       "subscriptionDate": "Aanmelddatum"
-    },
-    "categories": {
-      "general": "Algemene Vraag",
-      "press": "Pers- / Media-aanvraag",
-      "lakhsem_foundation": "Partnerschap Lakhsem Stichting",
-      "mdm_foundation": "Partnerschap MDM Stichting",
-      "municipality": "Gemeente Imouzzer-Kandar",
-      "invitation": "Uitnodiging / Evenement",
-      "cooperation": "Internationale Samenwerking"
     },
     "empty": {
       "noContactsTitle": "Geen contactberichten gevonden",
@@ -84,9 +75,6 @@
       "organization": "Organisatie / Instantie",
       "messageContent": "Berichtinhoud",
       "received": "Ontvangen op",
-      "gdprConsent": "AVG / GDPR Toestemming",
-      "gdprAccepted": "✅ Geaccepteerd",
-      "gdprDeclined": "❌ Geweigerd",
       "notAvailable": "N.v.t.",
       "delete": "Verwijderen",
       "star": "Met ster",
