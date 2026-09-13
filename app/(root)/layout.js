@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 
 const prompt = Prompt({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700"],
   variable: "--font-prompt",
   display: "swap",
 });
