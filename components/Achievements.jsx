@@ -103,7 +103,7 @@ export default function Achievements({ t = {}, lang }) {
                       </div>
                     </div>
 
-                    <span className="px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] sm:text-[11px] font-black text-amber-300 uppercase tracking-widest">
+                    <span className="px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/40 text-[10px] sm:text-[11px] font-black text-amber-200 uppercase tracking-widest">
                       {item.badge}
                     </span>
                   </div>
@@ -123,8 +123,8 @@ export default function Achievements({ t = {}, lang }) {
                 </div>
 
                 <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-bold text-slate-400">
-                  <span className="text-amber-400/90 font-mono tracking-wider">{item.years}</span>
-                  <span className="text-[11px] text-slate-500 uppercase tracking-widest">{achievementsData.sanction || "Official Sanction"}</span>
+                  <span className="text-amber-300 font-mono tracking-wider">{item.years}</span>
+                  <span className="text-[11px] text-slate-400 uppercase tracking-widest">{achievementsData.sanction || "Official Sanction"}</span>
                 </div>
               </div>
             );

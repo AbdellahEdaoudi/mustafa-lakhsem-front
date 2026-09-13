@@ -151,12 +151,12 @@ export default function Footer({ t = {}, lang }) {
             </h4>
             <ul className="space-y-3 text-xs text-slate-400">
               <li className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-blue-400/80 mt-0.5 shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-blue-400 mt-0.5 shrink-0" />
                 <span>{f.officeLocation}</span>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-blue-400/80 shrink-0" />
-                <span dir="ltr" className="font-mono text-amber-300/90 text-start">{f.officePhone}</span>
+                <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <span dir="ltr" className="font-mono text-amber-300 text-start">{f.officePhone}</span>
               </li>
             </ul>
           </div>
@@ -178,7 +178,7 @@ export default function Footer({ t = {}, lang }) {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 items-center gap-4 text-center text-[11px] text-slate-500">
+        <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 items-center gap-4 text-center text-[11px] text-slate-400">
           <p className="sm:text-left">
             © {new Date().getFullYear()} {f.name}. {f.copyright}
           </p>

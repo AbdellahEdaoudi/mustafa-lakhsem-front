@@ -69,7 +69,7 @@ export default function Foundations({ t = {}, lang }) {
                   <h3 className="text-2xl sm:text-3xl font-black text-white">
                     {lakhsem.name}
                   </h3>
-                  <p className="text-xs sm:text-sm font-semibold text-amber-400/90 tracking-wide">
+                  <p className="text-xs sm:text-sm font-semibold text-amber-300 tracking-wide">
                     {lakhsem.tagline}
                   </p>
                 </div>

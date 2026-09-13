@@ -96,7 +96,7 @@ export default function Vision({ t = {}, lang }) {
                     <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-black text-slate-500 group-hover:text-amber-300 transition-colors">
+                    <span className="text-xs font-black text-slate-400 group-hover:text-amber-300 transition-colors">
                       {pillar.num}
                     </span>
                   </div>

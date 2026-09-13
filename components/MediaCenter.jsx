@@ -73,7 +73,7 @@ function NewsDetailModal({ newsModalData, onClose, t = {}, lang }) {
 
         {/* Footer Actions */}
         <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
-          <div className="text-xs text-slate-500 font-medium">
+          <div className="text-xs text-slate-400 font-medium">
             {t.media?.pressReleaseNote || "Mustafa Lakhsem · Official Press Release"}
           </div>
           <button
@@ -137,7 +137,7 @@ function MediaImageModal({ activeIdx, setActiveIdx, articles, onClose, lang }) {
       >
         <div className="pointer-events-auto flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900/80 border border-amber-500/30 backdrop-blur-md text-xs font-bold text-amber-400 shadow-xl">
           <span>{activeIdx + 1} / {articles.length}</span>
-          <span className="text-slate-500">·</span>
+          <span className="text-slate-400">·</span>
           <span className="text-slate-300 truncate max-w-45 sm:max-w-xs">{currentArt.category}</span>
         </div>
 

@@ -110,7 +110,7 @@ export default function Hero({ t = {}, lang }) {
         <div className="order-2 lg:order-1 w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-start">
 
           <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-amber-500/30 bg-[#040711]/80 backdrop-blur-md mb-5 shadow-sm">
-            <span className={`font-bold text-amber-300/90 uppercase ${lang === "ar" ? "text-sm sm:text-base tracking-normal" : "text-[10px] sm:text-xs tracking-[0.15em]"}`}>
+            <span className={`font-bold text-amber-200 uppercase ${lang === "ar" ? "text-sm sm:text-base tracking-normal" : "text-[10px] sm:text-xs tracking-[0.15em]"}`}>
               {badgeText}
             </span>
           </div>
@@ -174,7 +174,7 @@ export default function Hero({ t = {}, lang }) {
 
       {/* Infinite Ticker - Seamless continuous loop */}
       <div className="w-full bg-amber-500/10 border-t border-amber-500/30 py-2.5 backdrop-blur-md overflow-hidden relative z-10 mt-8 lg:mt-auto">
-        <div className="animate-marquee whitespace-nowrap flex items-center gap-8 text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] text-amber-200/80">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-8 text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] text-amber-200">
           {/* Track A */}
           <div className="flex items-center gap-8 shrink-0">
             {tickerItems.map((item, i) => (

@@ -176,7 +176,7 @@ export default function Navbar({ t = {}, lang }) {
                   {currentLang.code}
                 </span>
                 <ChevronDown
-                  className="w-3 h-3 text-amber-500/60 transition-transform duration-200"
+                  className="w-3 h-3 text-amber-400 transition-transform duration-200"
                   style={{ transform: langOpen ? "rotate(180deg)" : "rotate(0deg)" }}
                 />
               </button>
