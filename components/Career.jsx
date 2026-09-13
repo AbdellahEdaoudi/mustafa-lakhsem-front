@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { Briefcase } from "@/components/lucide-react";
 
 const CATEGORY_STYLE = {
-  origins: { accent: "#d4af37", textBadge: "#fde047", glyph: "R", ring: "rgba(212,175,55,0.35)" },
-  sport: { accent: "#d4af37", textBadge: "#fde047", glyph: "S", ring: "rgba(212,175,55,0.35)" },
-  civic: { accent: "#60a5fa", textBadge: "#93c5fd", glyph: "C", ring: "rgba(96,165,250,0.35)" },
-  diplomacy: { accent: "#34d399", textBadge: "#6ee7b7", glyph: "D", ring: "rgba(52,211,153,0.35)" },
-  other: { accent: "#94a3b8", textBadge: "#cbd5e1", glyph: "•", ring: "rgba(148,163,184,0.35)" },
+  origins: { accent: "#d4af37", textBadge: "#fef08a", glyph: "R", ring: "rgba(212,175,55,0.35)" },
+  sport: { accent: "#d4af37", textBadge: "#fef08a", glyph: "S", ring: "rgba(212,175,55,0.35)" },
+  civic: { accent: "#60a5fa", textBadge: "#bfdbfe", glyph: "C", ring: "rgba(96,165,250,0.35)" },
+  diplomacy: { accent: "#34d399", textBadge: "#a7f3d0", glyph: "D", ring: "rgba(52,211,153,0.35)" },
+  other: { accent: "#94a3b8", textBadge: "#e2e8f0", glyph: "•", ring: "rgba(148,163,184,0.35)" },
 };
 
 export default function Career({ t = {}, lang }) {

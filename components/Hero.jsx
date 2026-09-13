@@ -92,12 +92,12 @@ export default function Hero({ t = {}, lang }) {
                   src={src}
                   alt={`Mustafa Lakhsem image ${idx + 1}`}
                   fill
-                  sizes="(max-width: 640px) 92vw, (max-width: 1024px) 85vw, 550px"
+                  sizes="(max-width: 480px) 100vw, (max-width: 768px) 92vw, (max-width: 1024px) 85vw, 550px"
                   className="object-cover object-center lg:object-top"
                   priority={isFirst}
                   loading="eager"
                   fetchPriority={isFirst ? "high" : "auto"}
-                  quality={80}
+                  quality={75}
                 />
                 {/* Very light inner shadow to frame the image, no full overlay */}
                 <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(4,7,17,0.3)] pointer-events-none" />

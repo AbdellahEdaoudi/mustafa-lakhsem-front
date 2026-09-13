@@ -57,6 +57,15 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: "/(hero|about|galerie|flags|Imouzzer)/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
     ];
   },
 };
