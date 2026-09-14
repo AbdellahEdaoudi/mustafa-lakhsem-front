@@ -29,7 +29,8 @@ export default function About({ t = {}, lang }) {
                 alt="Mustafa Lakhsem - About" 
                 fill 
                 sizes="(max-width: 640px) 92vw, (max-width: 1024px) 75vw, 480px" 
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03] relative z-1" 
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.03] relative z-1" 
+                style={{ objectPosition: "center 31%" }}
                 quality={80}
                 priority
               />
