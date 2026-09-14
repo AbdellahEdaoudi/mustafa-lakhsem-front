@@ -6,6 +6,7 @@ import Image from "next/image";
 import {
   Trophy, Landmark, HeartHandshake, Globe2, ArrowRight, Sparkles, ChevronDown, Medal, Flame, ShieldCheck, Award,
 } from "@/components/lucide-react";
+import Link from "next/link";
 
 export default function Hero({ t = {}, lang }) {
   const [activeRoleIdx, setActiveRoleIdx] = useState(0);
@@ -64,7 +65,7 @@ export default function Hero({ t = {}, lang }) {
   const tickerItems = t.hero?.ticker || ["World Champion", "Mayor of Imouzzer-Kandar", "Lakhsem Foundation", "Tiger of the Rings", "Kingdom of Morocco", "Humanitarian Leader"];
 
   return (
-    <section className="relative min-h-175 lg:h-screen flex flex-col justify-between pt-24 lg:pt-24 pb-6 lg:pb-0 overflow-hidden bg-[#040711]">
+    <section className="relative min-h-screen flex flex-col justify-between pt-20 sm:pt-24 pb-0 overflow-x-hidden bg-[#040711]">
 
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 bg-[url('/moroccan-pattern.svg')] bg-repeat opacity-5 pointer-events-none z-0" />
@@ -135,45 +136,55 @@ export default function Hero({ t = {}, lang }) {
             {descText}
           </p>
 
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
-            <a
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-10">
+            <Link
               href="#achievements"
               className="px-6 py-3 rounded-full bg-linear-to-r from-amber-600 via-amber-400 to-amber-600 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider hover:-translate-y-0.5 transition-transform flex items-center gap-2"
             >
               <Trophy className="w-4 h-4" />
               <span>{btn1Text}</span>
-            </a>
-            <a
+              <Trophy className="w-4 h-4" />
+            </Link>
+            <Link
               href="#foundations"
               className="px-6 py-3 rounded-full bg-[#040711]/80 border border-amber-500/50 text-amber-300 font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:-translate-y-0.5 transition-transform flex items-center gap-2"
             >
               <Award className="w-4 h-4" />
               <span>{btn2Text}</span>
-            </a>
+              <Award className="w-4 h-4" />
+            </Link>
           </div>
 
-          {/* Compact Stats */}
-          <div className="grid grid-cols-4 gap-3 w-full max-w-lg">
-            {stats.map((stat, idx) => {
-              const Icon = stat.icon;
-              return (
-                <div key={idx} className="bg-white/5 border border-amber-500/20 rounded-2xl p-3 text-center">
-                  <Icon className="w-4 h-4 text-amber-400 mx-auto mb-1" />
-                  <div className="text-lg sm:text-xl font-black text-amber-300 leading-tight">
-                    {stat.value}
+          {/* Luxury Unified Glass Stats Bar */}
+          <div className="w-full max-w-xl rounded-2xl sm:rounded-3xl bg-slate-950/60 border border-amber-500/25 p-4 sm:p-5 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.5)] relative overflow-hidden">
+            <div className="absolute -top-12 -left-12 w-24 h-24 bg-amber-500/10 rounded-full blur-xl pointer-events-none" />
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4 relative z-10">
+              {stats.map((stat, idx) => {
+                const Icon = stat.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="flex flex-col items-center justify-center text-center p-3 rounded-xl sm:rounded-2xl bg-white/3 border border-amber-500/15 hover:border-amber-500/40 hover:bg-amber-500/5 transition-all duration-300 group min-w-0"
+                  >
+                    <div className="flex items-center gap-1.5 mb-1.5">
+                      <Icon className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform duration-300 shrink-0" />
+                      <span className="text-lg sm:text-2xl font-black text-transparent bg-clip-text bg-linear-to-b from-amber-200 via-amber-300 to-amber-500 leading-none">
+                        {stat.value}
+                      </span>
+                    </div>
+                    <span className="text-[10px] sm:text-[11px] font-semibold text-slate-300/90 uppercase tracking-wide leading-tight wrap-break-word max-w-full">
+                      {stat.label}
+                    </span>
                   </div>
-                  <div className="text-[9px] sm:text-[10px] font-bold text-slate-300 uppercase">
-                    {stat.label}
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Infinite Ticker - Seamless continuous loop */}
-      <div className="w-full bg-amber-500/10 border-t border-amber-500/30 py-2.5 backdrop-blur-md overflow-hidden relative z-10 mt-8 lg:mt-auto">
+      <div className="w-full bg-amber-500/10 border-t border-amber-500/30 py-3 backdrop-blur-md overflow-hidden relative z-10 mt-12 lg:mt-16">
         <div className="animate-marquee whitespace-nowrap flex items-center gap-8 text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] text-amber-200">
           {/* Track A */}
           <div className="flex items-center gap-8 shrink-0">

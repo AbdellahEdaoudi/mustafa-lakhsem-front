@@ -75,7 +75,7 @@ export function ToastProvider({ children }) {
       {children}
 
       {/* Toast Container with exact custom styling & animations */}
-      <div className="fixed top-5 right-5 z-9999 flex flex-col gap-3 max-w-md w-full pointer-events-none px-4">
+      <div className="fixed top-4 inset-x-4 sm:inset-x-auto sm:top-5 sm:right-5 sm:max-w-md w-auto sm:w-full z-9999 flex flex-col gap-3 pointer-events-none">
         {toasts.map((t) => {
           let bgClass = "bg-slate-900/90 border-slate-800 text-white";
           let iconColor = "text-amber-400";
@@ -124,7 +124,7 @@ export function ToastProvider({ children }) {
               </div>
 
               {/* Message */}
-              <div className="flex-1 text-sm font-semibold leading-relaxed">
+              <div className="flex-1 text-sm font-semibold leading-relaxed wrap-break-word min-w-0">
                 {t.message}
               </div>
 

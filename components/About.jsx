@@ -30,7 +30,7 @@ export default function About({ t = {}, lang }) {
                 sizes="(max-width: 640px) 92vw, (max-width: 1024px) 75vw, 480px" 
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03] relative z-1" 
                 quality={80}
-                loading="lazy"
+                priority
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#040711]/60 via-transparent to-transparent opacity-60" />
               <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(4,7,17,0.5)]" />
