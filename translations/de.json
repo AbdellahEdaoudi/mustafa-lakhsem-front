@@ -406,6 +406,15 @@
     "pressReleaseNote": "Mustafa Lakhsem · Offizielle Pressemitteilung",
     "articles": [
       {
+        "id": "adhesion-mds-2026",
+        "category": "Politik",
+        "title": "Mustafa Lakhsem tritt der Demokratischen und Sozialen Bewegung (MDS - 'Palmenpartei') bei",
+        "date": "August 2026",
+        "location": "Sefrou / Rabat, Marokko",
+        "summary": "Mustafa Lakhsem tritt offiziell der MDS bei und führt die Wahlliste für die Provinz Sefrou an.",
+        "fullText": "Mustafa Lakhsem, Weltmeister und Bürgermeister von Imouzzer-Kandar, ist offiziell der Demokratischen und Sozialen Bewegung (MDS - 'Palmenpartei') beigetreten. Nach Gesprächen mit Generalsekretär Abdelosmade Archane erhielt Lakhsem die offizielle Nominierung als Spitzenkandidat für die Parlamentswahlen 2026 im Wahlkreis Sefrou."
+      },
+      {
         "id": "senegal-2024",
         "category": "Diplomatie",
         "title": "Dezentralisierungsabkommen Marokko-Senegal in Dakar",

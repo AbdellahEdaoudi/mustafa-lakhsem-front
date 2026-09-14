@@ -406,6 +406,15 @@
     "pressReleaseNote": "Mustafa Lakhsem · Comunicado de Prensa Oficial",
     "articles": [
       {
+        "id": "adhesion-mds-2026",
+        "category": "Política",
+        "title": "Mustafa Lakhsem se une oficialmente al Movimiento Democrático y Social (MDS - 'Partido de la Palmeira')",
+        "date": "Agosto 2026",
+        "location": "Sefrou / Rabat, Marruecos",
+        "summary": "Mustafa Lakhsem se une al MDS y obtiene el aval para encabezar la lista legislativa por Sefrou.",
+        "fullText": "Mustafa Lakhsem, campeón mundial y alcalde de Imouzzer-Kandar, anunció oficialmente su integración en el Movimiento Democrático y Social (MDS - 'Partido de la Palmeira') tras reunirse con el Secretario General Abdelosmade Archane. Lakhsem encabeza la lista electoral del partido en la provincia de Sefrou para las elecciones legislativas de 2026."
+      },
+      {
         "id": "senegal-2024",
         "category": "Diplomacia",
         "title": "Acuerdo de Descentralización Marruecos-Senegal en Dakar",

@@ -406,6 +406,15 @@
     "pressReleaseNote": "Mustafa Lakhsem · Comunicato Stampa Ufficiale",
     "articles": [
       {
+        "id": "adhesion-mds-2026",
+        "category": "Politica",
+        "title": "Mustafa Lakhsem aderisce ufficialmente al Movimento Democratico e Sociale (MDS - 'Partito della Palma')",
+        "date": "Agosto 2026",
+        "location": "Sefrou / Rabat, Marocco",
+        "summary": "Mustafa Lakhsem si unisce al MDS e ottiene la candidatura a capolista legislativo per Sefrou.",
+        "fullText": "Mustafa Lakhsem, campione del mondo e sindaco di Imouzzer-Kandar, ha annunciato ufficialmente la sua adesione al Movimento Democratico e Sociale (MDS - 'Partito della Palma') dopo incontri con il Segretario Generale Abdelosmade Archane."
+      },
+      {
         "id": "senegal-2024",
         "category": "Diplomazia",
         "title": "Accordo di Decentramento Marocco-Senegal a Dakar",

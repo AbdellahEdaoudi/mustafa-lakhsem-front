@@ -5,6 +5,7 @@ import Image from "next/image";
 import { X } from "@/components/lucide-react";
 
 const IMAGE_MAP = {
+  "adhesion-mds-2026": "/galerie/Adhesion_MDS_Nakhla.jpg",
   "senegal-2024": "/galerie/Accord_Senegal_Maroc.jpg",
   "smart-cities-2023": "/galerie/Forum_Smart_Cities.jpg",
   "metal-luxe-2023": "/galerie/Championnat_Mondial.jpg",
@@ -126,7 +127,7 @@ export default function MediaImageModal({ activeIdx, setActiveIdx, articles, onC
           </p>
         </div>
 
-        <div className="mt-3 flex items-center gap-2 p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800/80 backdrop-blur-md overflow-x-auto max-w-full">
+        <div className="mt-3 flex items-center gap-2 p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800/80 backdrop-blur-md overflow-x-auto max-w-full custom-modal-scroll">
           {articles.map((art, i) => {
             const thumbSrc = IMAGE_MAP[art.id] || "/galerie/Evenement_Officiel.jpg";
             const isActive = i === activeIdx;
