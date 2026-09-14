@@ -406,13 +406,22 @@
     "pressReleaseNote": "Mustafa Lakhsem · Officieel Persbericht",
     "articles": [
       {
+        "id": "sefrou-meeting-2026",
+        "category": "Politiek",
+        "title": "Grote Burgerbijeenkomst in Sefrou met Abdelosmade Archane",
+        "date": "13 September 2026",
+        "location": "Sefrou, Marokko",
+        "summary": "Mustafa Lakhsem leidt een grote burgerbijeenkomst in Sefrou samen met MDS-secretaris-generaal Abdelosmade Archane.",
+        "fullText": "Op zondag 13 september 2026 leidde burgemeester en wereldkampioen Mustafa Lakhsem een grote burgerbijeenkomst in Sefrou samen met MDS-secretaris-generaal Abdelosmade Archane. In zijn toespraak tot duizenden burgers benadrukte Lakhsem transparant bestuur en verwierp hij traditionele verkiezingsbeloften met zijn bekende motto: 'Geen kip, geen vlees, geen seffa, geen geld — alleen oprechte inzet, hard werken en integriteit voor onze burgers.'"
+      },
+      {
         "id": "adhesion-mds-2026",
         "category": "Politiek",
-        "title": "Mustafa Lakhsem sluit zich officieel aan bij de Democratische en Sociale Beweging (MDS - 'Palmpartij')",
+        "title": "Officiële Aansluiting bij de Democratische en Sociale Beweging (MDS - 'Palmpartij')",
         "date": "Augustus 2026",
         "location": "Sefrou / Rabat, Marokko",
         "summary": "Mustafa Lakhsem sluit zich officieel aan bij de MDS en leidt de kieslijst voor Sefrou.",
-        "fullText": "Mustafa Lakhsem, wereldkampioen en burgemeester van Imouzzer-Kandar, heeft zijn aansluiting bij de Democratische en Sociale Beweging (MDS - 'Palmpartij') officieel aangekondigd na ontmoetingen met secretaris-generaal Abdelosmade Archane."
+        "fullText": "In een beslissende politieke stap voor de ontwikkeling van bergregio's en territoriale gelijkheid, kondigde burgemeester en wereldkampioen Mustafa Lakhsem officieel zijn aansluiting aan bij de Democratische en Sociale Beweging (MDS - 'Palmpartij') na ontmoetingen met secretaris-generaal Abdelosmade Archane. Lakhsem ontving de officiële voordracht om de kieslijst voor de provincie Sefrou te leiden bij de parlementsverkiezingen van 2026."
       },
       {
         "id": "senegal-2024",

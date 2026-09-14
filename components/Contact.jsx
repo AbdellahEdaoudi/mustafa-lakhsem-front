@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { Mail, Phone, MapPin, Building, Share2, BellRing, ChevronDown, Send, Loader } from "@/components/lucide-react";
 import { useToast } from "@/components/Toast";
+import Link from "next/link";
 
 // Icons & URLs only — names come from translations
 const SOCIAL_LINKS = [
@@ -271,13 +272,13 @@ export default function Contact({ t = {}, lang }) {
                   </div>
                   <div>
                     <div className="text-xs font-bold uppercase text-slate-400 mb-0.5">{c?.phoneLabel}</div>
-                    <a
+                    <Link
                       href={`tel:${c?.phoneVal?.replace(/\s+/g, "")}`}
                       dir="ltr"
                       className="inline-block font-bold text-amber-400 hover:text-amber-300 transition-colors text-base font-mono text-start"
                     >
                       {c?.phoneVal}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -290,7 +291,7 @@ export default function Contact({ t = {}, lang }) {
                 </div>
                 <div className="flex flex-wrap gap-2.5">
                   {socialNetworks.map((network, idx) => (
-                    <a
+                    <Link
                       key={idx}
                       href={network.url}
                       target="_blank"
@@ -299,7 +300,7 @@ export default function Contact({ t = {}, lang }) {
                     >
                       {network.icon}
                       <span>{network.name}</span>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

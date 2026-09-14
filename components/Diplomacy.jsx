@@ -3,6 +3,7 @@
 import React from "react";
 
 import { Globe2, Handshake, ArrowRight, ShieldCheck, Users } from "@/components/lucide-react";
+import Link from "next/link";
 
 const ICONS = [Handshake, Users, ShieldCheck];
 
@@ -39,13 +40,13 @@ export default function Diplomacy({ t = {}, lang }) {
                 </p>
 
                 <div className="flex items-center gap-4">
-                  <a
+                  <Link
                     href="#contact"
                     className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-linear-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-blue-500/25 transition-all group"
                   >
                     <span>{d.cta || "Diplomatic Inquiries"}</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180" />
-                  </a>
+                  </Link>
                 </div>
               </div>
 

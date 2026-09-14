@@ -406,13 +406,22 @@
     "pressReleaseNote": "Mustafa Lakhsem · Communiqué de Presse Officiel",
     "articles": [
       {
+        "id": "sefrou-meeting-2026",
+        "category": "Politique",
+        "title": "Grande Rencontre Citoyenne à Séfrou avec Abdelosmade Archane",
+        "date": "13 Septembre 2026",
+        "location": "Séfrou, Maroc",
+        "summary": "Mustafa Lakhsem anime un grand rassemblement populaire à Séfrou aux côtés du Secrétaire Général du MDS Abdelosmade Archane.",
+        "fullText": "Le dimanche 13 septembre 2026, le maire et champion du monde Mustafa Lakhsem a présidé une grande rencontre citoyenne à Séfrou en présence du Secrétaire Général du MDS Abdelosmade Archane. S'adressant directement à des milliers de citoyens, M. Lakhsem a réaffirmé sa vision d'une gouvernance intègre et transparente, rejetant les pratiques démagogiques traditionnelles avec son slogan emblématique : « Pas de poulet, pas de viande, pas de seffa, pas d'argent — uniquement le travail sincère, l'engagement et l'intégrité pour nos citoyens »."
+      },
+      {
         "id": "adhesion-mds-2026",
         "category": "Politique",
-        "title": "Mustafa Lakhsem rejoint officiellement le Mouvement Démocratique et Social (MDS - 'Parti du Palmier')",
+        "title": "Adhésion Officielle au Mouvement Démocratique et Social (MDS - 'Parti du Palmier')",
         "date": "Août 2026",
         "location": "Séfrou / Rabat, Maroc",
         "summary": "Mustafa Lakhsem officialise son adhésion au MDS et obtient l'investiture pour conduire la liste législative à Séfrou.",
-        "fullText": "Dans un mouvement politique majeur, le champion du monde et maire d'Imouzzer-Kandar Mustafa Lakhsem a officiellement annoncé son adhésion au Mouvement Démocratique et Social (MDS - Parti du Palmier) suite à des échanges fructueux avec le Secrétaire Général Abdelosmade Archane. M. Lakhsem s'est vu accorder l'investiture officielle (Tazkia) pour mener la liste électorale de la circonscription de Séfrou lors des législatives 2026."
+        "fullText": "Dans une étape politique majeure pour porter les revendications du territoire et des zones montagneuses, le maire et champion du monde Mustafa Lakhsem a officialisé son adhésion au Mouvement Démocratique et Social (MDS - Parti du Palmier) à la suite d'échanges avec le Secrétaire Général Abdelosmade Archane. M. Lakhsem s'est vu accorder l'investiture officielle (Tazkia) pour mener la liste électorale de la circonscription de Séfrou aux législatives 2026."
       },
       {
         "id": "senegal-2024",

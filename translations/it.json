@@ -406,13 +406,22 @@
     "pressReleaseNote": "Mustafa Lakhsem · Comunicato Stampa Ufficiale",
     "articles": [
       {
+        "id": "sefrou-meeting-2026",
+        "category": "Politica",
+        "title": "Grande Incontro Cittadino a Sefrou con Abdelosmade Archane",
+        "date": "13 Settembre 2026",
+        "location": "Sefrou, Marocco",
+        "summary": "Mustafa Lakhsem guida un grande incontro pubblico a Sefrou insieme al Segretario Generale del MDS Abdelosmade Archane.",
+        "fullText": "Domenica 13 settembre 2026, il sindaco e campione del mondo Mustafa Lakhsem ha presieduto un grande incontro cittadino a Sefrou con il Segretario Generale del MDS Abdelosmade Archane. Parlando direttamente ai cittadini, Lakhsem ha promosso la trasparenza e rifiutato le pratiche elettorali tradizionali con il suo celebre motto: 'Niente pollo, niente carne, niente seffa, niente denaro — solo impegno autentico, duro lavoro e integrità per i nostri cittadini.'"
+      },
+      {
         "id": "adhesion-mds-2026",
         "category": "Politica",
-        "title": "Mustafa Lakhsem aderisce ufficialmente al Movimento Democratico e Sociale (MDS - 'Partito della Palma')",
+        "title": "Adesione Ufficiale al Movimento Democratico e Sociale (MDS - 'Partito della Palma')",
         "date": "Agosto 2026",
         "location": "Sefrou / Rabat, Marocco",
         "summary": "Mustafa Lakhsem si unisce al MDS e ottiene la candidatura a capolista legislativo per Sefrou.",
-        "fullText": "Mustafa Lakhsem, campione del mondo e sindaco di Imouzzer-Kandar, ha annunciato ufficialmente la sua adesione al Movimento Democratico e Sociale (MDS - 'Partito della Palma') dopo incontri con il Segretario Generale Abdelosmade Archane."
+        "fullText": "In un passo politico decisivo per promuovere lo sviluppo delle regioni montane e l'equità territoriale, il sindaco e campione del mondo Mustafa Lakhsem ha annunciato ufficialmente la sua adesione al Movimento Democratico e Sociale (MDS - 'Partito della Palma') a seguito di incontri con il Segretario Generale Abdelosmade Archane. Lakhsem ha ottenuto l'investitura ufficiale per guidare la lista elettorale per la circoscrizione di Sefrou alle legislative 2026."
       },
       {
         "id": "senegal-2024",

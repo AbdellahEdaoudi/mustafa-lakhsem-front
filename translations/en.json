@@ -406,13 +406,22 @@
     "pressReleaseNote": "Mustafa Lakhsem · Official Press Release",
     "articles": [
       {
+        "id": "sefrou-meeting-2026",
+        "category": "Politics",
+        "title": "Townhall Citizen Rally in Sefrou with MDS Leader Abdelosmade Archane",
+        "date": "September 13, 2026",
+        "location": "Sefrou, Morocco",
+        "summary": "Mustafa Lakhsem leads a major citizen townhall in Sefrou alongside MDS Secretary-General Abdelosmade Archane, championing political integrity.",
+        "fullText": "On Sunday, September 13, 2026, Mayor and World Champion Mustafa Lakhsem convened a major public townhall meeting in Sefrou, joined by MDS Secretary-General Abdelosmade Archane. Speaking directly to thousands of citizens, Lakhsem emphasized transparent governance and rejected traditional campaign patronage with his famous motto: 'No chicken, no meat, no seffa, no money — only genuine commitment, hard work, and integrity for our citizens.'"
+      },
+      {
         "id": "adhesion-mds-2026",
         "category": "Politics",
-        "title": "Mustafa Lakhsem Officially Joins the Democratic and Social Movement (MDS - 'Palm Party')",
+        "title": "Official Joining of the Democratic and Social Movement (MDS - 'Palm Party')",
         "date": "August 2026",
         "location": "Sefrou / Rabat, Morocco",
         "summary": "Mustafa Lakhsem officially joins the Democratic and Social Movement (MDS) and secures party endorsement to head the legislative list for Sefrou.",
-        "fullText": "In a major political movement, World Champion and Mayor of Imouzzer-Kandar Mustafa Lakhsem officially announced his joining of the Democratic and Social Movement (MDS - 'Palm Party') following strategic leadership meetings with Secretary-General Abdelosmade Archane. Lakhsem received official party endorsement (Tazkia) to head the party's electoral list for the Sefrou provincial constituency in the 2026 legislative elections, advocating for mountain region development and territorial equity."
+        "fullText": "In a decisive political step to champion mountain region development and territorial equity, Mayor and World Champion Mustafa Lakhsem officially joined the Democratic and Social Movement (MDS - 'Palm Party') following leadership discussions with Secretary-General Abdelosmade Archane. Lakhsem received official party endorsement (Tazkia) to lead the party's legislative list for the Sefrou provincial constituency in the 2026 elections."
       },
       {
         "id": "senegal-2024",

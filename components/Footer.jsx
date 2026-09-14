@@ -5,6 +5,7 @@ import Image from "next/image";
 import {
   ArrowUp, MapPin, Phone, Facebook, Instagram, Twitter, Linkedin,
 } from "@/components/lucide-react";
+import Link from "next/link";
 
 const SOCIAL_LINKS = [
   {
@@ -89,7 +90,7 @@ export default function Footer({ t = {}, lang }) {
 
           <div className="flex items-center gap-3">
             {SOCIAL_LINKS.map(({ key, url, icon, Icon, colorClass }) => (
-              <a
+              <Link
                 key={key}
                 href={url}
                 target="_blank"
@@ -98,7 +99,7 @@ export default function Footer({ t = {}, lang }) {
                 className={`w-9 h-9 flex items-center justify-center rounded-full border border-[#d4af37]/25 text-[#d4af37]/80 transition-all duration-300 [&_svg]:w-4 [&_svg]:h-4 ${colorClass}`}
               >
                 {Icon ? <Icon className="w-4 h-4" /> : icon}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -124,9 +125,9 @@ export default function Footer({ t = {}, lang }) {
             <ul className="space-y-2.5 text-xs font-semibold text-slate-300">
               {exploreLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="hover:text-amber-300 transition-colors">
+                  <Link href={link.href} className="hover:text-amber-300 transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -183,14 +184,14 @@ export default function Footer({ t = {}, lang }) {
             © {new Date().getFullYear()} {f.name}. {f.copyright}
           </p>
 
-          <a
+          <Link
             href={`https://abdellah-edaoudi.vercel.app/${lang ?? ""}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-600 hover:text-[#d4af37] transition-colors"
           >
             {f.developedBy}
-          </a>
+          </Link>
 
           <div className="flex justify-center sm:justify-end">
             <button

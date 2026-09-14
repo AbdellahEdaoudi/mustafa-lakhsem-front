@@ -1201,9 +1201,9 @@ export default function AdminDashboard() {
                   <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
                     {t?.dashboard?.modal?.emailAddress || "Email Address"}
                   </span>
-                  <a href={`mailto:${selectedContact.email}`} className="text-amber-400 hover:underline text-sm font-semibold break-all">
+                  <Link href={`mailto:${selectedContact.email}`} className="text-amber-400 hover:underline text-sm font-semibold break-all">
                     {selectedContact.email}
-                  </a>
+                  </Link>
                 </div>
                 <div className="p-3 sm:p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/80">
                   <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">

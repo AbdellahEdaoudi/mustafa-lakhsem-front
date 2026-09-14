@@ -5,6 +5,7 @@ import Image from "next/image";
 import { X } from "@/components/lucide-react";
 
 const IMAGE_MAP = {
+  "sefrou-meeting-2026": "/galerie/Sefrou_Meeting_Lakhsem.png",
   "adhesion-mds-2026": "/galerie/Adhesion_MDS_Nakhla.jpg",
   "senegal-2024": "/galerie/Accord_Senegal_Maroc.jpg",
   "smart-cities-2023": "/galerie/Forum_Smart_Cities.jpg",
@@ -137,11 +138,10 @@ export default function MediaImageModal({ activeIdx, setActiveIdx, articles, onC
                 type="button"
                 onClick={() => setActiveIdx(i)}
                 aria-label={`View image for ${art.title}`}
-                className={`relative w-14 sm:w-16 h-10 sm:h-11 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${
-                  isActive
+                className={`relative w-14 sm:w-16 h-10 sm:h-11 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${isActive
                     ? "border-amber-400 scale-105 shadow-[0_0_12px_rgba(212,175,55,0.4)]"
                     : "border-transparent opacity-50 hover:opacity-100 hover:border-slate-600"
-                }`}
+                  }`}
               >
                 <div className="absolute inset-0 bg-slate-800/80 animate-pulse pointer-events-none" />
                 <Image

@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { Medal, Crown, ArrowRight } from "@/components/lucide-react";
+import Link from "next/link";
 
 export default function About({ t = {}, lang }) {
   const about = t.about || {};
@@ -90,10 +91,10 @@ export default function About({ t = {}, lang }) {
               </div>
             </div>
 
-            <a href="#career" className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-semibold text-xs uppercase tracking-widest hover:bg-amber-500/20 transition-colors">
+            <Link href="#career" className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-semibold text-xs uppercase tracking-widest hover:bg-amber-500/20 transition-colors">
               {about.cta}
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180" />
-            </a>
+            </Link>
           </div>
 
         </div>

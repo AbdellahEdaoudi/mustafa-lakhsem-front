@@ -19,6 +19,7 @@ import {
   Building2,
 } from "@/components/lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 // Icon mapping based on pillar number
 const ICON_MAP = {
@@ -147,13 +148,13 @@ export default function Vision({ t = {}, lang }) {
               </h4>
             </div>
           </div>
-          <a
+          <Link
             href="#contact"
             className="px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all flex items-center gap-2.5 shrink-0 cursor-pointer"
           >
             <span>{visionData.bannerBtn || "Contact Municipal Office"}</span>
             <ArrowUpRight className={`w-4 h-4 ${isRtl ? "-scale-x-100" : ""}`} />
-          </a>
+          </Link>
         </div>
 
       </div>
