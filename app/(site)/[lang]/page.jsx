@@ -14,6 +14,7 @@ const ImouzzerSpotlight = dynamic(() => import("@/components/ImouzzerSpotlight")
 const MediaCenter = dynamic(() => import("@/components/MediaCenter"));
 const Contact = dynamic(() => import("@/components/Contact"));
 const Footer = dynamic(() => import("@/components/Footer"));
+const CampaignModal = dynamic(() => import("@/components/CampaignModal"));
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mustafa-lakhsem.vercel.app";
 
@@ -199,6 +200,9 @@ export default async function LangPage({ params }) {
 
         {/* Footer */}
         <Footer {...commonProps} />
+
+        {/* Election Campaign Pop-up Modal */}
+        <CampaignModal {...commonProps} />
       </main>
     </div>
   );

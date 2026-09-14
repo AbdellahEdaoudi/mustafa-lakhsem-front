@@ -94,7 +94,8 @@ export default function Hero({ t = {}, lang }) {
                   alt={`Mustafa Lakhsem image ${idx + 1}`}
                   fill
                   sizes="(max-width: 480px) 100vw, (max-width: 768px) 92vw, (max-width: 1024px) 85vw, 550px"
-                  className="object-cover object-center lg:object-top"
+                  className={`object-cover ${src.includes("hero4") ? "object-top" : "object-center lg:object-top"}`}
+                  style={{ objectPosition: src.includes("hero4") ? "center 10%" : undefined }}
                   priority={isFirst}
                   loading="eager"
                   fetchPriority={isFirst ? "high" : "auto"}
@@ -135,8 +136,8 @@ export default function Hero({ t = {}, lang }) {
           <p className="max-w-xl text-sm sm:text-base text-slate-300 mb-6 leading-relaxed">
             {descText}
           </p>
-
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-10">
+          {/*  */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-6">
             <Link
               href="#achievements"
               className="px-6 py-3 rounded-full bg-linear-to-r from-amber-600 via-amber-400 to-amber-600 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider hover:-translate-y-0.5 transition-transform flex items-center gap-2"
@@ -184,7 +185,7 @@ export default function Hero({ t = {}, lang }) {
       </div>
 
       {/* Infinite Ticker - Seamless continuous loop */}
-      <div className="w-full bg-amber-500/10 border-t border-amber-500/30 py-3 backdrop-blur-md overflow-hidden relative z-10 mt-12 lg:mt-16">
+      <div className="w-full bg-amber-500/10 border-t border-amber-500/30 py-3 backdrop-blur-md overflow-hidden relative z-10 mt-12 lg:mt-12">
         <div className="animate-marquee whitespace-nowrap flex items-center gap-8 text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] text-amber-200">
           {/* Track A */}
           <div className="flex items-center gap-8 shrink-0">
