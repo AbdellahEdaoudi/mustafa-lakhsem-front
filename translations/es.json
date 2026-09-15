@@ -517,6 +517,7 @@
       "Instagram",
       "TikTok",
       "Twitter / X",
+      "Threads",
       "LinkedIn"
     ],
     "messageSent": "¡Mensaje enviado con éxito!",
@@ -605,6 +606,7 @@
       "facebook": "Facebook",
       "instagram": "Instagram",
       "tiktok": "TikTok",
+      "threads": "Threads",
       "twitter": "X / Twitter",
       "linkedin": "LinkedIn"
     }

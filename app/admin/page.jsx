@@ -103,7 +103,7 @@ export default function AdminDashboard() {
     } catch (err) {
       toast.error(
         t?.dashboard?.toasts?.requestSetupError ||
-          (lang === "ar" ? "حدث خطأ أثناء الترجمة" : "An error occurred during translation.")
+        (lang === "ar" ? "حدث خطأ أثناء الترجمة" : "An error occurred during translation.")
       );
     } finally {
       setTranslating(false);
@@ -1385,7 +1385,7 @@ export default function AdminDashboard() {
                         ) : (
                           <>
                             <img
-                              src={`/flags/4x3/${targetLang === "ar" ? "ma" : targetLang === "en" ? "gb" : targetLang}.svg`}
+                              src={`/flags/${targetLang === "ar" ? "ma" : targetLang === "en" ? "gb" : targetLang}.svg`}
                               alt={targetLang}
                               className="w-4 h-3 object-cover rounded-2xs border border-slate-900/40 shrink-0"
                             />
@@ -1411,9 +1411,8 @@ export default function AdminDashboard() {
                     {/* Custom Floating Language Selection Popover */}
                     {langDropdownOpen && (
                       <div
-                        className={`absolute top-full mt-1.5 w-44 rounded-xl overflow-hidden z-50 shadow-2xl animate-in fade-in zoom-in-95 duration-150 ${
-                          isRtl ? "left-0" : "right-0"
-                        }`}
+                        className={`absolute top-full mt-1.5 w-44 rounded-xl overflow-hidden z-50 shadow-2xl animate-in fade-in zoom-in-95 duration-150 ${isRtl ? "left-0" : "right-0"
+                          }`}
                         style={{
                           background: "#080d1a",
                           border: "1px solid rgba(212,175,55,0.3)",
@@ -1437,14 +1436,13 @@ export default function AdminDashboard() {
                               setLangDropdownOpen(false);
                               handleTranslateMessage(l.code);
                             }}
-                            className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs transition-colors cursor-pointer border-t border-slate-800/40 ${
-                              l.code === targetLang && translatedText
+                            className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs transition-colors cursor-pointer border-t border-slate-800/40 ${l.code === targetLang && translatedText
                                 ? "bg-amber-500/15 text-amber-300 font-bold"
                                 : "text-slate-200 hover:text-amber-300 hover:bg-slate-800/80"
-                            }`}
+                              }`}
                           >
                             <img
-                              src={`/flags/4x3/${l.flag}.svg`}
+                              src={`/flags/${l.flag}.svg`}
                               alt={l.label}
                               className="w-4 h-3 object-cover rounded-2xs border border-slate-700/60 shrink-0"
                             />
@@ -1472,13 +1470,12 @@ export default function AdminDashboard() {
                     <div>
                       <div
                         dir={isRtl ? "rtl" : "ltr"}
-                        className={`flex items-center justify-between text-[10px] font-bold text-amber-400/90 pb-2 mb-2 border-b border-slate-800/80 select-none shrink-0 ${
-                          isRtl ? "flex-row" : "flex-row"
-                        }`}
+                        className={`flex items-center justify-between text-[10px] font-bold text-amber-400/90 pb-2 mb-2 border-b border-slate-800/80 select-none shrink-0 ${isRtl ? "flex-row" : "flex-row"
+                          }`}
                       >
                         <span className="flex items-center gap-1.5 text-start">
                           <img
-                            src={`/flags/4x3/${targetLang === "ar" ? "ma" : targetLang === "en" ? "gb" : targetLang}.svg`}
+                            src={`/flags/${targetLang === "ar" ? "ma" : targetLang === "en" ? "gb" : targetLang}.svg`}
                             alt={targetLang}
                             className="w-3.5 h-2.5 object-cover rounded-2xs inline-block"
                           />

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import {
   ArrowUp, MapPin, Phone, Facebook, Instagram, Twitter, Linkedin,
@@ -11,36 +10,38 @@ const SOCIAL_LINKS = [
   {
     key: "facebook",
     url: "https://www.facebook.com/Mustafa.Lakhsem.officiel",
-    colorClass: "hover:text-[#1877F2] hover:border-[#1877F2]",
-    Icon: Facebook,
+    colorClass: "hover:border-[#1877F2] hover:text-[#1877F2] hover:bg-[#1877F2]/5",
+    icon: <Image src="/socials/facebook.svg" alt="Facebook" width={16} height={16} className="w-4 h-4 object-contain" />,
   },
   {
     key: "instagram",
     url: "https://www.instagram.com/mustafalakhsem",
-    colorClass: "hover:text-[#E1306C] hover:border-[#E1306C]",
-    Icon: Instagram,
+    colorClass: "hover:border-[#E1306C] hover:text-[#E1306C] hover:bg-[#E1306C]/5",
+    icon: <Image src="/socials/instagram.svg" alt="Instagram" width={16} height={16} className="w-4 h-4 object-contain" />,
   },
   {
     key: "tiktok",
     url: "https://www.tiktok.com/@mustafa.lakhsem",
-    colorClass: "hover:text-[#25F4EE] hover:border-[#25F4EE]",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.62 4.2 1.12 1.25 2.68 1.99 4.3 2.14v3.89c-1.4-.04-2.79-.44-3.97-1.21-.69-.45-1.27-.98-1.74-1.63-.05 2.53-.02 5.07-.04 7.6-.07 2.05-.62 4.09-1.78 5.75-1.66 2.4-4.52 3.8-7.44 3.6-2.92-.09-5.69-1.75-6.98-4.38-1.57-3.03-1.07-7.1 1.25-9.57 1.83-2.02 4.67-2.88 7.32-2.2v4c-1.28-.35-2.71-.12-3.79.67-1.15.82-1.73 2.32-1.46 3.7.27 1.63 1.7 2.87 3.35 2.89 1.82.04 3.42-1.32 3.51-3.13.06-2.73.02-5.46.03-8.19.01-.04 0-.08 0-.12z" />
-      </svg>
-    ),
+    colorClass: "hover:border-[#25F4EE] hover:text-[#25F4EE] hover:bg-[#25F4EE]/5",
+    icon: <Image src="/socials/tiktok.svg" alt="TikTok" width={16} height={16} className="w-4 h-4 object-contain" />,
   },
   {
     key: "twitter",
     url: "https://x.com/LakhsemM",
-    colorClass: "hover:text-white hover:border-white",
-    Icon: Twitter,
+    colorClass: "hover:border-slate-300 hover:text-slate-100 hover:bg-slate-700/20",
+    icon: <Image src="/socials/twitter.svg" alt="Twitter" width={16} height={16} className="w-4 h-4 object-contain invert" />,
+  },
+  {
+    key: "threads",
+    url: "https://www.threads.com/@mustafalakhsem",
+    colorClass: "hover:border-slate-300 hover:text-slate-100 hover:bg-slate-700/20",
+    icon: <Image src="/socials/threads.svg" alt="Threads" width={16} height={16} className="w-4 h-4 object-contain invert" />,
   },
   {
     key: "linkedin",
     url: "https://www.linkedin.com/in/mustafa-lakhsem-0480328b/",
-    colorClass: "hover:text-[#0A66C2] hover:border-[#0A66C2]",
-    Icon: Linkedin,
+    colorClass: "hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/5",
+    icon: <Image src="/socials/linkedin.svg" alt="LinkedIn" width={16} height={16} className="w-4 h-4 object-contain" />,
   },
 ];
 
@@ -89,16 +90,16 @@ export default function Footer({ t = {}, lang }) {
           </div>
 
           <div className="flex items-center gap-3">
-            {SOCIAL_LINKS.map(({ key, url, icon, Icon, colorClass }) => (
+            {SOCIAL_LINKS.map(({ key, url, icon, colorClass }) => (
               <Link
                 key={key}
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social[key]}
-                className={`w-9 h-9 flex items-center justify-center rounded-full border border-[#d4af37]/25 text-[#d4af37]/80 transition-all duration-300 [&_svg]:w-4 [&_svg]:h-4 ${colorClass}`}
+                className={`w-9 h-9 flex items-center justify-center rounded-full border border-[#d4af37]/25 text-[#d4af37]/80 transition-all duration-300 ${colorClass}`}
               >
-                {Icon ? <Icon className="w-4 h-4" /> : icon}
+                {icon}
               </Link>
             ))}
           </div>
