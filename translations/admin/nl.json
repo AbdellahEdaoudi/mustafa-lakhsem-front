@@ -78,7 +78,13 @@
       "notAvailable": "N.v.t.",
       "delete": "Verwijderen",
       "star": "Met ster",
-      "unstar": "Ster weg"
+      "unstar": "Ster weg",
+      "translateMessage": "Vertaal bericht",
+      "showOriginal": "Origineel tonen",
+      "showTranslation": "Vertaling tonen",
+      "translating": "Vertalen...",
+      "reTranslate": "Opnieuw vertalen",
+      "translatedTo": "Vertaald naar"
     },
     "confirmDelete": {
       "deleteContactTitle": "Bericht verwijderen?",

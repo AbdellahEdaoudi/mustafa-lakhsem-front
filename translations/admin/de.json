@@ -79,7 +79,13 @@
       "notAvailable": "K.A.",
       "delete": "Löschen",
       "star": "Markieren",
-      "unstar": "Entmarkieren"
+      "unstar": "Entmarkieren",
+      "translateMessage": "Nachricht übersetzen",
+      "showOriginal": "Original anzeigen",
+      "showTranslation": "Übersetzung anzeigen",
+      "translating": "Wird übersetzt...",
+      "reTranslate": "Erneut übersetzen",
+      "translatedTo": "Übersetzt ins"
     },
     "confirmDelete": {
       "deleteContactTitle": "Nachricht löschen?",

@@ -75,8 +75,13 @@ export function ToastProvider({ children }) {
       {children}
 
       {/* Toast Container with exact custom styling & animations */}
-      <div className="fixed top-4 inset-x-4 sm:inset-x-auto sm:top-5 sm:right-5 sm:max-w-md w-auto sm:w-full z-9999 flex flex-col gap-3 pointer-events-none">
-        {toasts.map((t) => {
+      {(() => {
+        const hasArabicToast = toasts.some((t) => /[\u0600-\u06FF]/.test(t.message || ""));
+        const posClass = hasArabicToast ? "sm:left-5" : "sm:right-5";
+        return (
+          <div className={`fixed top-4 inset-x-4 sm:inset-x-auto sm:top-5 ${posClass} sm:max-w-md w-auto sm:w-full z-9999 flex flex-col gap-3 pointer-events-none`}>
+            {toasts.map((t) => {
+              const isArabic = /[\u0600-\u06FF]/.test(t.message || "");
           let bgClass = "bg-slate-900/90 border-slate-800 text-white";
           let iconColor = "text-amber-400";
           let iconSvg = (
@@ -114,6 +119,7 @@ export function ToastProvider({ children }) {
           return (
             <div
               key={t.id}
+              dir={isArabic ? "rtl" : "ltr"}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               className={`pointer-events-auto flex items-start gap-3 p-4 rounded-2xl border backdrop-blur-xl shadow-2xl transition-all duration-300 animate-in slide-in-from-top-5 fade-in ${bgClass}`}
@@ -124,14 +130,14 @@ export function ToastProvider({ children }) {
               </div>
 
               {/* Message */}
-              <div className="flex-1 text-sm font-semibold leading-relaxed wrap-break-word min-w-0">
+              <div className={`flex-1 text-sm font-semibold leading-relaxed wrap-break-word min-w-0 ${isArabic ? "text-right" : "text-left"}`}>
                 {t.message}
               </div>
 
               {/* Close Button */}
               <button
                 onClick={() => removeToast(t.id)}
-                className="text-slate-400 hover:text-white transition-colors cursor-pointer shrink-0"
+                className="text-slate-400 hover:text-white transition-colors cursor-pointer shrink-0 p-0.5 rounded-lg hover:bg-white/10"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -141,6 +147,8 @@ export function ToastProvider({ children }) {
           );
         })}
       </div>
+        );
+      })()}
     </ToastContext.Provider>
   );
 }

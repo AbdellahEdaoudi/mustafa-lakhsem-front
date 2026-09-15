@@ -81,7 +81,13 @@
       "notAvailable": "غير متوفر",
       "delete": "حذف",
       "star": "تمييز بنجمة",
-      "unstar": "إزالة النجمة"
+      "unstar": "إزالة النجمة",
+      "translateMessage": "ترجمة الرسالة",
+      "showOriginal": "إظهار النص الأصلي",
+      "showTranslation": "إظهار الترجمة",
+      "translating": "جاري الترجمة...",
+      "reTranslate": "إعادة الترجمة",
+      "translatedTo": "يترجم إلى"
     },
     "confirmDelete": {
       "deleteContactTitle": "حذف الرسالة؟",

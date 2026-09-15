@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,7 +21,6 @@ export default function AdminDashboard() {
   const [contacts, setContacts] = useState([]);
   const [subscribers, setSubscribers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
   const [filter, setFilter] = useState("all"); // "all" | "starred" | "unread"
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedContact, setSelectedContact] = useState(null);
@@ -40,6 +39,76 @@ export default function AdminDashboard() {
   const [subscribersTotal, setSubscribersTotal] = useState(0);
   const [contactsUnreadTotal, setContactsUnreadTotal] = useState(0);
   const [contactsStarredTotal, setContactsStarredTotal] = useState(0);
+
+  // Message Translation State
+  const [translating, setTranslating] = useState(false);
+  const [translatedText, setTranslatedText] = useState(null);
+  const [translatedType, setTranslatedType] = useState(null);
+  const [showOriginal, setShowOriginal] = useState(false);
+  const [targetLang, setTargetLang] = useState(lang);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const translateDropdownRef = useRef(null);
+
+  // Close custom dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (translateDropdownRef.current && !translateDropdownRef.current.contains(e.target)) {
+        setLangDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Reset translation when selected contact or lang changes
+  useEffect(() => {
+    setTranslatedText(null);
+    setTranslatedType(null);
+    setShowOriginal(false);
+    setTargetLang(lang);
+    setLangDropdownOpen(false);
+  }, [selectedContact, lang]);
+
+  const handleTranslateMessage = async (overrideTargetLang) => {
+    if (!selectedContact?.message) return;
+    const activeTarget = overrideTargetLang || targetLang || lang || "en";
+    setTranslating(true);
+    try {
+      const subjectText = selectedContact.type || "";
+      const combinedText = `${subjectText}\n|||X77X|||\n${selectedContact.message}`;
+
+      const res = await fetch(
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${activeTarget}&dt=t&q=${encodeURIComponent(
+          combinedText
+        )}`
+      );
+      const data = await res.json();
+      if (Array.isArray(data) && Array.isArray(data[0])) {
+        const fullTranslation = data[0].map((item) => item[0]).join("");
+        if (fullTranslation) {
+          const parts = fullTranslation.split(/\|\|\|X77X\|\|\||\|\|\| X77X \|\|\|/i);
+          if (parts.length >= 2) {
+            setTranslatedType(parts[0].trim());
+            setTranslatedText(parts.slice(1).join("\n").trim());
+          } else {
+            setTranslatedText(fullTranslation);
+          }
+          setShowOriginal(false);
+        } else {
+          throw new Error("Empty translation result");
+        }
+      } else {
+        throw new Error("Invalid response format");
+      }
+    } catch (err) {
+      toast.error(
+        t?.dashboard?.toasts?.requestSetupError ||
+          (lang === "ar" ? "حدث خطأ أثناء الترجمة" : "An error occurred during translation.")
+      );
+    } finally {
+      setTranslating(false);
+    }
+  };
 
   // Helper to get locale string based on active language
   const getLocale = (l) => {
@@ -146,16 +215,13 @@ export default function AdminDashboard() {
 
   const fetchData = async (cPage = contactsPage, sPage = subscribersPage) => {
     setLoading(true);
-    setError("");
     try {
       await Promise.all([
         fetchContacts(cPage),
         fetchSubscribers(sPage),
       ]);
-    } catch (err) {
-      const message =
-        err.response?.data?.message || err.message || t?.dashboard?.toasts?.dashboardLoadFailed || "Failed to load dashboard data.";
-      setError(message);
+    } catch {
+      // errors handled in fetchContacts / fetchSubscribers via handleApiError
     } finally {
       setLoading(false);
     }
@@ -481,14 +547,7 @@ export default function AdminDashboard() {
 
       {/* Main Content */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
-        {error && (
-          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-2xl text-red-400 text-sm flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-            </svg>
-            <span className="wrap-break-word">{error}</span>
-          </div>
-        )}
+
 
         {/* Tab Controls and Search Bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4 sm:pb-5 mb-5 sm:mb-6">
@@ -1147,35 +1206,39 @@ export default function AdminDashboard() {
       </main>
 
       {/* ─────────────────────────────────────────────────────────────
-          MESSAGE DETAILS MODAL (z-40) - FULLY RESPONSIVE
+          MESSAGE DETAILS MODAL (z-40) - FULL SCREEN ON MOBILE
       ────────────────────────────────────────────────────────────── */}
       {selectedContact && (
         <div
-          className="fixed inset-0 bg-black/80 z-40 flex justify-center items-start p-3 sm:p-4 pt-6 sm:pt-12 backdrop-blur-md transition-opacity overflow-y-auto"
+          className="fixed inset-0 bg-black/85 z-40 flex justify-center items-center p-0 sm:p-4 backdrop-blur-md transition-opacity overflow-hidden"
           onClick={() => setSelectedContact(null)}
         >
           <div
-            className="bg-[#090e1e] border border-slate-800/90 rounded-2xl w-full max-w-2xl max-h-[88vh] sm:max-h-[85vh] flex flex-col overflow-hidden shadow-2xl relative animate-in fade-in zoom-in-95 duration-200"
+            className="bg-[#090e1e] border-0 sm:border border-slate-800/90 sm:rounded-2xl w-full h-full sm:h-auto sm:max-w-2xl sm:max-h-[85vh] flex flex-col overflow-hidden shadow-2xl relative animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="border-b border-slate-800/80 p-4 sm:p-6 flex justify-between items-center bg-slate-950/60 shrink-0">
+            <div className="border-b border-slate-800/80 p-3.5 sm:p-5 flex justify-between items-center bg-slate-950/70 shrink-0">
               <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400 font-bold shrink-0">
-                  ✉️
-                </span>
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400 shrink-0 shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-4 h-4 sm:w-5 sm:h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                  </svg>
+                </div>
                 <div className="min-w-0">
                   <h3 className="text-sm sm:text-base font-bold text-white leading-tight truncate">
                     {t?.dashboard?.modal?.inquiryDetails || "Inquiry Details"}
                   </h3>
-                  <span className="text-[11px] text-slate-500 block truncate">
+                  <span className="text-[11px] text-slate-500 block truncate font-mono">
                     {t?.dashboard?.modal?.id || "ID"}: {selectedContact._id}
                   </span>
                 </div>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <span className="px-2.5 py-1 text-[11px] font-medium rounded-full bg-slate-800 text-slate-300 border border-slate-700/60 max-w-44 sm:max-w-xs truncate">
-                  {selectedContact.type || t?.dashboard?.modal?.notAvailable || "N/A"}
+                <span className="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-slate-800/90 text-amber-300 border border-amber-500/20 max-w-36 sm:max-w-xs truncate shadow-xs">
+                  {translatedType && !showOriginal
+                    ? translatedType
+                    : (selectedContact.type || t?.dashboard?.modal?.notAvailable || "N/A")}
                 </span>
                 <button
                   onClick={() => setSelectedContact(null)}
@@ -1189,53 +1252,259 @@ export default function AdminDashboard() {
             </div>
 
             {/* Modal Body (Scrollable) */}
-            <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto flex-1">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="p-3 sm:p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/80">
-                  <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                    {t?.dashboard?.modal?.senderName || "Sender Name"}
-                  </span>
-                  <span className="text-white text-sm font-semibold wrap-break-word">{selectedContact.name}</span>
+            <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto flex-1 touch-pan-y">
+              {/* Subject / Category Card (Prominent Header Card) */}
+              <div className="p-3.5 rounded-xl bg-linear-to-r from-amber-500/10 via-slate-900/60 to-slate-900/60 border border-amber-500/25 flex items-start gap-3 shadow-md">
+                <div className="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6Z" />
+                  </svg>
                 </div>
-                <div className="p-3 sm:p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/80">
-                  <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                    {t?.dashboard?.modal?.emailAddress || "Email Address"}
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[10px] font-bold text-amber-400/90 uppercase tracking-widest mb-0.5">
+                    {t?.dashboard?.table?.category || "Subject / Category"}
                   </span>
-                  <Link href={`mailto:${selectedContact.email}`} className="text-amber-400 hover:underline text-sm font-semibold break-all">
-                    {selectedContact.email}
-                  </Link>
-                </div>
-                <div className="p-3 sm:p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/80">
-                  <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                    {t?.dashboard?.modal?.phoneNumber || "Phone Number"}
-                  </span>
-                  <span className="text-white text-sm font-semibold wrap-break-word">
-                    {selectedContact.phone || t?.dashboard?.modal?.notAvailable || "N/A"}
-                  </span>
-                </div>
-                <div className="p-3 sm:p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/80">
-                  <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                    {t?.dashboard?.modal?.organization || "Organization / Entity"}
-                  </span>
-                  <span className="text-white text-sm font-semibold wrap-break-word">
-                    {selectedContact.org || selectedContact.organization || t?.dashboard?.modal?.notAvailable || "N/A"}
+                  <span
+                    dir={
+                      translatedType && !showOriginal
+                        ? isArabic(translatedType) ? "rtl" : "ltr"
+                        : isArabic(selectedContact.type) ? "rtl" : "ltr"
+                    }
+                    className="text-white text-sm sm:text-base font-bold wrap-break-word"
+                  >
+                    {translatedType && !showOriginal
+                      ? translatedType
+                      : (selectedContact.type || t?.dashboard?.modal?.notAvailable || "N/A")}
                   </span>
                 </div>
               </div>
 
-              <div>
-                <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
-                  {t?.dashboard?.modal?.messageContent || "Message Content"}
-                </span>
+              {/* Sender Details Cards Grid (Compact 2x2 Layout) */}
+              <div className="grid grid-cols-2 gap-2.5">
+                {/* Sender Name Card */}
+                <div className="p-2.5 rounded-xl bg-slate-900/50 border border-slate-800/80 flex items-center gap-2.5 shadow-xs">
+                  <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-3.5 h-3.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                      {t?.dashboard?.modal?.senderName || "Sender Name"}
+                    </span>
+                    <span className="text-white text-xs font-semibold truncate">{selectedContact.name}</span>
+                  </div>
+                </div>
+
+                {/* Email Address Card */}
+                <div className="p-2.5 rounded-xl bg-slate-900/50 border border-slate-800/80 flex items-center gap-2.5 shadow-xs">
+                  <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-3.5 h-3.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                      {t?.dashboard?.modal?.emailAddress || "Email Address"}
+                    </span>
+                    <Link href={`mailto:${selectedContact.email}`} className="text-amber-400 hover:underline text-xs font-semibold truncate">
+                      {selectedContact.email}
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Phone Number Card */}
+                <div className="p-2.5 rounded-xl bg-slate-900/50 border border-slate-800/80 flex items-center gap-2.5 shadow-xs">
+                  <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-3.5 h-3.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.826-1.47-5.114-3.758-6.584-6.584l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                      {t?.dashboard?.modal?.phoneNumber || "Phone Number"}
+                    </span>
+                    <span className="text-white text-xs font-semibold truncate font-mono">
+                      {selectedContact.phone || t?.dashboard?.modal?.notAvailable || "N/A"}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Organization Card */}
+                <div className="p-2.5 rounded-xl bg-slate-900/50 border border-slate-800/80 flex items-center gap-2.5 shadow-xs">
+                  <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-3.5 h-3.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.5 1.5v3" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                      {t?.dashboard?.modal?.organization || "Organization / Entity"}
+                    </span>
+                    <span className="text-white text-xs font-semibold truncate">
+                      {selectedContact.org || selectedContact.organization || t?.dashboard?.modal?.notAvailable || "N/A"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Message Content Section (Flex-1 to take all available space) */}
+              <div className="flex-1 flex flex-col min-h-0">
+                <div className="flex items-center justify-between gap-2 mb-1.5 flex-wrap shrink-0">
+                  <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                    {t?.dashboard?.modal?.messageContent || "Message Content"}
+                  </span>
+
+                  {/* Unified Single Button Translate Trigger */}
+                  <div className="relative inline-block text-left" ref={translateDropdownRef}>
+                    <div className="flex items-center gap-1.5">
+                      {translatedText && (
+                        <button
+                          type="button"
+                          onClick={() => setShowOriginal(!showOriginal)}
+                          className="px-2.5 py-1 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-amber-400 rounded-xl transition-all border border-slate-700 cursor-pointer"
+                        >
+                          {showOriginal
+                            ? (t?.dashboard?.modal?.showTranslation || "Show Translation")
+                            : (t?.dashboard?.modal?.showOriginal || "Show Original")}
+                        </button>
+                      )}
+
+                      <button
+                        type="button"
+                        disabled={translating}
+                        onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                        className="px-3 py-1 text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl transition-all shadow-md shadow-amber-500/20 flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                      >
+                        {translating ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 animate-spin text-slate-950" />
+                            <span>{t?.dashboard?.modal?.translating || "Translating..."}</span>
+                          </>
+                        ) : (
+                          <>
+                            <img
+                              src={`/flags/4x3/${targetLang === "ar" ? "ma" : targetLang === "en" ? "gb" : targetLang}.svg`}
+                              alt={targetLang}
+                              className="w-4 h-3 object-cover rounded-2xs border border-slate-900/40 shrink-0"
+                            />
+                            <span>
+                              {translatedText
+                                ? targetLang.toUpperCase()
+                                : (t?.dashboard?.modal?.translateMessage || "Translate Message")}
+                            </span>
+                            <svg
+                              className="w-3 h-3 text-slate-900 transition-transform duration-200"
+                              style={{ transform: langDropdownOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </>
+                        )}
+                      </button>
+                    </div>
+
+                    {/* Custom Floating Language Selection Popover */}
+                    {langDropdownOpen && (
+                      <div
+                        className={`absolute top-full mt-1.5 w-44 rounded-xl overflow-hidden z-50 shadow-2xl animate-in fade-in zoom-in-95 duration-150 ${
+                          isRtl ? "left-0" : "right-0"
+                        }`}
+                        style={{
+                          background: "#080d1a",
+                          border: "1px solid rgba(212,175,55,0.3)",
+                          boxShadow: "0 14px 35px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,175,55,0.1) inset",
+                        }}
+                      >
+                        <div className="px-3 py-1.5 bg-slate-900/90 border-b border-slate-800 text-[10px] font-bold text-amber-400 uppercase tracking-widest text-start">
+                          {t?.dashboard?.modal?.translatedTo || "Select Language"}
+                        </div>
+                        {[
+                          { code: "de", label: "Deutsch (DE)", flag: "de" },
+                          { code: "en", label: "English (EN)", flag: "gb" },
+                          { code: "fr", label: "Français (FR)", flag: "fr" },
+                          { code: "ar", label: "العربية (AR)", flag: "ma" },
+                        ].map((l) => (
+                          <button
+                            key={l.code}
+                            type="button"
+                            onClick={() => {
+                              setTargetLang(l.code);
+                              setLangDropdownOpen(false);
+                              handleTranslateMessage(l.code);
+                            }}
+                            className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs transition-colors cursor-pointer border-t border-slate-800/40 ${
+                              l.code === targetLang && translatedText
+                                ? "bg-amber-500/15 text-amber-300 font-bold"
+                                : "text-slate-200 hover:text-amber-300 hover:bg-slate-800/80"
+                            }`}
+                          >
+                            <img
+                              src={`/flags/4x3/${l.flag}.svg`}
+                              alt={l.label}
+                              className="w-4 h-3 object-cover rounded-2xs border border-slate-700/60 shrink-0"
+                            />
+                            <span className="text-xs">{l.label}</span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Message Box (Expands to fill remaining height) */}
                 <div
-                  dir={isArabic(selectedContact.message) ? "rtl" : "ltr"}
-                  className="bg-slate-950/80 border border-slate-800 rounded-xl p-3.5 sm:p-4 text-slate-200 text-xs sm:text-sm leading-relaxed max-h-48 sm:max-h-60 overflow-y-auto whitespace-pre-wrap font-sans"
+                  dir={
+                    translatedText && !showOriginal
+                      ? isArabic(translatedText) ? "rtl" : "ltr"
+                      : isArabic(selectedContact.message) ? "rtl" : "ltr"
+                  }
+                  className="flex-1 bg-slate-950/80 border border-slate-800 rounded-xl p-3.5 sm:p-4 text-slate-200 text-xs sm:text-sm leading-relaxed min-h-35 overflow-y-auto whitespace-pre-wrap font-sans relative touch-pan-y scrollbar-thin scrollbar-thumb-amber-500/30 scrollbar-track-slate-900"
+                  style={{
+                    WebkitOverflowScrolling: "touch",
+                  }}
                 >
-                  {selectedContact.message}
+                  {translatedText && !showOriginal ? (
+                    <div>
+                      <div
+                        dir={isRtl ? "rtl" : "ltr"}
+                        className={`flex items-center justify-between text-[10px] font-bold text-amber-400/90 pb-2 mb-2 border-b border-slate-800/80 select-none shrink-0 ${
+                          isRtl ? "flex-row" : "flex-row"
+                        }`}
+                      >
+                        <span className="flex items-center gap-1.5 text-start">
+                          <img
+                            src={`/flags/4x3/${targetLang === "ar" ? "ma" : targetLang === "en" ? "gb" : targetLang}.svg`}
+                            alt={targetLang}
+                            className="w-3.5 h-2.5 object-cover rounded-2xs inline-block"
+                          />
+                          <span>
+                            {(t?.dashboard?.modal?.translatedTo || "Translated to")} ({targetLang.toUpperCase()})
+                          </span>
+                        </span>
+                        <button
+                          onClick={() => handleTranslateMessage(targetLang)}
+                          className="hover:underline text-slate-400 hover:text-white cursor-pointer flex items-center gap-1 shrink-0"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3 h-3">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                          </svg>
+                          <span>{t?.dashboard?.modal?.reTranslate || "Re-translate"}</span>
+                        </button>
+                      </div>
+                      {translatedText}
+                    </div>
+                  ) : (
+                    selectedContact.message
+                  )}
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-[11px] sm:text-xs text-slate-500 border-t border-slate-800/80 pt-3 sm:pt-4 gap-1.5">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-[11px] sm:text-xs text-slate-500 border-t border-slate-800/80 pt-3 sm:pt-4 gap-1.5 shrink-0">
                 <span>
                   {t?.dashboard?.modal?.received || "Received"}: {new Date(selectedContact.createdAt).toLocaleString(getLocale(lang))}
                 </span>

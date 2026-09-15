@@ -78,7 +78,13 @@
       "notAvailable": "N/D",
       "delete": "Supprimer",
       "star": "Favori",
-      "unstar": "Retirer favori"
+      "unstar": "Retirer favori",
+      "translateMessage": "Traduire le message",
+      "showOriginal": "Afficher l'original",
+      "showTranslation": "Afficher la traduction",
+      "translating": "Traduction en cours...",
+      "reTranslate": "Retraduire",
+      "translatedTo": "Traduit en"
     },
     "confirmDelete": {
       "deleteContactTitle": "Supprimer le message ?",

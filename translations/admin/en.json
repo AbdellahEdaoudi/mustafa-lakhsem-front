@@ -79,7 +79,13 @@
       "notAvailable": "N/A",
       "delete": "Delete",
       "star": "Star",
-      "unstar": "Unstar"
+      "unstar": "Unstar",
+      "translateMessage": "Translate Message",
+      "showOriginal": "Show Original",
+      "showTranslation": "Show Translation",
+      "translating": "Translating...",
+      "reTranslate": "Re-translate",
+      "translatedTo": "Translated to"
     },
     "confirmDelete": {
       "deleteContactTitle": "Delete Message?",
