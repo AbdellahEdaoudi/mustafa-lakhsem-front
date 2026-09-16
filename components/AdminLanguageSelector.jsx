@@ -41,13 +41,13 @@ export default function AdminLanguageSelector({ currentLang = "en", onLangChange
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-amber-500/30 bg-slate-900/70 hover:border-amber-400/60 hover:bg-slate-800/80 transition-all duration-200 cursor-pointer"
+        className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg border border-amber-500/30 bg-slate-900/70 hover:border-amber-400/60 hover:bg-slate-800/80 transition-all duration-200 cursor-pointer"
         aria-label="Select Language"
       >
         <span className="shrink-0 rounded-xs overflow-hidden flex items-center justify-center shadow-xs">
-          <span className={`fi fi-${activeLang.countryCode || activeLang.code} text-sm leading-none`}></span>
+          <span className={`fi fi-${activeLang.countryCode || activeLang.code} text-xs sm:text-sm leading-none`}></span>
         </span>
-        <span className="text-[11px] font-bold uppercase tracking-widest text-slate-200 group-hover:text-amber-300 transition-colors leading-none">
+        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-slate-200 group-hover:text-amber-300 transition-colors leading-none">
           {activeLang.code}
         </span>
         <ChevronDown
@@ -58,7 +58,7 @@ export default function AdminLanguageSelector({ currentLang = "en", onLangChange
 
       {open && (
         <div
-          className="absolute right-0 mt-1.5 w-40 rounded-xl overflow-hidden z-50 shadow-2xl"
+          className="absolute right-0 rtl:right-auto rtl:left-0 mt-1.5 w-36 sm:w-40 rounded-xl overflow-hidden z-50 shadow-2xl"
           style={{
             background: "#0d1629",
             border: "1px solid rgba(212,175,55,0.2)",
