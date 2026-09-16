@@ -58,7 +58,7 @@ export default function AdminLanguageSelector({ currentLang = "en", onLangChange
 
       {open && (
         <div
-          className="absolute right-0 rtl:right-auto rtl:left-0 mt-1.5 w-36 sm:w-40 rounded-xl overflow-hidden z-50 shadow-2xl"
+          className="absolute right-0 rtl:right-0 rtl:left-auto mt-1.5 w-36 sm:w-40 rounded-xl overflow-hidden z-50 shadow-2xl"
           style={{
             background: "#0d1629",
             border: "1px solid rgba(212,175,55,0.2)",
