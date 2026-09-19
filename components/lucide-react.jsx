@@ -641,3 +641,42 @@ export function Trash2(p) {
   );
 }
 
+export function Download(p) {
+  return (
+    <Icon {...p}>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" x2="12" y1="15" y2="3" />
+    </Icon>
+  );
+}
+
+export function Smartphone(p) {
+  return (
+    <Icon {...p}>
+      <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+      <line x1="12" x2="12.01" y1="18" y2="18" />
+    </Icon>
+  );
+}
+
+export function Share(p) {
+  return (
+    <Icon {...p}>
+      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+      <polyline points="16 6 12 2 8 6" />
+      <line x1="12" x2="12" y1="2" y2="15" />
+    </Icon>
+  );
+}
+
+export function PlusSquare(p) {
+  return (
+    <Icon {...p}>
+      <rect width="18" height="18" x="3" y="3" rx="2" />
+      <line x1="12" x2="12" y1="8" y2="16" />
+      <line x1="8" x2="16" y1="12" y2="12" />
+    </Icon>
+  );
+}
+

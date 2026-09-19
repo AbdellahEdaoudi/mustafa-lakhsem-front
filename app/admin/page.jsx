@@ -479,7 +479,7 @@ export default function AdminDashboard() {
                 >
                   <div className="w-full h-full rounded-md bg-[#060913] overflow-hidden flex items-center justify-center">
                     <Image
-                      src="/mds-logo.png"
+                      src="/Logo/mds-logo.png"
                       alt="MDS"
                       width={40}
                       height={40}
@@ -1420,6 +1420,7 @@ export default function AdminDashboard() {
                           { code: "de", label: "Deutsch (DE)", flag: "de" },
                           { code: "en", label: "English (EN)", flag: "gb" },
                           { code: "fr", label: "Français (FR)", flag: "fr" },
+                          { code: "es", label: "Español (ES)", flag: "es" },
                           { code: "ar", label: "العربية (AR)", flag: "ma" },
                         ].map((l) => (
                           <button

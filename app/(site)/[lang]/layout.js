@@ -2,6 +2,7 @@ import "@/app/globals.css";
 import { notFound } from "next/navigation";
 import { Prompt, Cairo } from "next/font/google";
 import { ToastProvider } from "@/components/Toast";
+import PwaRegister from "@/components/PwaRegister";
 
 const prompt = Prompt({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ const SUPPORTED_LANGUAGES = ["en", "ar", "fr", "de", "nl", "es", "it"];
 export const viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#040711",
 };
 
 export default async function LocaleLayout({ children, params }) {
@@ -40,10 +42,22 @@ export default async function LocaleLayout({ children, params }) {
       data-scroll-behavior="smooth"
       className={`scroll-smooth ${prompt.variable} ${cairo.variable}`}
     >
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/icons/favicon-48.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Mustafa Lakhsem" />
+      </head>
       <body
         className={`${prompt.className} bg-[#060913] text-[#f8fafc] min-h-screen selection:bg-[#d4af37] selection:text-black font-sans antialiased`}
       >
         <ToastProvider>{children}</ToastProvider>
+        <PwaRegister />
       </body>
     </html>
   );

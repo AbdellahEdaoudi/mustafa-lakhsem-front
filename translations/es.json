@@ -196,6 +196,16 @@
         "title": "Diplomacia y Cooperación Internacional",
         "desc": "Presidencia de la Fundación de Marroquíes del Mundo (MDM). Acuerdos en Senegal. Foros mundiales de Ciudades Inteligentes.",
         "tag": "Presencia Global"
+      },
+      {
+        "year": "2026",
+        "category": "Compromiso Cívico",
+        "type": [
+          "civic"
+        ],
+        "title": "Integración en el MDS y Nominación Legislativa 2026",
+        "desc": "Adhesión oficial al Movimiento Democrático y Social (MDS) tras reuniones con el Secretario General Abdessamad Archane y nominación para encabezar la lista por Sefrou.",
+        "tag": "Elecciones Legislativas"
       }
     ]
   },
@@ -408,11 +418,11 @@
       {
         "id": "sefrou-meeting-2026",
         "category": "Política",
-        "title": "Gran Encuentro Ciudadano en Sefrou con Abdelosmade Archane",
+        "title": "Gran Encuentro Ciudadano en Sefrou con Abdessamad Archane",
         "date": "13 de Septiembre de 2026",
         "location": "Sefrou, Marruecos",
-        "summary": "Mustafa Lakhsem encabeza un gran mitin público en Sefrou junto al Secretario General del MDS Abdelosmade Archane.",
-        "fullText": "El domingo 13 de septiembre de 2026, el alcalde y campeón mundial Mustafa Lakhsem presidió un gran encuentro ciudadano en Sefrou junto al Secretario General del MDS Abdelosmade Archane. Dirigiéndose a miles de ciudadanos, Lakhsem promovió la transparencia y rechazó las prácticas electorales tradicionales con su famoso lema: 'Sin pollo, sin carne, sin seffa, sin dinero — solo compromiso auténtico, trabajo duro e integridad para nuestros ciudadanos.'"
+        "summary": "Mustafa Lakhsem encabeza un gran mitin público en Sefrou junto al Secretario General del MDS Abdessamad Archane.",
+        "fullText": "El domingo 13 de septiembre de 2026, el alcalde y campeón mundial Mustafa Lakhsem presidió un gran encuentro ciudadano en Sefrou junto al Secretario General del MDS Abdessamad Archane. Dirigiéndose a miles de ciudadanos, Lakhsem promovió la transparencia y rechazó las prácticas electorales tradicionales con su famoso lema: 'Sin pollo, sin carne, sin seffa, sin dinero — solo compromiso auténtico, trabajo duro e integridad para nuestros ciudadanos.'"
       },
       {
         "id": "adhesion-mds-2026",
@@ -421,7 +431,7 @@
         "date": "Agosto 2026",
         "location": "Sefrou / Rabat, Marruecos",
         "summary": "Mustafa Lakhsem se une al MDS y obtiene el aval para encabezar la lista legislativa por Sefrou.",
-        "fullText": "En un paso político decisivo para defender las regiones de montaña y el desarrollo territorial, el alcalde y campeón mundial Mustafa Lakhsem anunció oficialmente su integración en el Movimiento Democrático y Social (MDS - 'Partido de la Palmeira') tras reunirse con el Secretario General Abdelosmade Archane. Lakhsem obtuvo la nominación oficial para encabezar la lista electoral en la provincia de Sefrou para las elecciones legislativas de 2026."
+        "fullText": "En un paso político decisivo para defender las regiones de montaña y el desarrollo territorial, el alcalde y campeón mundial Mustafa Lakhsem anunció oficialmente su integración en el Movimiento Democrático y Social (MDS - 'Partido de la Palmeira') tras reunirse con el Secretario General Abdessamad Archane. Lakhsem obtuvo la nominación oficial para encabezar la lista electoral en la provincia de Sefrou para las elecciones legislativas de 2026."
       },
       {
         "id": "senegal-2024",

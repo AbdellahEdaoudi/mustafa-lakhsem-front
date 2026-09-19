@@ -117,7 +117,7 @@ export default function Navbar({ t = {}, lang }) {
               >
                 <div className="relative w-full h-full rounded-md bg-[#060913] overflow-hidden flex items-center justify-center">
                   <Image
-                    src="/mds-logo.png"
+                    src="/Logo/mds-logo.png"
                     alt={t?.nav?.logoAlt || "Democratic and Social Movement (MDS) Logo - Mustafa Lakhsem"}
                     width={46}
                     height={46}
@@ -287,7 +287,7 @@ export default function Navbar({ t = {}, lang }) {
                   >
                     <div className="relative w-full h-full rounded-md bg-[#060913] overflow-hidden flex items-center justify-center">
                       <Image
-                        src="/mds-logo.png"
+                        src="/Logo/mds-logo.png"
                         alt={t?.nav?.logoAlt || "Democratic and Social Movement (MDS) Logo - Mustafa Lakhsem"}
                         width={46}
                         height={46}

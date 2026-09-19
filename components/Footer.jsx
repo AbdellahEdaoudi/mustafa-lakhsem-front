@@ -70,7 +70,7 @@ export default function Footer({ t = {}, lang }) {
               <div className="relative w-full h-full bg-[#050814] rounded-[10px] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-slate-800 animate-pulse pointer-events-none" />
                 <Image
-                  src="/mds-logo.png"
+                  src="/Logo/mds-logo.png"
                   alt="MDS"
                   width={46}
                   height={46}

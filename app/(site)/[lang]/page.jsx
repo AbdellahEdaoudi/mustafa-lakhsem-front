@@ -15,6 +15,7 @@ const MediaCenter = dynamic(() => import("@/components/MediaCenter"));
 const Contact = dynamic(() => import("@/components/Contact"));
 const Footer = dynamic(() => import("@/components/Footer"));
 const CampaignModal = dynamic(() => import("@/components/CampaignModal"));
+const PwaInstallPrompt = dynamic(() => import("@/components/PwaInstallPrompt"));
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mustafa-lakhsem.vercel.app";
 
@@ -203,6 +204,9 @@ export default async function LangPage({ params }) {
 
         {/* Election Campaign Pop-up Modal */}
         <CampaignModal {...commonProps} />
+
+        {/* Progressive Web App Install Prompt */}
+        <PwaInstallPrompt lang={lang} />
       </main>
     </div>
   );
