@@ -58,7 +58,16 @@ const nextConfig = {
         ],
       },
       {
-        source: "/(hero|about|galerie|flags|Imouzzer)/:path*",
+        "source": "/sw.js",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, must-revalidate",
+          },
+        ],
+      },
+      {
+        source: "/(hero|about|galerie|flags|Imouzzer|Logo|icons)/:path*",
         headers: [
           {
             key: "Cache-Control",

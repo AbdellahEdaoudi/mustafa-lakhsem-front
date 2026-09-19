@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#040711">
+  <title>Offline | Mustafa Lakhsem</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
+      background:#040711;color:#e8e6df;text-align:center;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+    main{max-width:420px;width:100%}
+    img{width:96px;height:96px;border-radius:14px;margin-bottom:24px;box-shadow:0 0 24px rgba(212,175,55,.25)}
+    section{margin-bottom:20px}
+    h1{font-size:1.25rem;color:#d4af37;margin-bottom:6px}
+    p{font-size:.95rem;line-height:1.6;color:#b9b6ab}
+    hr{border:0;border-top:1px solid rgba(212,175,55,.2);margin:0 0 20px}
+    button{margin-top:8px;padding:12px 28px;border:0;border-radius:10px;cursor:pointer;
+      font-size:1rem;font-weight:600;color:#040711;
+      background:linear-gradient(135deg,#f9e29c,#d4af37,#a97e1f)}
+    button:active{transform:scale(.97)}
+  </style>
+</head>
+<body>
+  <main>
+    <img src="/icons/icon-192.png" alt="Mustafa Lakhsem" width="96" height="96">
+
+    <section lang="en" dir="ltr">
+      <h1>You're offline</h1>
+      <p>Please check your internet connection and try again.</p>
+    </section>
+    <hr>
+    <section lang="ar" dir="rtl">
+      <h1>أنت غير متصل بالإنترنت</h1>
+      <p>يرجى التحقق من اتصالك بالإنترنت ثم المحاولة مرة أخرى.</p>
+    </section>
+    <hr>
+    <section lang="fr" dir="ltr">
+      <h1>Vous êtes hors ligne</h1>
+      <p>Veuillez vérifier votre connexion Internet et réessayer.</p>
+    </section>
+
+    <button type="button" onclick="location.reload()">↻ Retry · إعادة المحاولة · Réessayer</button>
+  </main>
+</body>
+</html>

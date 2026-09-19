@@ -1,0 +1,25 @@
+{
+  "id": "/en",
+  "name": "Mustafa Lakhsem | Official Website",
+  "short_name": "Mustafa Lakhsem",
+  "description": "Official website of Mustafa Lakhsem — Mayor of Imouzzer-Kandar, 12-time World Champion, and Founder of Lakhsem Foundation.",
+  "start_url": "/en",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#040711",
+  "theme_color": "#040711",
+  "categories": ["news", "government", "sports", "lifestyle"],
+  "dir": "ltr",
+  "lang": "en",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "About Lakhsem", "short_name": "About", "url": "/en#about", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Career & Titles", "short_name": "Career", "url": "/en#career", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Media Center & Press", "short_name": "Media", "url": "/en#media", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
