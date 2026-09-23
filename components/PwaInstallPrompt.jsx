@@ -35,6 +35,38 @@ const labels = {
     install: "Install Now",
     dismiss: "Dismiss",
   },
+  de: {
+    title: "Offizielle App installieren",
+    desc: "Auf dem Startbildschirm für schnellen 1-Klick-Zugriff hinzufügen.",
+    iosDesc: "Auf iPhone / iPad: Tippen Sie auf die Teilen-Taste",
+    iosStep2: "dann 'Zum Home-Bildschirm'",
+    install: "Jetzt installieren",
+    dismiss: "Schließen",
+  },
+  nl: {
+    title: "Officiële app installeren",
+    desc: "Toevoegen aan je startscherm voor snelle toegang.",
+    iosDesc: "Op iPhone / iPad: tik op de Deel-knop",
+    iosStep2: "en kies 'Zet op beginscherm'",
+    install: "Nu installeren",
+    dismiss: "Sluiten",
+  },
+  es: {
+    title: "Instalar aplicación oficial",
+    desc: "Añade a tu pantalla de inicio para un acceso rápido en 1 clic.",
+    iosDesc: "En iPhone / iPad: toca el botón Compartir",
+    iosStep2: "y luego 'Añadir a la pantalla de inicio'",
+    install: "Instalar ahora",
+    dismiss: "Cerrar",
+  },
+  it: {
+    title: "Installa App Ufficiale",
+    desc: "Aggiungi alla schermata home per un accesso rapido con 1 clic.",
+    iosDesc: "Su iPhone / iPad: tocca il pulsante Condividi",
+    iosStep2: "poi 'Aggiungi a schermata Home'",
+    install: "Installa ora",
+    dismiss: "Chiudi",
+  },
 };
 
 function saveDismissal() {

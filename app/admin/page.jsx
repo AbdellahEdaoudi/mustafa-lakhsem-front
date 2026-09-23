@@ -21,6 +21,7 @@ export default function AdminDashboard() {
   const [contacts, setContacts] = useState([]);
   const [subscribers, setSubscribers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [contactsLoading, setContactsLoading] = useState(false);
   const [filter, setFilter] = useState("all"); // "all" | "starred" | "unread"
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedContact, setSelectedContact] = useState(null);
@@ -31,11 +32,23 @@ export default function AdminDashboard() {
   const [starringId, setStarringId] = useState(null);
   const [readingId, setReadingId] = useState(null);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const [contactsPage, setContactsPage] = useState(1);
+  const [contactsPages, setContactsPages] = useState({
+    all: 1,
+    unread: 1,
+    starred: 1,
+  });
+  const [contactsTotalPages, setContactsTotalPages] = useState({
+    all: 1,
+    unread: 1,
+    starred: 1,
+  });
+  const [contactsTotals, setContactsTotals] = useState({
+    all: 0,
+    unread: 0,
+    starred: 0,
+  });
   const [subscribersPage, setSubscribersPage] = useState(1);
-  const [contactsTotalPages, setContactsTotalPages] = useState(1);
   const [subscribersTotalPages, setSubscribersTotalPages] = useState(1);
-  const [contactsTotal, setContactsTotal] = useState(0);
   const [subscribersTotal, setSubscribersTotal] = useState(0);
   const [contactsUnreadTotal, setContactsUnreadTotal] = useState(0);
   const [contactsStarredTotal, setContactsStarredTotal] = useState(0);
@@ -187,18 +200,44 @@ export default function AdminDashboard() {
     };
   };
 
-  const fetchContacts = async (cPage = contactsPage) => {
+  const fetchContacts = async (filterType = filter, page) => {
+    const targetPage = page !== undefined ? page : (contactsPages[filterType] || 1);
+    setContactsLoading(true);
     try {
-      const res = await axios.get(`/api/admin/contacts?page=${cPage}&limit=20`, getAuthConfig());
+      const res = await axios.get(
+        `/api/admin/contacts?page=${targetPage}&limit=20&filter=${filterType}`,
+        getAuthConfig()
+      );
       setContacts(res.data.contacts || []);
-      setContactsTotal(res.data.total || 0);
-      setContactsTotalPages(res.data.totalPages || 1);
+      const returnedPage = res.data.page || targetPage;
+      const returnedTotalPages = res.data.totalPages || 1;
+      const returnedTotal = res.data.total || 0;
+
+      setContactsPages((prev) => ({ ...prev, [filterType]: returnedPage }));
+      setContactsTotalPages((prev) => ({ ...prev, [filterType]: returnedTotalPages }));
+      setContactsTotals((prev) => ({ ...prev, [filterType]: returnedTotal }));
       setContactsUnreadTotal(res.data.unreadCount ?? 0);
       setContactsStarredTotal(res.data.starredCount ?? 0);
+
+      if (returnedPage > returnedTotalPages && returnedTotalPages > 0) {
+        return fetchContacts(filterType, returnedTotalPages);
+      }
     } catch (err) {
-      await handleApiError(err, () => fetchContacts(cPage), t?.dashboard?.toasts?.dashboardLoadFailed || "Failed to load contacts.");
+      await handleApiError(
+        err,
+        () => fetchContacts(filterType, targetPage),
+        t?.dashboard?.toasts?.dashboardLoadFailed || "Failed to load contacts."
+      );
       throw err;
+    } finally {
+      setContactsLoading(false);
     }
+  };
+
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+    const targetPage = contactsPages[newFilter] || 1;
+    fetchContacts(newFilter, targetPage);
   };
 
   const fetchSubscribers = async (sPage = subscribersPage) => {
@@ -213,11 +252,11 @@ export default function AdminDashboard() {
     }
   };
 
-  const fetchData = async (cPage = contactsPage, sPage = subscribersPage) => {
+  const fetchData = async (cPage, sPage = subscribersPage) => {
     setLoading(true);
     try {
       await Promise.all([
-        fetchContacts(cPage),
+        fetchContacts("all", cPage || contactsPages.all || 1),
         fetchSubscribers(sPage),
       ]);
     } catch {
@@ -269,19 +308,15 @@ export default function AdminDashboard() {
       );
 
       const updated = res.data.contact;
-      setContacts((prev) =>
-        prev.map((c) => (c._id === contactId ? updated : c))
-      );
       if (selectedContact && selectedContact._id === contactId) {
         setSelectedContact(updated);
       }
-      // Update starred count locally
-      setContactsStarredTotal((prev) => updated.isStarred ? prev + 1 : Math.max(0, prev - 1));
       toast.success(
         updated.isStarred
           ? (t?.dashboard?.toasts?.markedStarred || "Marked as starred")
           : (t?.dashboard?.toasts?.removedStarred || "Removed from starred")
       );
+      await fetchContacts(filter, contactsPages[filter]);
     } catch (err) {
       await handleApiError(
         err,
@@ -303,19 +338,15 @@ export default function AdminDashboard() {
       );
 
       const updated = res.data.contact;
-      setContacts((prev) =>
-        prev.map((c) => (c._id === contactId ? updated : c))
-      );
       if (selectedContact && selectedContact._id === contactId) {
         setSelectedContact(updated);
       }
-      // Update unread count locally
-      setContactsUnreadTotal((prev) => updated.isRead ? Math.max(0, prev - 1) : prev + 1);
       toast.success(
         updated.isRead
           ? (t?.dashboard?.toasts?.markedRead || "Marked as read")
           : (t?.dashboard?.toasts?.markedUnread || "Marked as unread")
       );
+      await fetchContacts(filter, contactsPages[filter]);
     } catch (err) {
       await handleApiError(
         err,
@@ -338,12 +369,8 @@ export default function AdminDashboard() {
           getAuthConfig()
         );
         const updated = res.data.contact;
-        setContacts((prev) =>
-          prev.map((c) => (c._id === contact._id ? updated : c))
-        );
         setSelectedContact(updated);
-        // Decrement unread count since we just marked it as read
-        setContactsUnreadTotal((prev) => Math.max(0, prev - 1));
+        await fetchContacts(filter, contactsPages[filter]);
       } catch (err) {
         console.error("Auto mark as read error:", err);
       }
@@ -353,8 +380,6 @@ export default function AdminDashboard() {
   const confirmDeleteContact = async () => {
     if (!contactToDelete) return;
     const targetId = contactToDelete._id;
-    const wasUnread = !contactToDelete.isRead;
-    const wasStarred = contactToDelete.isStarred;
     setDeleting(true);
 
     try {
@@ -363,16 +388,12 @@ export default function AdminDashboard() {
         getAuthConfig()
       );
 
-      setContacts((prev) => prev.filter((c) => c._id !== targetId));
       if (selectedContact && selectedContact._id === targetId) {
         setSelectedContact(null);
       }
-      // Update counts locally after deletion
-      setContactsTotal((prev) => Math.max(0, prev - 1));
-      if (wasUnread) setContactsUnreadTotal((prev) => Math.max(0, prev - 1));
-      if (wasStarred) setContactsStarredTotal((prev) => Math.max(0, prev - 1));
       toast.success(t?.dashboard?.toasts?.messageDeleted || "Message deleted successfully");
       setContactToDelete(null);
+      await fetchContacts(filter, contactsPages[filter]);
     } catch (err) {
       await handleApiError(
         err,
@@ -412,20 +433,16 @@ export default function AdminDashboard() {
   // Stats calculation — uses server-side counts for accuracy across all pages
   const stats = useMemo(() => {
     return {
-      totalContacts: contactsTotal,
+      totalContacts: contactsTotals.all,
       unreadContacts: contactsUnreadTotal,
       starredContacts: contactsStarredTotal,
       totalSubscribers: subscribersTotal,
     };
-  }, [contactsTotal, contactsUnreadTotal, contactsStarredTotal, subscribersTotal]);
+  }, [contactsTotals.all, contactsUnreadTotal, contactsStarredTotal, subscribersTotal]);
 
   // Filter & Search contacts
   const filteredContacts = useMemo(() => {
     return (contacts || []).filter((c) => {
-      // Tab / Filter
-      if (filter === "starred" && !c.isStarred) return false;
-      if (filter === "unread" && c.isRead) return false;
-
       // Query search
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
@@ -437,7 +454,7 @@ export default function AdminDashboard() {
       }
       return true;
     });
-  }, [contacts, filter, searchQuery]);
+  }, [contacts, searchQuery]);
 
   // Filter & Search subscribers
   const filteredSubscribers = useMemo(() => {
@@ -567,7 +584,7 @@ export default function AdminDashboard() {
               </svg>
               <span>{t?.dashboard?.tabs?.messages || "Messages"}</span>
               <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${activeTab === "contacts" ? "bg-black/20 text-black font-extrabold" : "bg-slate-800 text-slate-300"}`}>
-                {contactsTotal}
+                {contactsTotals.all}
               </span>
             </button>
 
@@ -645,45 +662,54 @@ export default function AdminDashboard() {
                       {t?.dashboard?.filters?.title || "Filter:"}
                     </span>
                     {[
-                      { key: "all", label: `${t?.dashboard?.filters?.all || "All"} (${contactsTotal})` },
+                      { key: "all", label: `${t?.dashboard?.filters?.all || "All"} (${contactsTotals.all})` },
                       { key: "unread", label: `${t?.dashboard?.filters?.unread || "Unread"} (${stats.unreadContacts})` },
                       { key: "starred", label: `${t?.dashboard?.filters?.starred || "Starred"} (${stats.starredContacts})` },
                     ].map((f) => (
                       <button
                         key={f.key}
-                        onClick={() => setFilter(f.key)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${filter === f.key
+                        disabled={contactsLoading}
+                        onClick={() => handleFilterChange(f.key)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${
+                          contactsLoading ? "cursor-not-allowed opacity-60" : "cursor-pointer"
+                        } ${filter === f.key
                           ? "bg-amber-500/15 border border-amber-500 text-amber-400"
                           : "border border-slate-800 bg-slate-900/40 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
-                          }`}
+                        }`}
                       >
-                        {f.label}
+                        {contactsLoading && filter === f.key ? (
+                          <span className="flex items-center gap-1">
+                            <Loader2 className="w-3 h-3 animate-spin" />
+                            {f.label}
+                          </span>
+                        ) : f.label}
                       </button>
                     ))}
                   </div>
 
-                  {contactsTotalPages > 1 && (
+                  {(contactsTotalPages[filter] || 1) > 1 && (
                     <div className="flex items-center gap-2 ms-auto">
                       <button
-                        disabled={contactsPage === 1}
+                        disabled={(contactsPages[filter] || 1) === 1 || contactsLoading}
                         onClick={() => {
-                          const newPage = contactsPage - 1;
-                          setContactsPage(newPage);
-                          fetchContacts(newPage);
+                          const newPage = (contactsPages[filter] || 1) - 1;
+                          fetchContacts(filter, newPage);
                         }}
                         className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                       >
                         {t?.dashboard?.pagination?.prev || "← Prev"}
                       </button>
-                      <span className="text-xs text-slate-400 px-1">
-                        {contactsPage} / {contactsTotalPages}
+                      <span className="text-xs text-slate-400 px-1 flex items-center gap-1.5">
+                        {contactsLoading && (
+                          <Loader2 className="w-3 h-3 animate-spin text-amber-400" />
+                        )}
+                        {contactsPages[filter] || 1} / {contactsTotalPages[filter] || 1}
                       </span>
                       <button
-                        disabled={contactsPage === contactsTotalPages}
+                        disabled={(contactsPages[filter] || 1) === (contactsTotalPages[filter] || 1) || contactsLoading}
                         onClick={() => {
-                          const newPage = contactsPage + 1;
-                          setContactsPage(newPage);
-                          fetchContacts(newPage);
+                          const newPage = (contactsPages[filter] || 1) + 1;
+                          fetchContacts(filter, newPage);
                         }}
                         className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                       >
@@ -694,6 +720,8 @@ export default function AdminDashboard() {
                 </div>
 
                 {/* Table & Cards List */}
+                {/* Contacts Loading Overlay */}
+                <div className={`relative transition-all duration-200 ${contactsLoading ? "opacity-50 pointer-events-none select-none" : ""}`}>
                 {filteredContacts.length === 0 ? (
                   <div className="text-center py-16 sm:py-20 bg-slate-900/20 border border-slate-800/80 rounded-2xl p-4">
                     <div className="w-12 h-12 rounded-full bg-slate-800/50 flex items-center justify-center mx-auto mb-3 text-slate-500">
@@ -790,8 +818,14 @@ export default function AdminDashboard() {
                               >
                                 {readingId === c._id ? (
                                   <Loader2 className="w-3.5 h-3.5 animate-spin text-amber-400" />
+                                ) : c.isRead ? (
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5z" />
+                                  </svg>
                                 ) : (
-                                  <Mail className="w-3.5 h-3.5" strokeWidth={c.isRead ? 1.5 : 2} />
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                  </svg>
                                 )}
                               </button>
 
@@ -988,29 +1022,31 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 )}
+                </div>
 
-                {contactsTotalPages > 1 && (
+                {(contactsTotalPages[filter] || 1) > 1 && (
                   <div className="flex items-center justify-center gap-2 mt-6">
                     <button
-                      disabled={contactsPage === 1}
+                      disabled={(contactsPages[filter] || 1) === 1 || contactsLoading}
                       onClick={() => {
-                        const newPage = contactsPage - 1;
-                        setContactsPage(newPage);
-                        fetchContacts(newPage);
+                        const newPage = (contactsPages[filter] || 1) - 1;
+                        fetchContacts(filter, newPage);
                       }}
                       className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                     >
                       {t?.dashboard?.pagination?.prev || "← Prev"}
                     </button>
-                    <span className="text-xs text-slate-400 px-2">
-                      {contactsPage} / {contactsTotalPages}
+                    <span className="text-xs text-slate-400 px-2 flex items-center gap-1.5">
+                      {contactsLoading && (
+                        <Loader2 className="w-3.5 h-3.5 animate-spin text-amber-400" />
+                      )}
+                      {contactsPages[filter] || 1} / {contactsTotalPages[filter] || 1}
                     </span>
                     <button
-                      disabled={contactsPage === contactsTotalPages}
+                      disabled={(contactsPages[filter] || 1) === (contactsTotalPages[filter] || 1) || contactsLoading}
                       onClick={() => {
-                        const newPage = contactsPage + 1;
-                        setContactsPage(newPage);
-                        fetchContacts(newPage);
+                        const newPage = (contactsPages[filter] || 1) + 1;
+                        fetchContacts(filter, newPage);
                       }}
                       className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                     >
@@ -1171,7 +1207,7 @@ export default function AdminDashboard() {
                       onClick={() => {
                         const newPage = subscribersPage - 1;
                         setSubscribersPage(newPage);
-                        fetchData(contactsPage, newPage);
+                        fetchSubscribers(newPage);
                       }}
                       className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                     >
@@ -1185,7 +1221,7 @@ export default function AdminDashboard() {
                       onClick={() => {
                         const newPage = subscribersPage + 1;
                         setSubscribersPage(newPage);
-                        fetchData(contactsPage, newPage);
+                        fetchSubscribers(newPage);
                       }}
                       className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-500/40 hover:text-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
                     >
