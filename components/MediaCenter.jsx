@@ -10,6 +10,7 @@ const NewsDetailModal = dynamic(() => import("./MediaNewsModal"), { ssr: false }
 const MediaImageModal = dynamic(() => import("./MediaImageModal"), { ssr: false });
 
 const IMAGE_MAP = {
+  "election-victory-2026": "/galerie/Election_Victory_2026.png",
   "sefrou-meeting-2026": "/galerie/Sefrou_Meeting_Lakhsem.png",
   "adhesion-mds-2026": "/galerie/Adhesion_MDS_Nakhla.jpg",
   "senegal-2024": "/galerie/Accord_Senegal_Maroc.jpg",

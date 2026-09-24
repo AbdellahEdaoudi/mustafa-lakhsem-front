@@ -416,6 +416,15 @@
     "pressReleaseNote": "Mustafa Lakhsem · Offizielle Pressemitteilung",
     "articles": [
       {
+        "id": "election-victory-2026",
+        "category": "Politik",
+        "title": "Historischer Wahlsieg bei den Parlamentswahlen in Sefrou — Ein neues Kapitel beginnt",
+        "date": "23. September 2026",
+        "location": "Sefrou, Marokko",
+        "summary": "Mustafa Lakhsem gewinnt ein Mandat im Repräsentantenhaus für den Wahlkreis Sefrou und wird erstmals in seiner politischen Laufbahn Abgeordneter des marokkanischen Parlaments.",
+        "fullText": "Am 23. September 2026 errang Mustafa Lakhsem — zwölffacher Kickbox-Weltmeister, Bürgermeister von Imouzzer-Kandar und herausragende politische Persönlichkeit — einen historischen Wahlsieg im Provinzwahlkreis Sefrou. Mit rund 19.608 Stimmen für die Demokratische und Soziale Bewegung (MDS, Palmenpartei) führte er das Ergebnis an und errang ein Mandat im Repräsentantenhaus des marokkanischen Parlaments — ein Novum in seiner politischen Karriere. Dieser Sieg krönt jahrelangen unermüdlichen Einsatz für die Bürgerinnen und Bürger, die Verteidigung der Bergregionen und das Eintreten für eine nachhaltige Entwicklung des ländlichen Raums. Lakhsem führte seinen Wahlkampf auf der Grundlage von Integrität, Bürgerarbeit und der klaren Ablehnung jeglicher Demagogie — unter seinem bekannten Leitspruch: 'Kein Hühnchen, kein Fleisch, keine Seffa, kein Geld — nur aufrichtiges Engagement für den Bürger.' Dieser Triumph markiert den Beginn eines neuen Kapitels im Dienst der Provinz Sefrou und des gesamten Königreichs Marokko."
+      },
+      {
         "id": "sefrou-meeting-2026",
         "category": "Politik",
         "title": "Bürgerversammlung in Sefrou mit Generalsekretär Abdessamad Archane",

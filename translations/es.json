@@ -18,7 +18,7 @@
     "diplomacy": "Diplomacia",
     "foundations": "Fundaciones",
     "imouzzer": "Imouzzer",
-    "media": "Prensa",
+    "media": "Medios",
     "gallery": "Galería",
     "contact": "Contacto",
     "cta": "Contactar",
@@ -415,6 +415,15 @@
     "closeModal": "Cerrar",
     "pressReleaseNote": "Mustafa Lakhsem · Comunicado de Prensa Oficial",
     "articles": [
+      {
+        "id": "election-victory-2026",
+        "category": "Política",
+        "title": "Victoria Electoral Histórica en Sefrou — Un Nuevo Capítulo Comienza",
+        "date": "23 de Septiembre de 2026",
+        "location": "Sefrou, Marruecos",
+        "summary": "Mustafa Lakhsem conquista un escaño en la Cámara de Representantes por la circunscripción de Sefrou, convirtiéndose por primera vez en diputado del Parlamento marroquí en un triunfo político histórico.",
+        "fullText": "El 23 de septiembre de 2026, Mustafa Lakhsem — doce veces campeón mundial de kickboxing, alcalde de Imouzzer-Kandar y destacada figura política — obtuvo una victoria electoral histórica en la circunscripción provincial de Sefrou. Al obtener cerca de 19.608 votos en representación del Movimiento Democrático y Social (MDS, Partido de la Palma), encabezó los resultados y conquistó un escaño en la Cámara de Representantes del Parlamento marroquí, una primera vez en su trayectoria política. Esta victoria corona años de servicio incansable a los ciudadanos, de defensa de las zonas montañosas y de promoción del desarrollo sostenible para las poblaciones rurales. Lakhsem condujo su campaña con integridad, trabajo de campo y el rechazo firme de toda demagogia, bajo su consigna emblemática: 'Ni pollo, ni carne, ni seffa, ni dinero — solo compromiso genuino al servicio del ciudadano.' Este triunfo marca el inicio de un nuevo capítulo al servicio de la Provincia de Sefrou y de toda la Nación marroquí."
+      },
       {
         "id": "sefrou-meeting-2026",
         "category": "Política",

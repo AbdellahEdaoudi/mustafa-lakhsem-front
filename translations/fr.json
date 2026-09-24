@@ -416,6 +416,15 @@
     "pressReleaseNote": "Mustafa Lakhsem · Communiqué de Presse Officiel",
     "articles": [
       {
+        "id": "election-victory-2026",
+        "category": "Politique",
+        "title": "Victoire Historique aux Législatives à Séfrou — Une Nouvelle Page s'Ouvre",
+        "date": "23 Septembre 2026",
+        "location": "Séfrou, Maroc",
+        "summary": "Mustafa Lakhsem remporte un siège à la Chambre des Représentants pour la circonscription de Séfrou, devenant député pour la première fois dans une victoire politique historique.",
+        "fullText": "Le 23 septembre 2026, Mustafa Lakhsem — champion du monde de kickboxing douze fois couronné, président de la commune d'Imouzzer-Kandar et figure politique de premier plan — a remporté une victoire électorale historique dans la circonscription provinciale de Séfrou. Ayant recueilli environ 19 608 voix au nom du Mouvement Démocratique et Social (MDS, Parti du Palmier), il s'est hissé en tête des résultats et a décroché un siège à la Chambre des Représentants du Parlement marocain, une première dans son parcours politique. Cette victoire couronne des années de service auprès des citoyens, de défense des zones montagneuses et de promotion du développement durable pour les populations rurales. Lakhsem a mené une campagne fondée sur l'intégrité, le travail de terrain et le refus de toute démagogie, sous sa devise emblématique : « Pas de poulet, pas de viande, pas de seffa, pas d'argent — uniquement l'engagement sincère envers le citoyen. » Cette victoire marque l'ouverture d'un nouveau chapitre au service de la Province de Séfrou et de la Nation marocaine tout entière."
+      },
+      {
         "id": "sefrou-meeting-2026",
         "category": "Politique",
         "title": "Grande Rencontre Citoyenne à Séfrou avec Abdessamad Archane",
