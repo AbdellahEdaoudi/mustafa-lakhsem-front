@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import { Prompt } from "next/font/google";
 import { ToastProvider } from "@/components/Toast";
+import { Analytics } from "@vercel/analytics/next";
 
 const prompt = Prompt({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function AuthLayout({ children }) {
         className={`${prompt.className} bg-[#060913] text-[#f8fafc] min-h-screen antialiased`}
       >
         <ToastProvider>{children}</ToastProvider>
+        <Analytics />
       </body>
     </html>
   );

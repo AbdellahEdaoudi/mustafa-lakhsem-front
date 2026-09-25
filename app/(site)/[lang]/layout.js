@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Prompt, Cairo } from "next/font/google";
 import { ToastProvider } from "@/components/Toast";
 import PwaRegister from "@/components/PwaRegister";
+import { Analytics } from "@vercel/analytics/next";
 
 const prompt = Prompt({
   subsets: ["latin"],
@@ -58,6 +59,7 @@ export default async function LocaleLayout({ children, params }) {
       >
         <ToastProvider>{children}</ToastProvider>
         <PwaRegister />
+        <Analytics />
       </body>
     </html>
   );
